@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.66.73" id="attachPageDef" Package="taskflow">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="PheCidAttachmentVO1" RangeSize="25"
+              DataControl="AppModuleDataControl"
+              id="PheCidAttachmentVO1Iterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="PheCidAttachmentVO1Iterator" id="Idattach1">
+      <AttrNames>
+        <Item Value="Idattach"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PheCidAttachmentVO1Iterator" id="Idrequest1">
+      <AttrNames>
+        <Item Value="Idrequest"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PheCidAttachmentVO1Iterator" id="Attachdate1">
+      <AttrNames>
+        <Item Value="Attachdate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PheCidAttachmentVO1Iterator" id="Diddocfile1">
+      <AttrNames>
+        <Item Value="Diddocfile"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PheCidAttachmentVO1Iterator" id="Ciddocname1">
+      <AttrNames>
+        <Item Value="Ciddocname"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PheCidAttachmentVO1Iterator"
+                     id="Ciddocformat1">
+      <AttrNames>
+        <Item Value="Ciddocformat"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PheCidAttachmentVO1Iterator" id="Ciddocsize1">
+      <AttrNames>
+        <Item Value="Ciddocsize"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PheCidAttachmentVO1Iterator"
+                     id="Ciddocstatus1">
+      <AttrNames>
+        <Item Value="Ciddocstatus"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PheCidAttachmentVO1Iterator"
+                     id="Cidfolderguid1">
+      <AttrNames>
+        <Item Value="Cidfolderguid"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="PheCidAttachmentVO1Iterator" id="CreateInsert"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <tree IterBinding="PheCidAttachmentVO1Iterator" id="PheCidAttachmentVO1">
+      <nodeDefinition DefName="CID.VO.PheCidAttachmentVO"
+                      Name="PheCidAttachmentVO10">
+        <AttrNames>
+          <Item Value="Idattach"/>
+          <Item Value="Idrequest"/>
+          <Item Value="Attachdate"/>
+          <Item Value="Diddocfile"/>
+          <Item Value="Ciddocname"/>
+          <Item Value="Ciddocformat"/>
+          <Item Value="Ciddocsize"/>
+          <Item Value="Ciddocstatus"/>
+          <Item Value="Cidfolderguid"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="PheCidAttachmentVO1Iterator" id="Execute"
+            RequiresUpdateModel="true" Action="iteratorExecute"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="AppModuleDataControl"/>
+  </bindings>
+</pageDefinition>

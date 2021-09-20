@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="PheCidRunNumber"
+  Version="11.1.1.66.73"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="PHE_CID_RUN_NUMBER"
+  AliasName="PheCidRunNumber"
+  BindingStyle="OracleName"
+  UseGlueCode="false">
+  <DesignTime>
+    <AttrArray Name="_publishEvents"/>
+  </DesignTime>
+  <Attribute
+    Name="RunNumType"
+    IsNotNull="true"
+    Precision="5"
+    ColumnName="RUN_NUM_TYPE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PHE_CID_RUN_NUMBER"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="5"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ApName"
+    IsNotNull="true"
+    Precision="30"
+    ColumnName="AP_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PHE_CID_RUN_NUMBER"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Value"
+    IsNotNull="true"
+    ColumnName="VALUE"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="PHE_CID_RUN_NUMBER"
+    IsUnique="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Key
+    Name="RunNumberPk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="RUN_NUMBER_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="CID.EO.PheCidRunNumber.RunNumType"/>
+      <Item Value="CID.EO.PheCidRunNumber.ApName"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0077917">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0077917"/>
+      <Attr Name="_checkCondition" Value='"RUN_NUM_TYPE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="CID.EO.PheCidRunNumber.RunNumType"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0077918">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0077918"/>
+      <Attr Name="_checkCondition" Value='"AP_NAME" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="CID.EO.PheCidRunNumber.ApName"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0077919">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0077919"/>
+      <Attr Name="_checkCondition" Value='"RUN_YEAR" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes"/>
+  </Key>
+  <Key
+    Name="SysC0077920">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0077920"/>
+      <Attr Name="_checkCondition" Value='"RUN_MONTH" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes"/>
+  </Key>
+  <Key
+    Name="SysC0077921">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0077921"/>
+      <Attr Name="_checkCondition" Value='"VALUE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="CID.EO.PheCidRunNumber.Value"/>
+    </AttrArray>
+  </Key>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="CID.model.ModelBundle"/>
+  </ResourceBundle>
+</Entity>

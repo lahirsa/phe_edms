@@ -1,0 +1,233 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<References xmlns="http://xmlns.oracle.com/adf/jndi">
+   <Reference name="CIDconn" className="oracle.jdeveloper.db.adapter.DatabaseProvider" credentialStoreKey="CIDconn"
+              xmlns="">
+      <Factory className="oracle.jdevimpl.db.adapter.DatabaseProviderFactory1212"/>
+      <RefAddresses>
+         <StringRefAddr addrType="DeployPassword">
+            <Contents>true</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="oraDriverType">
+            <Contents>thin</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="hostname">
+            <Contents>10.252.61.167</Contents>
+         </StringRefAddr>
+         <SecureRefAddr addrType="password"/>
+         <StringRefAddr addrType="subtype">
+            <Contents>oraJDBC</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="port">
+            <Contents>15678</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="serviceName">
+            <Contents>OWCDEV19C</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="user">
+            <Contents>DEVX_OCS</Contents>
+         </StringRefAddr>
+      </RefAddresses>
+   </Reference>
+   <Reference name="SendEmailDataControl"
+              className="oracle.adf.model.connection.webservice.impl.WebServiceConnectionImpl" xmlns="">
+      <Factory className="oracle.adf.model.connection.webservice.api.WebServiceConnectionFactory"/>
+      <RefAddresses>
+         <XmlRefAddr addrType="WebServiceConnection">
+            <Contents>
+               <wsconnection description="http://phekpdmdv01.pertamina.com:16800/EDMSWebservice-Project1-context-root/EDMSServiceSoap12HttpPort?WSDL"
+                             service="{http://transmittalExternal/}EDMSService">
+                  <model name="{http://transmittalExternal/}EDMSService" xmlns="http://oracle.com/ws/model">
+                     <service name="{http://transmittalExternal/}EDMSService">
+                        <port name="EDMSServiceSoap12HttpPort"
+                              binding="{http://transmittalExternal/}EDMSServiceSoap12HttpPortBinding"
+                              portType="{http://transmittalExternal/}EDMSService">
+                           <soap addressUrl="http://phekpdmdv01.pertamina.com:16800/EDMSWebservice-Project1-context-root/EDMSServiceSoap12HttpPort"
+                                 xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                           <operation name="GetOrganizationsByUsernameAndOrganizationID">
+                              <soap soapAction="" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                              <input name=""/>
+                              <output name=""/>
+                           </operation>
+                           <operation name="ReminderInternalTransmittalDueDate">
+                              <soap soapAction="" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                              <input name=""/>
+                              <output name=""/>
+                           </operation>
+                           <operation name="ReminderExternalTransmittalDueDate">
+                              <soap soapAction="" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                              <input name=""/>
+                              <output name=""/>
+                           </operation>
+                           <operation name="ReminderPublishInternalTransmittalDueDate">
+                              <soap soapAction="" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                              <input name=""/>
+                              <output name=""/>
+                           </operation>
+                           <operation name="ReminderPublishExternalTransmittalDueDate">
+                              <soap soapAction="" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                              <input name=""/>
+                              <output name=""/>
+                           </operation>
+                           <operation name="GetOrganizationsByUsernameAndOrgName">
+                              <soap soapAction="" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                              <input name=""/>
+                              <output name=""/>
+                           </operation>
+                           <operation name="GetProjectsByUsernameAndProjectID">
+                              <soap soapAction="" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                              <input name=""/>
+                              <output name=""/>
+                           </operation>
+                           <operation name="FolderBrowseFolder">
+                              <soap soapAction="" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                              <input name=""/>
+                              <output name=""/>
+                           </operation>
+                           <operation name="SendEmailBusinessContact">
+                              <soap soapAction="" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                              <input name=""/>
+                              <output name=""/>
+                           </operation>
+                           <operation name="ConnectEDMSService">
+                              <input name=""/>
+                              <output name=""/>
+                           </operation>
+                           <operation name="GetPublishByUsername">
+                              <soap soapAction="" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                              <input name=""/>
+                              <output name=""/>
+                           </operation>
+                           <operation name="GetPublishCreator">
+                              <soap soapAction="" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                              <input name=""/>
+                              <output name=""/>
+                           </operation>
+                           <operation name="GetProjectsByUsername">
+                              <soap soapAction="" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                              <input name=""/>
+                              <output name=""/>
+                           </operation>
+                           <operation name="GetOrganizationsByUsername">
+                              <soap soapAction="" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                              <input name=""/>
+                              <output name=""/>
+                           </operation>
+                           <operation name="GetTransmittalStatus">
+                              <soap soapAction="" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                              <input name=""/>
+                              <output name=""/>
+                           </operation>
+                           <operation name="GetTransmittalCreator">
+                              <soap soapAction="" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                              <input name=""/>
+                              <output name=""/>
+                           </operation>
+                           <operation name="GetOrganizationCreator">
+                              <soap soapAction="" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                              <input name=""/>
+                              <output name=""/>
+                           </operation>
+                           <operation name="GetSubmittalDocGUID">
+                              <soap soapAction="" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                              <input name=""/>
+                              <output name=""/>
+                           </operation>
+                           <operation name="Insert_DSWF_PROCESS">
+                              <soap soapAction="" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                              <input name=""/>
+                              <output name=""/>
+                           </operation>
+                           <operation name="UpdateDocxRobjId">
+                              <soap soapAction="" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                              <input name=""/>
+                              <output name=""/>
+                           </operation>
+                           <operation name="FolderBrowseFile">
+                              <soap soapAction="" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                              <input name=""/>
+                              <output name=""/>
+                           </operation>
+                           <operation name="SendingEmail">
+                              <soap soapAction="" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                              <input name=""/>
+                              <output name=""/>
+                           </operation>
+                           <operation name="SendEmail">
+                              <soap soapAction="" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                              <input name=""/>
+                              <output name=""/>
+                           </operation>
+                           <operation name="UpdateEndDate">
+                              <soap soapAction="" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                              <input name=""/>
+                              <output name=""/>
+                           </operation>
+                           <operation name="IsAuthenticated">
+                              <soap soapAction="" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                              <input name=""/>
+                              <output name=""/>
+                           </operation>
+                           <operation name="GetCreator">
+                              <soap soapAction="" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                              <input name=""/>
+                              <output name=""/>
+                           </operation>
+                           <operation name="Insert_DSWF_DOC">
+                              <soap soapAction="" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                              <input name=""/>
+                              <output name=""/>
+                           </operation>
+                           <operation name="Insert_DSWF_Log">
+                              <soap soapAction="" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                              <input name=""/>
+                              <output name=""/>
+                           </operation>
+                           <operation name="GetContentGUID">
+                              <soap soapAction="" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                              <input name=""/>
+                              <output name=""/>
+                           </operation>
+                           <operation name="GetDDocName">
+                              <soap soapAction="" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                              <input name=""/>
+                              <output name=""/>
+                           </operation>
+                           <operation name="isUsernameExists">
+                              <soap soapAction="" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                              <input name=""/>
+                              <output name=""/>
+                           </operation>
+                           <operation name="SendEmailTo">
+                              <soap soapAction="" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                              <input name=""/>
+                              <output name=""/>
+                           </operation>
+                           <operation name="GetUserEmail">
+                              <soap soapAction="" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                              <input name=""/>
+                              <output name=""/>
+                           </operation>
+                           <operation name="GetConfigValue">
+                              <soap soapAction="" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                              <input name=""/>
+                              <output name=""/>
+                           </operation>
+                           <operation name="SendEmailWithCC">
+                              <soap soapAction="" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                              <input name=""/>
+                              <output name=""/>
+                           </operation>
+                           <operation name="GetPassword">
+                              <soap soapAction="" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                              <input name=""/>
+                              <output name=""/>
+                           </operation>
+                        </port>
+                     </service>
+                  </model>
+               </wsconnection>
+            </Contents>
+         </XmlRefAddr>
+      </RefAddresses>
+   </Reference>
+</References>

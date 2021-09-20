@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.66.73" id="DetailCIDPageDef" Package="taskflow">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="DetailCID1" RangeSize="25"
+              DataControl="AppModuleDataControl" id="DetailCID1Iterator"/>
+    <iterator Binds="monitoringVO1" RangeSize="25"
+              DataControl="AppModuleDataControl" id="monitoringVO1Iterator"/>
+    <iterator Binds="HistoryCIDVO1" RangeSize="25"
+              DataControl="AppModuleDataControl" id="HistoryCIDVO1Iterator"/>
+    <iterator Binds="LastRejectVO1" RangeSize="25"
+              DataControl="AppModuleDataControl" id="LastRejectVO1Iterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="DetailCID1Iterator" id="DetailCID1">
+      <nodeDefinition DefName="CID.VO.DetailCID" Name="DetailCID10">
+        <AttrNames>
+          <Item Value="Ciddocnumber"/>
+          <Item Value="Ciddoctitle"/>
+          <Item Value="Remarks"/>
+          <Item Value="Cidstatusdocrequest"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="monitoringVO1Iterator"
+                     id="Cidrequestorsupervisor">
+      <AttrNames>
+        <Item Value="Cidrequestorsupervisor"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="monitoringVO1Iterator" id="Cidrequestor">
+      <AttrNames>
+        <Item Value="Cidrequestor"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="monitoringVO1Iterator" id="Cidstatusrequest">
+      <AttrNames>
+        <Item Value="Cidstatusrequest"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="HistoryCIDVO1Iterator" id="HistoryCIDVO1">
+      <nodeDefinition DefName="CID.VO.HistoryCIDVO" Name="HistoryCIDVO10">
+        <AttrNames>
+          <Item Value="Action"/>
+          <Item Value="Actiondate"/>
+          <Item Value="Logdescription"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="monitoringVO1Iterator" id="TransmittalNumber">
+      <AttrNames>
+        <Item Value="TransmittalNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LastRejectVO1Iterator" id="LastReject">
+      <AttrNames>
+        <Item Value="LastReject"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="monitoringVO1Iterator" id="Ciddaterequest">
+      <AttrNames>
+        <Item Value="Ciddaterequest"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="monitoringVO1Iterator" id="Status">
+      <AttrNames>
+        <Item Value="Status"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

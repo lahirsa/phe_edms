@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.66.73" id="CID_view_listApprovePageDef">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="PheCidListdocrequestVO1" RangeSize="25"
+              DataControl="AppModuleDataControl"
+              id="PheCidListdocrequestVO1Iterator"/>
+    <iterator Binds="PheCidListrequestVO1" RangeSize="25"
+              DataControl="AppModuleDataControl"
+              id="PheCidListrequestVO1Iterator"/>
+    <iterator Binds="PheCidCreateVO1" RangeSize="25"
+              DataControl="AppModuleDataControl" id="PheCidCreateVO1Iterator"/>
+    <iterator Binds="PheCidLogVO1" RangeSize="75"
+              DataControl="AppModuleDataControl" id="PheCidLogVO1Iterator"/>
+    <iterator Binds="PheCidAttachmentVO1" RangeSize="25"
+              DataControl="AppModuleDataControl"
+              id="PheCidAttachmentVO1Iterator"/>
+    <iterator Binds="UsersecurityattributesVO1" RangeSize="25"
+              DataControl="AppModuleDataControl"
+              id="UsersecurityattributesVO1Iterator"/>
+    <searchRegion Binds="PheCidAttachmentVO1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="PheCidAttachmentVO11Query"/>
+    <searchRegion Binds="PheCidLogVO1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="PheCidLogVO11Query"/>
+    <searchRegion Binds="PheCidListdocrequestVO1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="PheCidListdocrequestVO11Query"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="PheCidListdocrequestVO1Iterator"
+          id="PheCidListdocrequestVO1">
+      <nodeDefinition DefName="CID.VO.PheCidListdocrequestVO"
+                      Name="PheCidListdocrequestVO10">
+        <AttrNames>
+          <Item Value="Idlist"/>
+          <Item Value="Idrequest"/>
+          <Item Value="Diddoc"/>
+          <Item Value="Ciddocnumber"/>
+          <Item Value="Ciddoctitle"/>
+          <Item Value="Ciddocsource"/>
+          <Item Value="Cidcontractor"/>
+          <Item Value="Cidstatusdocrequest"/>
+          <Item Value="Cidremarkrequestor"/>
+          <Item Value="Cidremarksv"/>
+          <Item Value="Cidremarktdc"/>
+          <Item Value="Cidremarktdclead"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="PheCidListdocrequestVO1Iterator" id="Idlist">
+      <AttrNames>
+        <Item Value="Idlist"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PheCidListdocrequestVO1Iterator"
+                     id="Idrequest">
+      <AttrNames>
+        <Item Value="Idrequest"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PheCidListdocrequestVO1Iterator" id="Diddoc">
+      <AttrNames>
+        <Item Value="Diddoc"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PheCidListdocrequestVO1Iterator"
+                     id="Ciddocnumber">
+      <AttrNames>
+        <Item Value="Ciddocnumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PheCidListdocrequestVO1Iterator"
+                     id="Ciddoctitle">
+      <AttrNames>
+        <Item Value="Ciddoctitle"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PheCidListdocrequestVO1Iterator"
+                     id="Ciddocsource">
+      <AttrNames>
+        <Item Value="Ciddocsource"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PheCidListdocrequestVO1Iterator"
+                     id="Cidcontractor">
+      <AttrNames>
+        <Item Value="Cidcontractor"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PheCidListdocrequestVO1Iterator"
+                     id="Cidstatusdocrequest">
+      <AttrNames>
+        <Item Value="Cidstatusdocrequest"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PheCidListdocrequestVO1Iterator"
+                     id="Cidremarkrequestor">
+      <AttrNames>
+        <Item Value="Cidremarkrequestor"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PheCidListdocrequestVO1Iterator"
+                     id="Cidremarksv">
+      <AttrNames>
+        <Item Value="Cidremarksv"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PheCidListdocrequestVO1Iterator"
+                     id="Cidremarktdc">
+      <AttrNames>
+        <Item Value="Cidremarktdc"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PheCidListdocrequestVO1Iterator"
+                     id="Cidremarktdclead">
+      <AttrNames>
+        <Item Value="Cidremarktdclead"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PheCidListrequestVO1Iterator"
+                     id="Cidrequestor">
+      <AttrNames>
+        <Item Value="Cidrequestor"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PheCidListrequestVO1Iterator"
+                     id="Cidrequestorposition">
+      <AttrNames>
+        <Item Value="Cidrequestorposition"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PheCidListrequestVO1Iterator" id="Cidpurpose">
+      <AttrNames>
+        <Item Value="Cidpurpose"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PheCidListrequestVO1Iterator" id="Cidtdclead">
+      <AttrNames>
+        <Item Value="Cidtdclead"/>
+      </AttrNames>
+    </attributeValues>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="AppModuleDataControl"/>
+    <methodAction id="SendEmail" InstanceName="SendEmailDataControl"
+                  DataControl="SendEmailDataControl" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="SendEmail"
+                  IsViewObjectMethod="false"
+                  ReturnName="data.SendEmailDataControl.methodResults.SendEmail_SendEmailDataControl_SendEmail_result">
+      <NamedData NDName="EmailTo" NDType="java.lang.String"/>
+      <NamedData NDName="Subject" NDType="java.lang.String"/>
+      <NamedData NDName="HtmlText" NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="SendEmailTo" InstanceName="SendEmailDataControl"
+                  DataControl="SendEmailDataControl" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="SendEmailTo"
+                  IsViewObjectMethod="false"
+                  ReturnName="data.SendEmailDataControl.methodResults.SendEmailTo_SendEmailDataControl_SendEmailTo_result">
+      <NamedData NDName="EmailTo" NDType="java.lang.String"/>
+      <NamedData NDName="EmailCc" NDType="java.lang.String"/>
+      <NamedData NDName="Subject" NDType="java.lang.String"/>
+      <NamedData NDName="HtmlText" NDType="java.lang.String"/>
+    </methodAction>
+    <attributeValues IterBinding="PheCidCreateVO1Iterator" id="Idcid">
+      <AttrNames>
+        <Item Value="Idcid"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PheCidCreateVO1Iterator" id="Numcid">
+      <AttrNames>
+        <Item Value="Numcid"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PheCidCreateVO1Iterator" id="Cidcreatedate">
+      <AttrNames>
+        <Item Value="Cidcreatedate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PheCidCreateVO1Iterator" id="Cidrequestor1">
+      <AttrNames>
+        <Item Value="Cidrequestor"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PheCidCreateVO1Iterator" id="Cidstatuscid">
+      <AttrNames>
+        <Item Value="Cidstatuscid"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PheCidCreateVO1Iterator" id="Cidnotes">
+      <AttrNames>
+        <Item Value="Cidnotes"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PheCidCreateVO1Iterator" id="Idrequest2">
+      <AttrNames>
+        <Item Value="Idrequest"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="PheCidCreateVO1Iterator" id="CreateInsert1"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <tree IterBinding="UsersecurityattributesVO1Iterator"
+          id="UsersecurityattributesVO1">
+      <nodeDefinition DefName="CID.VO.UsersecurityattributesVO"
+                      Name="UsersecurityattributesVO10">
+        <AttrNames>
+          <Item Value="Dusername"/>
+          <Item Value="Dattributename"/>
+          <Item Value="Dattributetype"/>
+          <Item Value="Dattributeprivilege"/>
+          <Item Value="Dattributestate"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="PheCidAttachmentVO1Iterator" id="PheCidAttachmentVO11">
+      <nodeDefinition DefName="CID.VO.PheCidAttachmentVO"
+                      Name="PheCidAttachmentVO110">
+        <AttrNames>
+          <Item Value="Idattach"/>
+          <Item Value="Idrequest"/>
+          <Item Value="Attachdate"/>
+          <Item Value="Diddocfile"/>
+          <Item Value="Ciddocname"/>
+          <Item Value="Ciddocformat"/>
+          <Item Value="Ciddocsize"/>
+          <Item Value="Ciddocstatus"/>
+          <Item Value="Cidfolderguid"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="PheCidLogVO1Iterator" id="PheCidLogVO11">
+      <nodeDefinition DefName="CID.VO.PheCidLogVO" Name="PheCidLogVO110">
+        <AttrNames>
+          <Item Value="Idlog"/>
+          <Item Value="Idrequest"/>
+          <Item Value="Action"/>
+          <Item Value="Actiondate"/>
+          <Item Value="Logdescription"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="PheCidListrequestVO1Iterator"
+                     id="Cidstatusrequest">
+      <AttrNames>
+        <Item Value="Cidstatusrequest"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="PheCidListdocrequestVO1Iterator"
+          id="PheCidListdocrequestVO12">
+      <nodeDefinition DefName="CID.VO.PheCidListdocrequestVO"
+                      Name="PheCidListdocrequestVO120">
+        <AttrNames>
+          <Item Value="Idlist"/>
+          <Item Value="Idrequest"/>
+          <Item Value="Diddoc"/>
+          <Item Value="Ciddocnumber"/>
+          <Item Value="Ciddoctitle"/>
+          <Item Value="Ciddocsource"/>
+          <Item Value="Cidcontractor"/>
+          <Item Value="Cidstatusdocrequest"/>
+          <Item Value="Cidremarkrequestor"/>
+          <Item Value="Cidremarksv"/>
+          <Item Value="Cidremarktdc"/>
+          <Item Value="Cidremarktdclead"/>
+          <Item Value="Cidusercontractor"/>
+          <Item Value="booleanApprove"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="PheCidListdocrequestVO1Iterator"
+          id="PheCidListdocrequestVO11">
+      <nodeDefinition DefName="CID.VO.PheCidListdocrequestVO"
+                      Name="PheCidListdocrequestVO110">
+        <AttrNames>
+          <Item Value="Idlist"/>
+          <Item Value="Idrequest"/>
+          <Item Value="Diddoc"/>
+          <Item Value="Ciddocnumber"/>
+          <Item Value="Ciddoctitle"/>
+          <Item Value="Ciddocsource"/>
+          <Item Value="Cidcontractor"/>
+          <Item Value="Cidstatusdocrequest"/>
+          <Item Value="Cidremarkrequestor"/>
+          <Item Value="Cidremarksv"/>
+          <Item Value="Cidremarktdc"/>
+          <Item Value="Cidremarktdclead"/>
+          <Item Value="Cidusercontractor"/>
+          <Item Value="booleanApprove" Binds="booleanApprove"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <button IterBinding="PheCidListdocrequestVO1Iterator" id="booleanApprove"
+            DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="booleanApprove"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="Y"/>
+        <Item Value="N"/>
+      </ValueList>
+    </button>
+    <attributeValues IterBinding="PheCidListrequestVO1Iterator"
+                     id="Ciddaterequest">
+      <AttrNames>
+        <Item Value="Ciddaterequest"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PheCidListrequestVO1Iterator"
+                     id="Cidrequestorsupervisor">
+      <AttrNames>
+        <Item Value="Cidrequestorsupervisor"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PheCidListrequestVO1Iterator"
+                     id="Cidrequestorsupervisorposition">
+      <AttrNames>
+        <Item Value="Cidrequestorsupervisorposition"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="PheCidCreateVO1Iterator" id="Create"
+            RequiresUpdateModel="true" Action="createRow"/>
+    <attributeValues IterBinding="PheCidCreateVO1Iterator" id="Apname">
+      <AttrNames>
+        <Item Value="Apname"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

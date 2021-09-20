@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="DocumenthistoryVO"
+  Version="11.1.1.66.73"
+  InheritPersonalization="merge"
+  SelectList="DocumenthistoryEO.DACTIONDATE, 
+       DocumenthistoryEO.DACTIONMILLIS, 
+       DocumenthistoryEO.DID, 
+       DocumenthistoryEO.DREVCLASSID, 
+       DocumenthistoryEO.DUSER, 
+       DocumenthistoryEO.DDOCNAME, 
+       DocumenthistoryEO.DACTION, 
+       DocumenthistoryEO.DSECURITYGROUP"
+  FromList="DOCUMENTHISTORY DocumenthistoryEO"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|VarAccess"/>
+  </DesignTime>
+  <EntityUsage
+    Name="DocumenthistoryEO"
+    Entity="CID.EO.DocumenthistoryEO"/>
+  <ViewAttribute
+    Name="Dactiondate"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Dactiondate"
+    EntityUsage="DocumenthistoryEO"
+    AliasName="DACTIONDATE"/>
+  <ViewAttribute
+    Name="Dactionmillis"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Dactionmillis"
+    EntityUsage="DocumenthistoryEO"
+    AliasName="DACTIONMILLIS"/>
+  <ViewAttribute
+    Name="Did"
+    PrecisionRule="true"
+    EntityAttrName="Did"
+    EntityUsage="DocumenthistoryEO"
+    AliasName="DID"/>
+  <ViewAttribute
+    Name="Drevclassid"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Drevclassid"
+    EntityUsage="DocumenthistoryEO"
+    AliasName="DREVCLASSID"/>
+  <ViewAttribute
+    Name="Duser"
+    PrecisionRule="true"
+    EntityAttrName="Duser"
+    EntityUsage="DocumenthistoryEO"
+    AliasName="DUSER"/>
+  <ViewAttribute
+    Name="Ddocname"
+    PrecisionRule="true"
+    EntityAttrName="Ddocname"
+    EntityUsage="DocumenthistoryEO"
+    AliasName="DDOCNAME"/>
+  <ViewAttribute
+    Name="Daction"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Daction"
+    EntityUsage="DocumenthistoryEO"
+    AliasName="DACTION"/>
+  <ViewAttribute
+    Name="Dsecuritygroup"
+    PrecisionRule="true"
+    EntityAttrName="Dsecuritygroup"
+    EntityUsage="DocumenthistoryEO"
+    AliasName="DSECURITYGROUP"/>
+</ViewObject>

@@ -1,0 +1,771 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelBox id="pb1"
+               inlineStyle="background-color:Gray; height:50em; width:inherit;">
+    <f:facet name="toolbar">
+      <af:toolbar id="t1">
+        <af:panelGroupLayout id="pgl4" layout="vertical" halign="end">
+          <af:outputText value="Confidential Information Distribution"
+                         id="outputText1"
+                         inlineStyle="color:Navy; font-size:large;"/>
+          <af:spacer width="10" height="10" id="s4"/>
+          <af:outputText id="ot1"
+                         binding="#{pageFlowScope.inboxBeans.bindLabelUsername2}"/>
+        </af:panelGroupLayout>
+      </af:toolbar>
+    </f:facet>
+    <af:panelGroupLayout id="panelGroupLayout3" layout="vertical"
+                         valign="top"
+                         binding="#{pageFlowScope.inboxBeans.bindPublishForm}"
+                         visible="false">
+      <af:panelTabbed position="above" id="pt1"
+                      inlineStyle="width:inherit; height:320px;">
+        <af:showDetailItem id="tab1" text="CID Publish Form">
+          <af:panelGroupLayout id="pgl12" layout="vertical"
+                               inlineStyle="width:inherit;">
+            <af:panelGroupLayout id="pgl8" layout="vertical">
+              <af:selectOneRadio label="CID"
+                                 valueChangeListener="#{pageFlowScope.inboxBeans.changeViewPublish}"
+                                 id="sor1" layout="horizontal"
+                                 binding="#{pageFlowScope.inboxBeans.radioCIDType}"
+                                 autoSubmit="true">
+                <af:selectItem label="Task" value="task" id="si1"/>
+                <af:selectItem label="Task Done" value="taskDone" id="si2"/>
+              </af:selectOneRadio>
+            </af:panelGroupLayout>
+            <af:panelFormLayout id="pfl3"
+                                binding="#{pageFlowScope.inboxBeans.bindCidFormPurpose}"
+                                visible="false">
+              <af:inputText value="#{bindings.Idcid1.inputValue}"
+                            label="#{bindings.Idcid1.hints.label}"
+                            required="#{bindings.Idcid1.hints.mandatory}"
+                            columns="#{bindings.Idcid1.hints.displayWidth}"
+                            maximumLength="#{bindings.Idcid1.hints.precision}"
+                            shortDesc="#{bindings.Idcid1.hints.tooltip}"
+                            id="it21">
+                <f:validator binding="#{bindings.Idcid1.validator}"/>
+              </af:inputText>
+              <af:inputText value="#{bindings.Numcid1.inputValue}"
+                            label="#{bindings.Numcid1.hints.label}"
+                            required="#{bindings.Numcid1.hints.mandatory}"
+                            columns="#{bindings.Numcid1.hints.displayWidth}"
+                            maximumLength="#{bindings.Numcid1.hints.precision}"
+                            shortDesc="#{bindings.Numcid1.hints.tooltip}"
+                            id="it24"
+                            binding="#{pageFlowScope.inboxBeans.bindNumCidPublish}">
+                <f:validator binding="#{bindings.Numcid1.validator}"/>
+              </af:inputText>
+              <af:inputText value="#{bindings.Idrequest2.inputValue}"
+                            label="#{bindings.Idrequest2.hints.label}"
+                            required="#{bindings.Idrequest2.hints.mandatory}"
+                            columns="#{bindings.Idrequest2.hints.displayWidth}"
+                            maximumLength="#{bindings.Idrequest2.hints.precision}"
+                            shortDesc="#{bindings.Idrequest2.hints.tooltip}"
+                            id="it23"
+                            binding="#{pageFlowScope.inboxBeans.bindIdRequestAttachPublish}">
+                <f:validator binding="#{bindings.Idrequest2.validator}"/>
+              </af:inputText>
+              <af:inputDate value="#{bindings.Cidcreatedate1.inputValue}"
+                            label="#{bindings.Cidcreatedate1.hints.label}"
+                            required="#{bindings.Cidcreatedate1.hints.mandatory}"
+                            shortDesc="#{bindings.Cidcreatedate1.hints.tooltip}"
+                            id="id14">
+                <f:validator binding="#{bindings.Cidcreatedate1.validator}"/>
+                <af:convertDateTime pattern="#{bindings.Cidcreatedate1.format}"/>
+              </af:inputDate>
+              <af:inputText value="#{bindings.Cidtdclead2.inputValue}"
+                            label="#{bindings.Cidtdclead2.hints.label}"
+                            required="#{bindings.Cidtdclead2.hints.mandatory}"
+                            columns="#{bindings.Cidtdclead2.hints.displayWidth}"
+                            maximumLength="#{bindings.Cidtdclead2.hints.precision}"
+                            shortDesc="#{bindings.Cidtdclead2.hints.tooltip}"
+                            id="it25">
+                <f:validator binding="#{bindings.Cidtdclead2.validator}"/>
+              </af:inputText>
+              <af:inputText value="#{bindings.Cidrequestor2.inputValue}"
+                            label="#{bindings.Cidrequestor2.hints.label}"
+                            required="#{bindings.Cidrequestor2.hints.mandatory}"
+                            columns="#{bindings.Cidrequestor2.hints.displayWidth}"
+                            maximumLength="#{bindings.Cidrequestor2.hints.precision}"
+                            shortDesc="#{bindings.Cidrequestor2.hints.tooltip}"
+                            id="it17"
+                            binding="#{pageFlowScope.inboxBeans.bindRequestorAttachPurpose}">
+                <f:validator binding="#{bindings.Cidrequestor2.validator}"/>
+              </af:inputText>
+              <af:inputText value="#{bindings.Cidstatuscid.inputValue}"
+                            label="#{bindings.Cidstatuscid.hints.label}"
+                            required="#{bindings.Cidstatuscid.hints.mandatory}"
+                            columns="#{bindings.Cidstatuscid.hints.displayWidth}"
+                            maximumLength="#{bindings.Cidstatuscid.hints.precision}"
+                            shortDesc="#{bindings.Cidstatuscid.hints.tooltip}"
+                            id="it20">
+                <f:validator binding="#{bindings.Cidstatuscid.validator}"/>
+              </af:inputText>
+              <af:inputText value="#{bindings.Cidnotes.inputValue}"
+                            label="#{bindings.Cidnotes.hints.label}"
+                            required="#{bindings.Cidnotes.hints.mandatory}"
+                            columns="#{bindings.Cidnotes.hints.displayWidth}"
+                            maximumLength="#{bindings.Cidnotes.hints.precision}"
+                            shortDesc="#{bindings.Cidnotes.hints.tooltip}"
+                            id="it18">
+                <f:validator binding="#{bindings.Cidnotes.validator}"/>
+              </af:inputText>
+              <af:inputText value="#{bindings.Attachphysical.inputValue}"
+                            label="#{bindings.Attachphysical.hints.label}"
+                            required="#{bindings.Attachphysical.hints.mandatory}"
+                            columns="#{bindings.Attachphysical.hints.displayWidth}"
+                            maximumLength="#{bindings.Attachphysical.hints.precision}"
+                            shortDesc="#{bindings.Attachphysical.hints.tooltip}"
+                            id="it22">
+                <f:validator binding="#{bindings.Attachphysical.validator}"/>
+              </af:inputText>
+              <af:inputText value="#{bindings.Cidpurpose1.inputValue}"
+                            label="#{bindings.Cidpurpose1.hints.label}"
+                            required="#{bindings.Cidpurpose1.hints.mandatory}"
+                            columns="#{bindings.Cidpurpose1.hints.displayWidth}"
+                            maximumLength="#{bindings.Cidpurpose1.hints.precision}"
+                            shortDesc="#{bindings.Cidpurpose1.hints.tooltip}"
+                            id="it19">
+                <f:validator binding="#{bindings.Cidpurpose1.validator}"/>
+              </af:inputText>
+            </af:panelFormLayout>
+            <af:panelGroupLayout id="pgl13" layout="horizontal"
+                                 inlineStyle="width:inherit;">
+              <af:inputText label="CID Number" id="it11"
+                            binding="#{pageFlowScope.inboxBeans.bindSearchCIDNumber}"/>
+              <af:spacer width="10" height="10" id="spacer1"/>
+              <af:button text="Search" id="cb4"
+                                actionListener="#{pageFlowScope.inboxBeans.searchCIDNumber}"/>
+              <af:spacer width="10" height="10" id="spacer2"/>
+              <af:button text="Select" id="cb7"
+                                actionListener="#{pageFlowScope.inboxBeans.selectCIDNumber}"/>
+            </af:panelGroupLayout>
+            <af:panelGroupLayout id="pgl6" layout="horizontal">
+              <af:outputText value="CID selected : " id="ot7"
+                             inlineStyle="font-weight:bold;"/>
+              <af:outputText value="-" id="ot8"
+                             binding="#{pageFlowScope.inboxBeans.bindCIDSelected}"
+                             inlineStyle="font-weight:bold;"/>
+            </af:panelGroupLayout>
+            <af:spacer width="10" height="10" id="s5"/>
+            <af:panelGroupLayout id="panelGroupLayout5" layout="vertical"
+                                 inlineStyle="height:139px;">
+              <af:table value="#{bindings.PheCidCreatePurposeVO1.collectionModel}"
+                        var="row"
+                        rows="#{bindings.PheCidCreatePurposeVO1.rangeSize}"
+                        emptyText="#{bindings.PheCidCreatePurposeVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                        fetchSize="#{bindings.PheCidCreatePurposeVO1.rangeSize}"
+                        rowBandingInterval="0"
+                        selectedRowKeys="#{bindings.PheCidCreatePurposeVO1.collectionModel.selectedRow}"
+                        selectionListener="#{bindings.PheCidCreatePurposeVO1.collectionModel.makeCurrent}"
+                        rowSelection="single" id="t7"
+                        binding="#{pageFlowScope.inboxBeans.bindTableCIDNumber}"
+                        inlineStyle="width:inherit; height:120.0px;">
+                <af:column sortProperty="#{bindings.PheCidCreatePurposeVO1.hints.Idcid.name}"
+                           sortable="true"
+                           headerText="#{bindings.PheCidCreatePurposeVO1.hints.Idcid.label}"
+                           id="c33" visible="false">
+                  <af:outputText value="#{row.Idcid}" id="ot46"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.PheCidCreatePurposeVO1.hints.Numcid.name}"
+                           sortable="true"
+                           headerText="CID NUmber"
+                           id="c35"
+                           binding="#{pageFlowScope.inboxBeans.selectedCIDNumber}"
+                           width="150">
+                  <af:outputText value="#{row.Numcid}" id="ot50"
+                                 binding="#{pageFlowScope.inboxBeans.bindRowNumCID}"/>
+                  <af:goLink text="#{row.Numcid}" id="gl1"
+                             destination="http://phekpdmdv01.pertamina.com:16200/cs/idcplg?IdcService=VIEW_IN_AUTOVUE&amp;dID=#{row.ATTACHPHYSICAL}"
+                             binding="#{pageFlowScope.inboxBeans.golinkAttach}"
+                             disabled="false" visible="false"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.PheCidCreatePurposeVO1.hints.Idrequest.name}"
+                           sortable="true"
+                           headerText="#{bindings.PheCidCreatePurposeVO1.hints.Idrequest.label}"
+                           id="c39" visible="false">
+                  <af:outputText value="#{row.Idrequest}" id="ot49"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.PheCidCreatePurposeVO1.hints.Cidcreatedate.name}"
+                           sortable="true"
+                           headerText="Create Date"
+                           id="c42" width="150">
+                  <af:outputText value="#{row.Cidcreatedate}" id="ot43">
+                    <af:convertDateTime pattern="#{bindings.PheCidCreatePurposeVO1.hints.Cidcreatedate.format}"
+                                        type="both"/>
+                  </af:outputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.PheCidCreatePurposeVO1.hints.Cidtdclead.name}"
+                           sortable="true"
+                           headerText="#{bindings.PheCidCreatePurposeVO1.hints.Cidtdclead.label}"
+                           id="c40" visible="false">
+                  <af:outputText value="#{row.Cidtdclead}" id="ot47"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.PheCidCreatePurposeVO1.hints.Cidrequestor.name}"
+                           sortable="true"
+                           headerText="Requestor"
+                           id="c36">
+                  <af:outputText value="#{row.Cidrequestor}" id="ot41"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.PheCidCreatePurposeVO1.hints.Cidstatuscid.name}"
+                           sortable="true"
+                           headerText="CID Status"
+                           id="c37">
+                  <af:outputText value="#{row.Cidstatuscid}" id="ot45"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.PheCidCreatePurposeVO1.hints.Cidnotes.name}"
+                           sortable="true"
+                           headerText="Notes"
+                           id="c34" width="350">
+                  <af:outputText value="#{row.Cidnotes}" id="ot44"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.PheCidCreatePurposeVO1.hints.Attachphysical.name}"
+                           sortable="true"
+                           headerText="#{bindings.PheCidCreatePurposeVO1.hints.Attachphysical.label}"
+                           id="c41" visible="false">
+                  <af:outputText value="#{row.Attachphysical}" id="ot48"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.PheCidCreatePurposeVO1.hints.Cidpurpose.name}"
+                           sortable="true"
+                           headerText="Purpose"
+                           id="c38" width="350">
+                  <af:outputText value="#{row.Cidpurpose}" id="ot42"/>
+                </af:column>
+              </af:table>
+            </af:panelGroupLayout>
+            <af:panelGroupLayout id="panelGroupLayout6" layout="horizontal">
+              <af:inputFile label="Upload File ( PDF File )" id="inputFile1"
+                            autoSubmit="true"
+                            valueChangeListener="#{pageFlowScope.inboxBeans.onChangeAttachFilePhysical}"
+                            binding="#{pageFlowScope.inboxBeans.bindAttachFilePhysical}"/>
+              <af:spacer width="10" height="10" id="spacer4"/>
+              <af:button text="Upload" id="cb3"
+                                actionListener="#{pageFlowScope.inboxBeans.bindButtonUploadPublish}"/>
+              <af:popup id="p4"
+                        binding="#{pageFlowScope.inboxBeans.bindPopupNullCIDNumber}">
+                <af:dialog id="d2" type="ok">
+                  <af:outputText value="You must select one CID and browse file to upload" id="ot6"/>
+                </af:dialog>
+              </af:popup>
+              <af:popup id="p3"
+                        binding="#{pageFlowScope.inboxBeans.bindPopupPublishUpload}">
+                <af:dialog id="d1" type="cancel">
+                  <af:panelGroupLayout id="pgl5" layout="vertical">
+                    <af:outputText value="Are you sure to upload this file to CID Number ?" id="ot4"/>
+                    <af:outputText value="Error to get file" id="ot5"
+                                   binding="#{pageFlowScope.inboxBeans.bindLabelCIDNumberPopup}"/>
+                  </af:panelGroupLayout>
+                  <f:facet name="buttonBar">
+                    <af:button text="Upload" id="button3"
+                                      binding="#{pageFlowScope.inboxBeans.bindButtonAttachFilePhysical}"
+                                      action="#{pageFlowScope.inboxBeans.bindUploadAttach}"/>
+                  </f:facet>
+                </af:dialog>
+              </af:popup>
+            </af:panelGroupLayout>
+            <af:panelGroupLayout id="panelGroupLayout7" layout="horizontal"
+                                 binding="#{pageFlowScope.inboxBeans.bindStatusUploadForm}"
+                                 visible="false">
+              <af:outputText value="Status Upload : " id="outputText13"/>
+              <af:outputText id="outputText14" value="Uploaded"
+                             binding="#{pageFlowScope.inboxBeans.bindStatusUpload}"/>
+            </af:panelGroupLayout>
+            <af:spacer width="10" height="10" id="s8"/>
+            <af:button text="Cancel" id="cb6"
+                              actionListener="#{pageFlowScope.inboxBeans.cancelUploadPublish}"/>
+          </af:panelGroupLayout>
+        </af:showDetailItem>
+      </af:panelTabbed>
+    </af:panelGroupLayout>
+    <af:panelGroupLayout id="pgl1" layout="vertical" halign="center"
+                         visible="false">
+      <af:table value="#{bindings.UsersecurityattributesVO1.collectionModel}"
+                var="row" rows="#{bindings.UsersecurityattributesVO1.rangeSize}"
+                emptyText="#{bindings.UsersecurityattributesVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                fetchSize="#{bindings.UsersecurityattributesVO1.rangeSize}"
+                rowBandingInterval="0"
+                selectedRowKeys="#{bindings.UsersecurityattributesVO1.collectionModel.selectedRow}"
+                selectionListener="#{bindings.UsersecurityattributesVO1.collectionModel.makeCurrent}"
+                rowSelection="single" id="t4">
+        <af:column sortProperty="#{bindings.UsersecurityattributesVO1.hints.Dusername.name}"
+                   sortable="true"
+                   headerText="#{bindings.UsersecurityattributesVO1.hints.Dusername.label}"
+                   id="c14">
+          <af:outputText value="#{row.Dusername}" id="ot16"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.UsersecurityattributesVO1.hints.Dattributename.name}"
+                   sortable="true"
+                   headerText="#{bindings.UsersecurityattributesVO1.hints.Dattributename.label}"
+                   id="c16">
+          <af:outputText value="#{row.Dattributename}" id="ot18"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.UsersecurityattributesVO1.hints.Dattributetype.name}"
+                   sortable="true"
+                   headerText="#{bindings.UsersecurityattributesVO1.hints.Dattributetype.label}"
+                   id="c18">
+          <af:outputText value="#{row.Dattributetype}" id="ot15"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.UsersecurityattributesVO1.hints.Dattributeprivilege.name}"
+                   sortable="true"
+                   headerText="#{bindings.UsersecurityattributesVO1.hints.Dattributeprivilege.label}"
+                   id="c15">
+          <af:outputText value="#{row.Dattributeprivilege}" id="ot14">
+            <af:convertNumber groupingUsed="false"
+                              pattern="#{bindings.UsersecurityattributesVO1.hints.Dattributeprivilege.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.UsersecurityattributesVO1.hints.Dattributestate.name}"
+                   sortable="true"
+                   headerText="#{bindings.UsersecurityattributesVO1.hints.Dattributestate.label}"
+                   id="c17">
+          <af:outputText value="#{row.Dattributestate}" id="ot17"/>
+        </af:column>
+      </af:table>
+      <af:panelFormLayout id="pfl1">
+        <af:inputText value="#{bindings.Idrequest.inputValue}"
+                      label="#{bindings.Idrequest.hints.label}"
+                      required="#{bindings.Idrequest.hints.mandatory}"
+                      columns="#{bindings.Idrequest.hints.displayWidth}"
+                      maximumLength="#{bindings.Idrequest.hints.precision}"
+                      shortDesc="#{bindings.Idrequest.hints.tooltip}" id="it8"
+                      binding="#{pageFlowScope.inboxBeans.bindIdRequest}"
+                      autoSubmit="true">
+          <f:validator binding="#{bindings.Idrequest.validator}"/>
+          <af:convertNumber groupingUsed="false"
+                            pattern="#{bindings.Idrequest.format}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.Cidrequestor.inputValue}"
+                      label="#{bindings.Cidrequestor.hints.label}"
+                      required="#{bindings.Cidrequestor.hints.mandatory}"
+                      columns="#{bindings.Cidrequestor.hints.displayWidth}"
+                      maximumLength="#{bindings.Cidrequestor.hints.precision}"
+                      shortDesc="#{bindings.Cidrequestor.hints.tooltip}"
+                      id="it9">
+          <f:validator binding="#{bindings.Cidrequestor.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.Cidrequestorposition.inputValue}"
+                      label="#{bindings.Cidrequestorposition.hints.label}"
+                      required="#{bindings.Cidrequestorposition.hints.mandatory}"
+                      columns="#{bindings.Cidrequestorposition.hints.displayWidth}"
+                      maximumLength="#{bindings.Cidrequestorposition.hints.precision}"
+                      shortDesc="#{bindings.Cidrequestorposition.hints.tooltip}"
+                      id="it2">
+          <f:validator binding="#{bindings.Cidrequestorposition.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.Cidpurpose.inputValue}"
+                      label="#{bindings.Cidpurpose.hints.label}"
+                      required="#{bindings.Cidpurpose.hints.mandatory}"
+                      columns="#{bindings.Cidpurpose.hints.displayWidth}"
+                      maximumLength="#{bindings.Cidpurpose.hints.precision}"
+                      shortDesc="#{bindings.Cidpurpose.hints.tooltip}" id="it5">
+          <f:validator binding="#{bindings.Cidpurpose.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.Cidrequestorsupervisor.inputValue}"
+                      label="#{bindings.Cidrequestorsupervisor.hints.label}"
+                      required="#{bindings.Cidrequestorsupervisor.hints.mandatory}"
+                      columns="#{bindings.Cidrequestorsupervisor.hints.displayWidth}"
+                      maximumLength="#{bindings.Cidrequestorsupervisor.hints.precision}"
+                      shortDesc="#{bindings.Cidrequestorsupervisor.hints.tooltip}"
+                      id="it4"
+                      binding="#{pageFlowScope.inboxBeans.bindSupervisor}">
+          <f:validator binding="#{bindings.Cidrequestorsupervisor.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.Cidrequestorsupervisorposition.inputValue}"
+                      label="#{bindings.Cidrequestorsupervisorposition.hints.label}"
+                      required="#{bindings.Cidrequestorsupervisorposition.hints.mandatory}"
+                      columns="#{bindings.Cidrequestorsupervisorposition.hints.displayWidth}"
+                      maximumLength="#{bindings.Cidrequestorsupervisorposition.hints.precision}"
+                      shortDesc="#{bindings.Cidrequestorsupervisorposition.hints.tooltip}"
+                      id="it1">
+          <f:validator binding="#{bindings.Cidrequestorsupervisorposition.validator}"/>
+        </af:inputText>
+        <af:inputDate value="#{bindings.Ciddaterequest.inputValue}"
+                      label="#{bindings.Ciddaterequest.hints.label}"
+                      required="#{bindings.Ciddaterequest.hints.mandatory}"
+                      shortDesc="#{bindings.Ciddaterequest.hints.tooltip}"
+                      id="id4">
+          <f:validator binding="#{bindings.Ciddaterequest.validator}"/>
+          <af:convertDateTime pattern="#{bindings.Ciddaterequest.format}"/>
+        </af:inputDate>
+        <af:inputText value="#{bindings.Cidtdclead.inputValue}"
+                      label="#{bindings.Cidtdclead.hints.label}"
+                      required="#{bindings.Cidtdclead.hints.mandatory}"
+                      columns="#{bindings.Cidtdclead.hints.displayWidth}"
+                      maximumLength="#{bindings.Cidtdclead.hints.precision}"
+                      shortDesc="#{bindings.Cidtdclead.hints.tooltip}" id="it6">
+          <f:validator binding="#{bindings.Cidtdclead.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.Cidstatusrequest.inputValue}"
+                      label="#{bindings.Cidstatusrequest.hints.label}"
+                      required="#{bindings.Cidstatusrequest.hints.mandatory}"
+                      columns="#{bindings.Cidstatusrequest.hints.displayWidth}"
+                      maximumLength="#{bindings.Cidstatusrequest.hints.precision}"
+                      shortDesc="#{bindings.Cidstatusrequest.hints.tooltip}"
+                      id="it7"
+                      binding="#{pageFlowScope.inboxBeans.bindStatusRequestApproval}">
+          <f:validator binding="#{bindings.Cidstatusrequest.validator}"/>
+        </af:inputText>
+        <af:inputDate value="#{bindings.Ciddateapprovesv.inputValue}"
+                      label="#{bindings.Ciddateapprovesv.hints.label}"
+                      required="#{bindings.Ciddateapprovesv.hints.mandatory}"
+                      shortDesc="#{bindings.Ciddateapprovesv.hints.tooltip}"
+                      id="id3">
+          <f:validator binding="#{bindings.Ciddateapprovesv.validator}"/>
+          <af:convertDateTime pattern="#{bindings.Ciddateapprovesv.format}"/>
+        </af:inputDate>
+        <af:inputDate value="#{bindings.Cidapprovetdc.inputValue}"
+                      label="#{bindings.Cidapprovetdc.hints.label}"
+                      required="#{bindings.Cidapprovetdc.hints.mandatory}"
+                      shortDesc="#{bindings.Cidapprovetdc.hints.tooltip}"
+                      id="id1">
+          <f:validator binding="#{bindings.Cidapprovetdc.validator}"/>
+          <af:convertDateTime pattern="#{bindings.Cidapprovetdc.format}"/>
+        </af:inputDate>
+        <af:inputDate value="#{bindings.Ciddateapprovetdclead.inputValue}"
+                      label="#{bindings.Ciddateapprovetdclead.hints.label}"
+                      required="#{bindings.Ciddateapprovetdclead.hints.mandatory}"
+                      shortDesc="#{bindings.Ciddateapprovetdclead.hints.tooltip}"
+                      id="id2">
+          <f:validator binding="#{bindings.Ciddateapprovetdclead.validator}"/>
+          <af:convertDateTime pattern="#{bindings.Ciddateapprovetdclead.format}"/>
+        </af:inputDate>
+        <af:inputText value="#{bindings.Cidattach.inputValue}"
+                      label="#{bindings.Cidattach.hints.label}"
+                      required="#{bindings.Cidattach.hints.mandatory}"
+                      columns="#{bindings.Cidattach.hints.displayWidth}"
+                      maximumLength="#{bindings.Cidattach.hints.precision}"
+                      shortDesc="#{bindings.Cidattach.hints.tooltip}" id="it3">
+          <f:validator binding="#{bindings.Cidattach.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.Cidapname.inputValue}"
+                      label="#{bindings.Cidapname.hints.label}"
+                      required="#{bindings.Cidapname.hints.mandatory}"
+                      columns="#{bindings.Cidapname.hints.displayWidth}"
+                      maximumLength="#{bindings.Cidapname.hints.precision}"
+                      shortDesc="#{bindings.Cidapname.hints.tooltip}" id="it10">
+          <f:validator binding="#{bindings.Cidapname.validator}"/>
+        </af:inputText>
+      </af:panelFormLayout>
+    </af:panelGroupLayout>
+    <af:panelGroupLayout id="panelGroupLayout1" layout="vertical"
+                         inlineStyle="background-color:rgb(35,179,29);">
+      <af:outputLabel value="Request Approval" id="ol1"
+                      inlineStyle="font-family:Arial, Helvetica, sans-serif; color:White; font-size:large; font-weight:bold;"/>
+    </af:panelGroupLayout>
+    <af:spacer width="10" height="10" id="s1"/>
+    <af:panelGroupLayout id="pgl2" layout="vertical">
+      <af:button text="Upload Physical Form" id="cb5"
+                        binding="#{pageFlowScope.inboxBeans.uploadPhysicalRequestCID}"
+                        actionListener="#{pageFlowScope.inboxBeans.openform}"/>
+      <af:spacer width="10" height="10" id="s2"/>
+      <af:popup id="p2"
+                binding="#{pageFlowScope.inboxBeans.bindPopupSelectedItemApproval}">
+        <af:dialog id="d4" type="none">
+          <af:outputText value="CID Draft has been selected" id="ot23"/>
+          <f:facet name="buttonBar">
+            <af:button text="OK" id="cb11" action="Next"
+                              actionListener="#{pageFlowScope.inboxBeans.refreshPage}"/>
+          </f:facet>
+        </af:dialog>
+      </af:popup>
+      <af:popup id="p1"
+                binding="#{pageFlowScope.inboxBeans.bindPopupNoItemApproval}">
+        <af:dialog id="d3" type="ok">
+          <af:outputText value="No CID Draft Selected" id="ot22"/>
+        </af:dialog>
+      </af:popup>
+      <af:panelGroupLayout id="pgl7" layout="vertical">
+        <af:panelTabbed position="above" id="pt2"
+                        inlineStyle="width:inherit; height:50.0em;">
+          <af:showDetailItem id="tab2" text="Task" disclosed="true">
+            <af:panelCollection id="pc1"
+                                inlineStyle="width:inherit; height:50.0em;"
+                                featuresOff="viewMenu statusBar detach"
+                                binding="#{pageFlowScope.inboxBeans.bindTableRequestApproval}">
+              <f:facet name="menus"/>
+              <f:facet name="toolbar">
+                <af:toolbar id="t3">
+                  <af:button text="Home" id="cb2"
+                                    actionListener="#{pageFlowScope.inboxBeans.GoToHome}"/>
+                  <af:spacer width="10" height="10" id="s3"/>
+                  <af:button text="View Request" id="cb1"
+                                    actionListener="#{pageFlowScope.inboxBeans.nextFlow}"/>
+                  <af:spacer width="10" height="10" id="s7"/>
+                  <af:button text="Close" id="cb9"
+                                    actionListener="#{pageFlowScope.inboxBeans.closePage}">
+                  </af:button>
+                  <af:spacer width="10" height="10" id="s6"/>
+                  <af:button text="Open All" id="cb10"
+                                    binding="#{pageFlowScope.inboxBeans.bindOpenAllList}"
+                                    actionListener="#{pageFlowScope.inboxBeans.openAllList}"
+                                    visible="false"/>
+                </af:toolbar>
+              </f:facet>
+              <f:facet name="statusbar"/>
+              <af:table value="#{bindings.PheCidListrequestVO11.collectionModel}"
+                        var="row"
+                        rows="#{bindings.PheCidListrequestVO11.rangeSize}"
+                        emptyText="#{bindings.PheCidListrequestVO11.viewable ? 'No data to display.' : 'Access Denied.'}"
+                        fetchSize="#{bindings.PheCidListrequestVO11.rangeSize}"
+                        rowBandingInterval="0"
+                        filterModel="#{bindings.PheCidListrequestVO11Query.queryDescriptor}"
+                        queryListener="#{bindings.PheCidListrequestVO11Query.processQuery}"
+                        filterVisible="true" varStatus="vs"
+                        selectedRowKeys="#{bindings.PheCidListrequestVO11.collectionModel.selectedRow}"
+                        selectionListener="#{bindings.PheCidListrequestVO11.collectionModel.makeCurrent}"
+                        rowSelection="single" id="t5"
+                        inlineStyle="width:inherit; height:40.0em;"
+                        binding="#{pageFlowScope.inboxBeans.bindTableListRequest}">
+                <af:column sortProperty="#{bindings.PheCidListrequestVO11.hints.Idrequest.name}"
+                           filterable="true" sortable="true"
+                           headerText="#{bindings.PheCidListrequestVO11.hints.Idrequest.label}"
+                           id="c26" visible="false">
+                  <af:outputText value="#{row.Idrequest}" id="ot29">
+                    <af:convertNumber groupingUsed="false"
+                                      pattern="#{bindings.PheCidListrequestVO11.hints.Idrequest.format}"/>
+                  </af:outputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.PheCidListrequestVO11.hints.Cidrequestor.name}"
+                           filterable="true" sortable="true"
+                           headerText="Requestor" id="c24"
+                           filterFeatures="caseInsensitive" width="156"
+                           noWrap="false">
+                  <af:outputText value="#{row.Cidrequestor}" id="ot30"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.PheCidListrequestVO11.hints.Cidrequestorposition.name}"
+                           filterable="true" sortable="true"
+                           headerText="Requestor Position" id="c29"
+                           filterFeatures="caseInsensitive" noWrap="false"
+                           width="104">
+                  <af:outputText value="#{row.Cidrequestorposition}" id="ot24"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.PheCidListrequestVO11.hints.Cidrequestorsupervisor.name}"
+                           filterable="true" sortable="true"
+                           headerText="Supervisor / Manager" id="c21"
+                           filterFeatures="caseInsensitive" width="155"
+                           noWrap="false">
+                  <af:outputText value="#{row.Cidrequestorsupervisor}"
+                                 id="ot20"/>
+                </af:column>
+                <af:column headerText="Supervisor / Manager Position" id="c1"
+                           noWrap="false" sortable="true" filterable="true"
+                           sortProperty="#{bindings.PheCidListrequestVO11.hints.Cidrequestorsupervisorposition.name}"
+                           filterFeatures="caseInsensitive" width="105">
+                  <af:outputText value="#{row.Cidrequestorsupervisorposition}"
+                                 id="ot3"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.PheCidListrequestVO11.hints.Cidinternaluser.name}"
+                           sortable="true" headerText="Internal"
+                           filterable="true" id="c25"
+                           filterFeatures="caseInsensitive" noWrap="false"
+                           width="105">
+                  <af:outputText value="#{row.Cidinternaluser}" id="ot2"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.PheCidListrequestVO11.hints.Ciddaterequest.name}"
+                           filterable="true" sortable="true"
+                           headerText="Request Date" id="c23"
+                           filterFeatures="caseInsensitive" width="98">
+                  <f:facet name="filter">
+                    <af:inputDate value="#{vs.filterCriteria.Ciddaterequest}"
+                                  id="id7"/>
+                  </f:facet>
+                  <af:outputText value="#{row.Ciddaterequest}" id="ot31">
+                    <af:convertDateTime pattern="#{bindings.PheCidListrequestVO11.hints.Ciddaterequest.format}"
+                                        type="both"/>
+                  </af:outputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.PheCidListrequestVO11.hints.Cidtdclead.name}"
+                           filterable="true" sortable="true"
+                           headerText="DRM Lead" id="c30"
+                           filterFeatures="caseInsensitive">
+                  <af:outputText value="#{row.Cidtdclead}" id="ot27"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.PheCidListrequestVO11.hints.Cidstatusrequest.name}"
+                           filterable="true" sortable="true"
+                           headerText="Request Status" id="c22"
+                           filterFeatures="caseInsensitive" noWrap="false">
+                  <af:outputText value="#{row.Cidstatusrequest}" id="ot19"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.PheCidListrequestVO11.hints.Ciddateapprovesv.name}"
+                           filterable="true" sortable="true"
+                           headerText="#{bindings.PheCidListrequestVO11.hints.Ciddateapprovesv.label}"
+                           id="c31" visible="false">
+                  <f:facet name="filter">
+                    <af:inputDate value="#{vs.filterCriteria.Ciddateapprovesv}"
+                                  id="id6"/>
+                  </f:facet>
+                  <af:outputText value="#{row.Ciddateapprovesv}" id="ot28">
+                    <af:convertDateTime pattern="#{bindings.PheCidListrequestVO11.hints.Ciddateapprovesv.format}"/>
+                  </af:outputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.PheCidListrequestVO11.hints.Cidapprovetdc.name}"
+                           filterable="true" sortable="true"
+                           headerText="#{bindings.PheCidListrequestVO11.hints.Cidapprovetdc.label}"
+                           id="c27" visible="false">
+                  <f:facet name="filter">
+                    <af:inputDate value="#{vs.filterCriteria.Cidapprovetdc}"
+                                  id="id5"/>
+                  </f:facet>
+                  <af:outputText value="#{row.Cidapprovetdc}" id="ot33">
+                    <af:convertDateTime pattern="#{bindings.PheCidListrequestVO11.hints.Cidapprovetdc.format}"/>
+                  </af:outputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.PheCidListrequestVO11.hints.Ciddateapprovetdclead.name}"
+                           filterable="true" sortable="true"
+                           headerText="#{bindings.PheCidListrequestVO11.hints.Ciddateapprovetdclead.label}"
+                           id="c28" visible="false">
+                  <f:facet name="filter">
+                    <af:inputDate value="#{vs.filterCriteria.Ciddateapprovetdclead}"
+                                  id="id8"/>
+                  </f:facet>
+                  <af:outputText value="#{row.Ciddateapprovetdclead}" id="ot21">
+                    <af:convertDateTime pattern="#{bindings.PheCidListrequestVO11.hints.Ciddateapprovetdclead.format}"/>
+                  </af:outputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.PheCidListrequestVO11.hints.Cidattach.name}"
+                           filterable="true" sortable="true" headerText="Attach"
+                           id="c19" width="45" filterFeatures="caseInsensitive">
+                  <af:outputText value="#{row.Cidattach}" id="ot26"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.PheCidListrequestVO11.hints.Cidpurpose.name}"
+                           filterable="true" sortable="true"
+                           headerText="Purpose" id="c20" width="350"
+                           filterFeatures="caseInsensitive" noWrap="false">
+                  <af:outputText value="#{row.Cidpurpose}" id="ot32"/>
+                </af:column>
+              </af:table>
+            </af:panelCollection>
+          </af:showDetailItem>
+          <af:showDetailItem id="tab3" text="Task Done">
+            <af:panelCollection id="pc2"
+                                inlineStyle="width:inherit; height:50.0em;">
+              <f:facet name="menus"/>
+              <f:facet name="toolbar">
+                <af:toolbar id="t6">
+                  <af:button text="Home" id="cb8"
+                                    actionListener="#{pageFlowScope.inboxBeans.GoToHome}"/>
+                </af:toolbar>
+              </f:facet>
+              <f:facet name="statusbar"/>
+              <af:table value="#{bindings.PheCidListrequestRO1.collectionModel}"
+                        var="row"
+                        rows="#{bindings.PheCidListrequestRO1.rangeSize}"
+                        emptyText="#{bindings.PheCidListrequestRO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                        fetchSize="#{bindings.PheCidListrequestRO1.rangeSize}"
+                        rowBandingInterval="0"
+                        filterModel="#{bindings.PheCidListrequestRO1Query.queryDescriptor}"
+                        queryListener="#{bindings.PheCidListrequestRO1Query.processQuery}"
+                        filterVisible="true" varStatus="vs"
+                        selectedRowKeys="#{bindings.PheCidListrequestRO1.collectionModel.selectedRow}"
+                        selectionListener="#{bindings.PheCidListrequestRO1.collectionModel.makeCurrent}"
+                        rowSelection="single" id="t2">
+                <af:column sortProperty="#{bindings.PheCidListrequestRO1.hints.Idrequest.name}"
+                           filterable="true" sortable="true"
+                           headerText="#{bindings.PheCidListrequestRO1.hints.Idrequest.label}"
+                           id="c2" visible="false">
+                  <af:outputText value="#{row.Idrequest}" id="ot38">
+                    <af:convertNumber groupingUsed="false"
+                                      pattern="#{bindings.PheCidListrequestRO1.hints.Idrequest.format}"/>
+                  </af:outputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.PheCidListrequestRO1.hints.Cidrequestor.name}"
+                           filterable="true" sortable="true"
+                           headerText="Requestor" id="c6" width="150">
+                  <af:outputText value="#{row.Cidrequestor}" id="ot25"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.PheCidListrequestRO1.hints.Cidrequestorposition.name}"
+                           filterable="true" sortable="true"
+                           headerText="Requestor Position" id="c13">
+                  <af:outputText value="#{row.Cidrequestorposition}" id="ot37"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.PheCidListrequestRO1.hints.Cidrequestorsupervisor.name}"
+                           filterable="true" sortable="true"
+                           headerText="Supervisor / Manager" id="c11"
+                           width="150">
+                  <af:outputText value="#{row.Cidrequestorsupervisor}"
+                                 id="ot13"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.PheCidListrequestRO1.hints.Cidrequestorsupervisorposition.name}"
+                           filterable="true" sortable="true"
+                           headerText="Supervisor / Manager Position" id="c12">
+                  <af:outputText value="#{row.Cidrequestorsupervisorposition}"
+                                 id="ot40"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.PheCidListrequestRO1.hints.Ciddaterequest.name}"
+                           filterable="true" sortable="true"
+                           headerText="Request Date" id="c5">
+                  <f:facet name="filter">
+                    <af:inputDate value="#{vs.filterCriteria.Ciddaterequest}"
+                                  id="id10"/>
+                  </f:facet>
+                  <af:outputText value="#{row.Ciddaterequest}" id="ot12">
+                    <af:convertDateTime pattern="#{bindings.PheCidListrequestRO1.hints.Ciddaterequest.format}"/>
+                  </af:outputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.PheCidListrequestRO1.hints.Cidtdclead.name}"
+                           filterable="true" sortable="true"
+                           headerText="DRM Lead" id="c9">
+                  <af:outputText value="#{row.Cidtdclead}" id="ot10"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.PheCidListrequestRO1.hints.Cidstatusrequest.name}"
+                           filterable="true" sortable="true"
+                           headerText="Request Status" id="c4">
+                  <af:outputText value="#{row.Cidstatusrequest}" id="ot39"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.PheCidListrequestRO1.hints.Ciddateapprovesv.name}"
+                           filterable="true" sortable="true"
+                           headerText="Date Approve Supervisor" id="c32">
+                  <f:facet name="filter">
+                    <af:inputDate value="#{vs.filterCriteria.Ciddateapprovesv}"
+                                  id="id13"/>
+                  </f:facet>
+                  <af:outputText value="#{row.Ciddateapprovesv}" id="ot11">
+                    <af:convertDateTime pattern="#{bindings.PheCidListrequestRO1.hints.Ciddateapprovesv.format}"
+                                        type="both"/>
+                  </af:outputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.PheCidListrequestRO1.hints.Cidapprovetdc.name}"
+                           filterable="true" sortable="true"
+                           headerText="Date DRM Review" id="c7">
+                  <f:facet name="filter">
+                    <af:inputDate value="#{vs.filterCriteria.Cidapprovetdc}"
+                                  id="id11"/>
+                  </f:facet>
+                  <af:outputText value="#{row.Cidapprovetdc}" id="ot9">
+                    <af:convertDateTime pattern="#{bindings.PheCidListrequestRO1.hints.Cidapprovetdc.format}"
+                                        type="both"/>
+                  </af:outputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.PheCidListrequestRO1.hints.Ciddateapprovetdclead.name}"
+                           filterable="true" sortable="true"
+                           headerText="Date Approve DRM Lead" id="c3">
+                  <f:facet name="filter">
+                    <af:inputDate value="#{vs.filterCriteria.Ciddateapprovetdclead}"
+                                  id="id12"/>
+                  </f:facet>
+                  <af:outputText value="#{row.Ciddateapprovetdclead}" id="ot34">
+                    <af:convertDateTime pattern="#{bindings.PheCidListrequestRO1.hints.Ciddateapprovetdclead.format}"
+                                        type="both"/>
+                  </af:outputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.PheCidListrequestRO1.hints.Cidattach.name}"
+                           filterable="true" sortable="true" headerText="Attach"
+                           id="c8" width="45">
+                  <af:outputText value="#{row.Cidattach}" id="ot36"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.PheCidListrequestRO1.hints.Cidpurpose.name}"
+                           filterable="true" sortable="true"
+                           headerText="Purpose" id="c10" width="450">
+                  <af:outputText value="#{row.Cidpurpose}" id="ot35"/>
+                </af:column>
+              </af:table>
+            </af:panelCollection>
+          </af:showDetailItem>
+        </af:panelTabbed>
+      </af:panelGroupLayout>
+    </af:panelGroupLayout>
+    <af:panelGroupLayout id="pgl3" layout="vertical"/>
+  </af:panelBox>
+</jsp:root>

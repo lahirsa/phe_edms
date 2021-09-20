@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="PheRunningnumberVO"
+  Version="11.1.1.66.73"
+  InheritPersonalization="merge"
+  SelectList="PheRunningnumberEO.ID, 
+       PheRunningnumberEO.CREATE_DATE, 
+       PheRunningnumberEO.CODE_COMBINATION, 
+       PheRunningnumberEO.DOCTYPE, 
+       PheRunningnumberEO.LASTEST_NUMBER"
+  FromList="PHE_RUNNINGNUMBER PheRunningnumberEO"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|VarAccess"/>
+  </DesignTime>
+  <EntityUsage
+    Name="PheRunningnumberEO"
+    Entity="CID.EO.PheRunningnumberEO"/>
+  <ViewAttribute
+    Name="Id"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Id"
+    EntityUsage="PheRunningnumberEO"
+    AliasName="ID"/>
+  <ViewAttribute
+    Name="CreateDate"
+    PrecisionRule="true"
+    EntityAttrName="CreateDate"
+    EntityUsage="PheRunningnumberEO"
+    AliasName="CREATE_DATE"/>
+  <ViewAttribute
+    Name="CodeCombination"
+    PrecisionRule="true"
+    EntityAttrName="CodeCombination"
+    EntityUsage="PheRunningnumberEO"
+    AliasName="CODE_COMBINATION"/>
+  <ViewAttribute
+    Name="Doctype"
+    PrecisionRule="true"
+    EntityAttrName="Doctype"
+    EntityUsage="PheRunningnumberEO"
+    AliasName="DOCTYPE"/>
+  <ViewAttribute
+    Name="LastestNumber"
+    PrecisionRule="true"
+    EntityAttrName="LastestNumber"
+    EntityUsage="PheRunningnumberEO"
+    AliasName="LASTEST_NUMBER"/>
+</ViewObject>

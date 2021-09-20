@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.61.92" id="internalTransmittalPageDef"
+                Package="Taskflow">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator id="GetOrgIdVO1Iterator" Binds="GetOrgIdVO1"
+              DataControl="AppModuleExternalTransmittalDataControl"
+              RangeSize="25"/>
+    <iterator id="GetProjectIdVO1Iterator" Binds="GetProjectIdVO1"
+              DataControl="AppModuleExternalTransmittalDataControl"
+              RangeSize="25"/>
+    <iterator Binds="ViewInternalRoleVO1" RangeSize="25"
+              DataControl="AppModuleExternalTransmittalDataControl"
+              id="ViewInternalRoleVO1Iterator"/>
+    <iterator Binds="ParentMenuVO1" RangeSize="25"
+              DataControl="AppModuleExternalTransmittalDataControl"
+              id="ParentMenuVO1Iterator"/>
+    <iterator Binds="ListDocumentStatusVO1" RangeSize="25"
+              DataControl="AppModuleExternalTransmittalDataControl"
+              id="ListDocumentStatusVO1Iterator"/>
+    <iterator Binds="ListSentHardcopyVO1" RangeSize="25"
+              DataControl="AppModuleExternalTransmittalDataControl"
+              id="ListSentHardcopyVO1Iterator"/>
+    <iterator Binds="UsersInternalVO1" RangeSize="25"
+              DataControl="AppModuleExternalTransmittalDataControl"
+              id="UsersInternalVO1Iterator"/>
+    <iterator id="IsDocExistVO1Iterator" Binds="IsDocExistVO1"
+              DataControl="AppModuleExternalTransmittalDataControl"
+              RangeSize="25"/>
+    <iterator id="LatestTransmittalNoVo1Iterator" Binds="LatestTransmittalNoVo1"
+              DataControl="AppModuleExternalTransmittalDataControl"
+              RangeSize="25"/>
+    <iterator Binds="GetConfigVO1" RangeSize="10"
+              DataControl="AppModuleExternalTransmittalDataControl"
+              id="GetConfigVO1Iterator"/>
+    <iterator Binds="AutoSuggestInternalUserVO1" RangeSize="10"
+              DataControl="AppModuleExternalTransmittalDataControl"
+              id="AutoSuggestInternalUserVO1Iterator"/>
+    <iterator Binds="IsRoleExist1" RangeSize="10"
+              DataControl="AppModuleExternalTransmittalDataControl"
+              id="IsRoleExist1Iterator"/>
+  </executables>
+  <bindings>
+    <list IterBinding="ViewInternalRoleVO1Iterator" ListOperMode="navigation"
+          ListIter="ViewInternalRoleVO1Iterator" id="ViewInternalRoleVO1"
+          DTSupportsMRU="false">
+      <AttrNames>
+        <Item Value="Code"/>
+      </AttrNames>
+    </list>
+    <tree IterBinding="ParentMenuVO1Iterator" id="ParentMenuVO1">
+      <nodeDefinition DefName="transmittalExternal.vo.ParentMenuVO"
+                      Name="ParentMenuVO10">
+        <AttrNames>
+          <Item Value="Ffolderguid"/>
+          <Item Value="Ffoldername"/>
+          <Item Value="Fparentguid"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="ChildMenuVO"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="transmittalExternal.vo.ChildMenuVO"
+                      Name="ParentMenuVO11">
+        <AttrNames>
+          <Item Value="Ffolderguid"/>
+          <Item Value="Ffoldername"/>
+          <Item Value="Fparentguid"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="FfolderguidChildMenuVO"/>
+        </Accessors>
+      </nodeDefinition>
+    </tree>
+    <list IterBinding="ListDocumentStatusVO1Iterator" ListOperMode="navigation"
+          ListIter="ListDocumentStatusVO1Iterator" id="ListDocumentStatusVO1"
+          DTSupportsMRU="true">
+      <AttrNames>
+        <Item Value="Value"/>
+      </AttrNames>
+    </list>
+    <list IterBinding="ListSentHardcopyVO1Iterator" ListOperMode="navigation"
+          ListIter="ListSentHardcopyVO1Iterator" id="ListSentHardcopyVO1"
+          DTSupportsMRU="true">
+      <AttrNames>
+        <Item Value="Description"/>
+      </AttrNames>
+    </list>
+    <tree IterBinding="UsersInternalVO1Iterator" id="UsersInternalVO1">
+      <nodeDefinition DefName="transmittalExternal.vo.UsersInternalVO"
+                      Name="UsersInternalVO10">
+        <AttrNames>
+          <Item Value="Username"/>
+          <Item Value="Fullname"/>
+          <Item Value="Email"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="SendEmail" InstanceName="SendEmailDTUDataControl"
+                  DataControl="SendEmailDTUDataControl" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="SendEmail"
+                  IsViewObjectMethod="false"
+                  ReturnName="data.SendEmailDTUDataControl.methodResults.SendEmail_SendEmailDTUDataControl_SendEmail_result">
+      <NamedData NDName="EmailTo" NDType="java.lang.String"/>
+      <NamedData NDName="Subject" NDType="java.lang.String"/>
+      <NamedData NDName="HtmlText" NDType="java.lang.String"/>
+    </methodAction>
+    <action IterBinding="GetOrgIdVO1Iterator" id="ExecuteGetOrgId"
+            InstanceName="AppModuleExternalTransmittalDataControl.GetOrgIdVO1"
+            DataControl="AppModuleExternalTransmittalDataControl"
+            RequiresUpdateModel="true" Action="executeWithParams">
+      <NamedData NDName="organizationName" NDType="java.lang.String"/>
+    </action>
+    <action IterBinding="GetProjectIdVO1Iterator" id="ExecuteGetProjectId"
+            InstanceName="AppModuleExternalTransmittalDataControl.GetProjectIdVO1"
+            DataControl="AppModuleExternalTransmittalDataControl"
+            RequiresUpdateModel="true" Action="executeWithParams">
+      <NamedData NDName="projectTitle" NDType="java.lang.String"/>
+    </action>
+    <attributeValues IterBinding="GetOrgIdVO1Iterator" id="OrgId">
+      <AttrNames>
+        <Item Value="Id"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="GetProjectIdVO1Iterator" id="ProjectId">
+      <AttrNames>
+        <Item Value="Id"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="IsDocExistVO1Iterator" id="EWIsDocExist"
+            InstanceName="AppModuleExternalTransmittalDataControl.IsDocExistVO1"
+            DataControl="AppModuleExternalTransmittalDataControl"
+            RequiresUpdateModel="true" Action="executeWithParams">
+      <NamedData NDName="folderGUID" NDType="java.lang.String"/>
+      <NamedData NDName="fileName" NDType="java.lang.String"/>
+    </action>
+    <methodAction id="getSeqValue"
+                  InstanceName="AppModuleExternalTransmittalDataControl.dataProvider"
+                  DataControl="AppModuleExternalTransmittalDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="getSeqValue" IsViewObjectMethod="false"
+                  ReturnName="data.AppModuleExternalTransmittalDataControl.methodResults.getSeqValue_AppModuleExternalTransmittalDataControl_dataProvider_getSeqValue_result">
+      <NamedData NDName="sequenceName" NDType="java.lang.String"/>
+    </methodAction>
+    <action IterBinding="LatestTransmittalNoVo1Iterator" id="ExecuteWithParams"
+            InstanceName="AppModuleExternalTransmittalDataControl.LatestTransmittalNoVo1"
+            DataControl="AppModuleExternalTransmittalDataControl"
+            RequiresUpdateModel="true" Action="executeWithParams">
+      <NamedData NDName="temp" NDType="java.lang.String"/>
+    </action>
+    <action IterBinding="GetConfigVO1Iterator" id="ExecuteGetConfigWithParams"
+            InstanceName="AppModuleExternalTransmittalDataControl.GetConfigVO1"
+            DataControl="AppModuleExternalTransmittalDataControl"
+            RequiresUpdateModel="true" Action="executeWithParams">
+      <NamedData NDName="keyConfig" NDType="java.lang.String"/>
+    </action>
+    <attributeValues IterBinding="GetConfigVO1Iterator" id="KeyValue">
+      <AttrNames>
+        <Item Value="KeyValue"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="AutoSuggestInternalUserVO1Iterator"
+            id="ExecuteWithParamAutoSuggest"
+            InstanceName="AppModuleExternalTransmittalDataControl.AutoSuggestInternalUserVO1"
+            DataControl="AppModuleExternalTransmittalDataControl"
+            RequiresUpdateModel="true" Action="executeWithParams">
+      <NamedData NDName="keyword" NDType="java.lang.String"/>
+    </action>
+    <tree IterBinding="AutoSuggestInternalUserVO1Iterator"
+          id="AutoSuggestInternalUserVO1">
+      <nodeDefinition DefName="transmittalExternal.vo.AutoSuggestInternalUserVO"
+                      Name="AutoSuggestInternalUserVO10">
+        <AttrNames>
+          <Item Value="Demail"/>
+          <Item Value="Dfullname"/>
+          <Item Value="Dname"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="SendEmailTo" InstanceName="SendEmailDTUDataControl"
+                  DataControl="SendEmailDTUDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="SendEmailTo" IsViewObjectMethod="false"
+                  ReturnName="data.SendEmailDTUDataControl.methodResults.SendEmailTo_SendEmailDTUDataControl_SendEmailTo_result">
+      <NamedData NDName="EmailTo" NDType="java.lang.String"/>
+      <NamedData NDName="EmailCc" NDType="java.lang.String"/>
+      <NamedData NDName="Subject" NDType="java.lang.String"/>
+      <NamedData NDName="HtmlText" NDType="java.lang.String"/>
+    </methodAction>
+    <action IterBinding="IsRoleExist1Iterator" id="ExecuteIsRoleExist"
+            InstanceName="AppModuleExternalTransmittalDataControl.IsRoleExist1"
+            DataControl="AppModuleExternalTransmittalDataControl"
+            RequiresUpdateModel="true" Action="executeWithParams">
+      <NamedData NDName="role" NDType="java.lang.String"/>
+      <NamedData NDName="name" NDType="java.lang.String"/>
+    </action>
+    <attributeValues IterBinding="IsRoleExist1Iterator" id="Isroleexist">
+      <AttrNames>
+        <Item Value="Isroleexist"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

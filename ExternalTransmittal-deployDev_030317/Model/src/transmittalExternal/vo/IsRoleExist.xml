@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="IsRoleExist"
+  Version="11.1.1.61.92"
+  InheritPersonalization="true"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="transmittalExternal.vo.IsRoleExist_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <Variable
+    Name="role"
+    Kind="where"
+    Type="java.lang.String"/>
+  <Variable
+    Name="name"
+    Kind="where"
+    Type="java.lang.String"/>
+  <SQLQuery>
+    <![CDATA[select count(*) as isroleexist from usersecurityattributes where dattributename = :role and dusername = :name]]>
+  </SQLQuery>
+  <ViewAttribute
+    Name="Isroleexist"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="BIGINT"
+    AliasName="ISROLEEXIST"
+    Expression="ISROLEEXIST"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="Isroleexist"/>
+  </AttrArray>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="transmittalExternal.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

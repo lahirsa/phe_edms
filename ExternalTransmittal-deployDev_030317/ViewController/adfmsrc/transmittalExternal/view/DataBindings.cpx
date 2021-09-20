@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application"
+             version="11.1.1.61.92" id="DataBindings" SeparateXMLFiles="false"
+             Package="transmittalExternal.view" ClientType="Generic">
+  <definitionFactories>
+    <factory nameSpace="http://xmlns.oracle.com/adf/controller/binding"
+             className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl"/>
+    <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+  </definitionFactories>
+  <pageMap>
+    <page path="/Taskflow/externalTransmittal.jsff"
+          usageId="transmittalExternal_view_externalTransmittalPageDef"/>
+    <page path="/Pages/CreateTransmittalExternalForm.jspx"
+          usageId="transmittalExternal_view_Create_Transmittal_External_FormPageDef"/>
+    <page path="/Taskflow/internalTransmittal.jsff"
+          usageId="transmittalExternal_view_internalTransmittalPageDef"/>
+    <page path="/Pages/CreateTransmittalInternalForm.jspx"
+          usageId="transmittalExternal_view_CreateTransmittalInternalFormPageDef"/>
+    <page path="/Pages/GetTransmittalSummary.jspx"
+          usageId="transmittalExternal_view_GetTransmittalSummaryPageDef"/>
+    <page path="/Pages/GetDetailTransmittal.jspx"
+          usageId="transmittalExternal_view_GetDetailTransmittalPageDef"/>
+    <page path="/Taskflow/detailTransmittal.jsff"
+          usageId="transmittalExternal_view_detailTransmittalPageDef"/>
+    <page path="/Taskflow/detailTransmittalUser.jsff"
+          usageId="transmittalExternal_view_detailTransmittalUserPageDef"/>
+    <page path="/Taskflow/detailInternalTransmittal.jsff"
+          usageId="transmittalExternal_view_detailInternalTransmittalPageDef"/>
+    <page path="/Pages/untitled1.jspx"
+          usageId="transmittalExternal_view_untitled1PageDef"/>
+    <page path="/tespage.jsff"
+          usageId="transmittalExternal_view_tespagePageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="transmittalExternal_view_externalTransmittalPageDef"
+          path="Taskflow.externalTransmittalPageDef"/>
+    <page id="transmittalExternal_view_Create_Transmittal_External_FormPageDef"
+          path="Pages.Create_Transmittal_External_FormPageDef"/>
+    <page id="transmittalExternal_view_internalTransmittalPageDef"
+          path="Taskflow.internalTransmittalPageDef"/>
+    <page id="transmittalExternal_view_CreateTransmittalInternalFormPageDef"
+          path="Pages.CreateTransmittalInternalFormPageDef"/>
+    <page id="transmittalExternal_view_GetTransmittalSummaryPageDef"
+          path="Pages.GetTransmittalSummaryPageDef"/>
+    <page id="transmittalExternal_view_GetDetailTransmittalPageDef"
+          path="Pages.GetDetailTransmittalPageDef"/>
+    <page id="transmittalExternal_view_detailTransmittalPageDef"
+          path="Taskflow.detailTransmittalPageDef"/>
+    <page id="transmittalExternal_view_detailTransmittalUserPageDef"
+          path="Taskflow.detailTransmittalUserPageDef"/>
+    <page id="transmittalExternal_view_detailInternalTransmittalPageDef"
+          path="Taskflow.detailInternalTransmittalPageDef"/>
+    <page id="transmittalExternal_view_untitled1PageDef"
+          path="Pages.untitled1PageDef"/>
+    <page id="transmittalExternal_view_tespagePageDef"
+          path="transmittalExternal.view.pageDefs.tespagePageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <dc id="SendEmailDTUDataControl"
+        path="transmittalExternal.view.SendEmailDTUDataControl"/>
+    <dc id="emailServicesDataControl"
+        path="transmittalExternal.model.emailServicesDataControl"/>
+    <dc id="SendEmailDataControl"
+        path="transmittalExternal.model.SendEmailDataControl"/>
+    <BC4JDataControl id="AppModuleExternalTransmittalDataControl"
+                     Package="transmittalExternal.model"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl"
+                     SupportsTransactions="true" SupportsFindMode="true"
+                     SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true"
+                     Configuration="AppModuleExternalTransmittalLocal"
+                     syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+  </dataControlUsages>
+</Application>

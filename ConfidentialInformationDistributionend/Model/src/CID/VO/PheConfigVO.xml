@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="PheConfigVO"
+  Version="11.1.1.66.73"
+  InheritPersonalization="merge"
+  SelectList="PheConfigEO.KEY_CONFIG, 
+       PheConfigEO.KEY_VALUE, 
+       PheConfigEO.KEY_DISPLAY, 
+       PheConfigEO.ROWID"
+  FromList="PHE_CONFIG PheConfigEO"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|VarAccess"/>
+  </DesignTime>
+  <EntityUsage
+    Name="PheConfigEO"
+    Entity="CID.EO.PheConfigEO"/>
+  <ViewAttribute
+    Name="KeyConfig"
+    PrecisionRule="true"
+    EntityAttrName="KeyConfig"
+    EntityUsage="PheConfigEO"
+    AliasName="KEY_CONFIG"/>
+  <ViewAttribute
+    Name="KeyValue"
+    PrecisionRule="true"
+    EntityAttrName="KeyValue"
+    EntityUsage="PheConfigEO"
+    AliasName="KEY_VALUE"/>
+  <ViewAttribute
+    Name="KeyDisplay"
+    PrecisionRule="true"
+    EntityAttrName="KeyDisplay"
+    EntityUsage="PheConfigEO"
+    AliasName="KEY_DISPLAY"/>
+  <ViewAttribute
+    Name="RowID"
+    IsUpdateable="false"
+    PrecisionRule="true"
+    EntityAttrName="RowID"
+    EntityUsage="PheConfigEO"
+    AliasName="ROWID"/>
+</ViewObject>

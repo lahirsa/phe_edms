@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="task-flow-detailTransmittalUser">
+    <default-activity id="__1">detailTransmittalUser</default-activity>
+    <input-parameter-definition id="__52">
+      <name id="__53">transmittalId</name>
+    </input-parameter-definition>
+    <input-parameter-definition id="__55">
+      <name id="__54">dUser</name>
+    </input-parameter-definition>
+    <input-parameter-definition id="__2">
+      <name id="__3">isTdc</name>
+    </input-parameter-definition>
+    <managed-bean id="__6">
+      <managed-bean-name id="__5">DetailTransmittalUserBean</managed-bean-name>
+      <managed-bean-class id="__8">com.action.DetailTransmittalUserClass</managed-bean-class>
+      <managed-bean-scope id="__7">pageFlow</managed-bean-scope>
+    </managed-bean>
+    <view id="detailTransmittalUser">
+      <page>/Taskflow/detailTransmittalUser.jsff</page>
+      <input-page-parameter>
+        <from-value>#{param.transmittalId}</from-value>
+        <to-value>#{pageFlowScope.transmittalId2}</to-value>
+      </input-page-parameter>
+      <input-page-parameter>
+        <from-value>#{param.dUser}</from-value>
+        <to-value>#{pageFlowScope.dUser2}</to-value>
+      </input-page-parameter>
+      <input-page-parameter>
+        <from-value>#{param.isTdc}</from-value>
+        <to-value>#{pageFlowScope.isTdc2}</to-value>
+      </input-page-parameter>
+    </view>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

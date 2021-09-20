@@ -1,0 +1,569 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html">
+          <!--Add by nanda 180116 -->
+  <af:resource type="javascript">
+    function closeWindow() {
+      window.close();
+    }
+  </af:resource>
+  <af:panelGroupLayout id="pgl1" layout="vertical">
+  <!--Add by nanda 210116 - add home link -->
+    <af:panelGroupLayout id="pgl15" layout="horizontal"  styleClass="AFStretchWidth"
+                         inlineStyle="font-weight:bold; height:33px;">               
+      <af:outputLabel value="Document Secure Workflow - Create Internal Transmittal"
+                    id="ol7"
+                    inlineStyle="font-family:Arial, Helvetica, sans-serif; font-size:large; font-weight:bold; color:Navy;"/>
+      <af:goLink text="HOME" id="gl2"
+                                 inlineStyle="text-align:right;font-weight:bold;">
+                                 <af:clientListener type="click" method="closeWindow"/>
+                                 </af:goLink>
+    </af:panelGroupLayout>
+    
+    <af:spacer width="10" height="10" id="s1"/>
+    <af:panelTabbed id="pt1" inlineStyle="height:420px;"
+                    styleClass="AFStretchWidth">
+      <af:showDetailItem text="General Info" id="sdi1">
+           
+        <af:panelGroupLayout id="pgl10" layout="vertical">
+          <af:panelFormLayout id="pfl1">
+            <af:panelLabelAndMessage label="Category :" id="plam1">
+              <af:outputLabel value="Internal" id="ol2"/>
+            </af:panelLabelAndMessage>
+            <af:spacer width="10" height="10" id="spacer4"/>
+            <af:panelLabelAndMessage label="Company :" id="plam4">
+              <af:outputLabel id="outputLabel4"
+                              binding="#{pageFlowScope.InternalTransmittalBean.bindCompanyName}"/>
+            </af:panelLabelAndMessage>
+            <af:spacer width="10" height="10" id="s12"/>
+            <af:panelLabelAndMessage label="#{pageFlowScope.InternalTransmittalBean.projectorOrganization eq 'Organization'? &quot;Organization :&quot; : &quot;Project Title :&quot;}"
+                                     id="plam2">
+              <af:outputLabel id="ol3"
+                              binding="#{pageFlowScope.InternalTransmittalBean.bindOutputProjectTitle}"/>
+            </af:panelLabelAndMessage>
+            <af:spacer width="10" height="10" id="spacer2"/>
+            <af:inputText label="Subject :" id="it1" rows="5" columns="40"
+                          binding="#{pageFlowScope.InternalTransmittalBean.bindTransmittalSubject}"
+                          showRequired="true" required="true"/>
+            <af:spacer width="10" height="10" id="spacer1"/>
+            <af:inputDate label="Due Date :" id="id1"
+                          binding="#{pageFlowScope.InternalTransmittalBean.bindTransmittalDueDate}"
+                          autoSubmit="true" showRequired="true" required="true">
+              <af:convertDateTime/>
+            </af:inputDate>
+          </af:panelFormLayout>
+        </af:panelGroupLayout>
+      </af:showDetailItem>
+      <af:showDetailItem text="List Documents" id="sdi2">
+        <af:panelGroupLayout id="pgl14" layout="scroll"
+                             styleClass="AFStretchWidth">
+          <af:spacer width="10" height="10" id="s7"/>
+          <af:selectOneChoice label="Sent Via :" id="soc2"
+                              binding="#{pageFlowScope.InternalTransmittalBean.bindSource}"
+                              autoSubmit="true"
+                              valueChangeListener="#{pageFlowScope.InternalTransmittalBean.sentViaChange}"
+                              visible="#{pageFlowScope.InternalTransmittalBean.bindOutputProjectTitle.value != 'Publish'}">
+            <af:selectItem label="" value="" id="si9"/>
+            <!--af:selectItem label="EDMS" value="EDMS" id="si2"/-->
+            <af:selectItem label="Electronic" value="Electronic" id="si3"/>
+            <af:selectItem label="Physical" value="Physical" id="si4"/>
+          </af:selectOneChoice>
+          <af:spacer width="10" height="10" id="s6"/>
+          <af:popup id="p1"
+                    binding="#{pageFlowScope.InternalTransmittalBean.bindPopUpEdms}"
+                    contentDelivery="lazyUncached">
+            <af:dialog id="d1" closeIconVisible="false" type="none">
+              <af:panelSplitter id="ps1" splitterPosition="400"
+                                inlineStyle="width:95em;">
+                <f:facet name="first">
+                  <af:panelGroupLayout layout="vertical"
+                                       xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                       id="pgl6">
+                    <af:tree value="#{bindings.ParentMenuVO1.treeModel}"
+                             var="node"
+                             selectionListener="#{pageFlowScope.InternalTransmittalBean.SelectTreeLsnr}"
+                             rowSelection="single" id="t2"
+                             styleClass="AFStretchWidth"
+                             binding="#{pageFlowScope.InternalTransmittalBean.bindTreeEdms}">
+                      <f:facet name="nodeStamp">
+                        <af:outputText value="#{node.Ffoldername}" id="ot8"/>
+                      </f:facet>
+                    </af:tree>
+                  </af:panelGroupLayout>
+                </f:facet>
+                <f:facet name="second">
+                  <af:panelGroupLayout id="pgl3" styleClass="AFStretchWidth">
+                    <af:table var="row" rowBandingInterval="0" id="t4"
+                              binding="#{pageFlowScope.InternalTransmittalBean.bindTableFilesEDMS}"
+                              varStatus="rowStatus"
+                              value="#{pageFlowScope.InternalTransmittalBean.childFiles}"
+                              inlineStyle="margin-left:10px; border-color:Gray; border-style:solid; border-width:thin; width:90%;"
+                              columnStretching="column:c12"
+                              rowSelection="single" fetchSize="-1">
+                      <af:column sortable="false" headerText="" id="c14"
+                                 width="30" align="center">
+                        <af:selectBooleanRadio id="sbr1" group="radioButton"
+                                               binding="#{pageFlowScope.InternalTransmittalBean.bindRadioEDMS}"
+                                               valueChangeListener="#{pageFlowScope.InternalTransmittalBean.OnChangeRadio}"
+                                               autoSubmit="true">
+                          <f:attribute name="rowvalIndex"
+                                       value="#{rowStatus.index}"/>
+                        </af:selectBooleanRadio>
+                      </af:column>
+                      <af:column sortable="false" headerText="Name" id="c12"
+                                 width="400">
+                        <af:outputText value="#{row.XDocName}" id="ot13"/>
+                      </af:column>
+                      <af:column sortable="false" headerText="Owner" id="c16"
+                                 width="150">
+                        <af:outputText value="#{row.XDocOwner}" id="ot11"/>
+                      </af:column>
+                    </af:table>
+                  </af:panelGroupLayout>
+                </f:facet>
+              </af:panelSplitter>
+              <af:spacer width="10" height="10" id="s11"/>
+              <af:panelGroupLayout id="pgl7" layout="horizontal">
+                <af:button text="Ok" id="cb4" partialSubmit="true"
+                                  actionListener="#{pageFlowScope.InternalTransmittalBean.ActionSelectEdms}"/>
+                <af:spacer width="10" height="10" id="s10"/>
+                <af:button text="Cancel" id="cb5"
+                                  actionListener="#{pageFlowScope.InternalTransmittalBean.CancelPopUpEdms}"/>
+                <af:popup id="p4"
+                          binding="#{pageFlowScope.InternalTransmittalBean.bindPopUpEdmsForm}">
+                  <af:dialog id="d4" closeIconVisible="false"
+                             dialogListener="#{pageFlowScope.InternalTransmittalBean.dialogBoxEDMSForm}">
+                    <af:decorativeBox id="db2">
+                      <f:facet name="center">
+                        <af:panelGroupLayout id="pgl9" layout="vertical">
+                          <af:panelFormLayout id="pfl4">
+                            <af:inputText label="Document Number :"
+                                          id="inputText3" required="true"
+                                          binding="#{pageFlowScope.InternalTransmittalBean.bindEdmsDocNumber}"/>
+                            <af:inputText label="Document Title :"
+                                          id="inputText4" required="true"
+                                          binding="#{pageFlowScope.InternalTransmittalBean.bindEdmsDocTitle}"/>
+                            <af:selectOneChoice value="#{bindings.ListDocumentStatusVO1.inputValue}"
+                                                label="Document Status :"
+                                                required="#{bindings.ListDocumentStatusVO1.hints.mandatory}"
+                                                shortDesc="#{bindings.ListDocumentStatusVO1.hints.tooltip}"
+                                                id="soc1"
+                                                binding="#{pageFlowScope.InternalTransmittalBean.bindEdmsDocStatus}">
+                              <f:selectItems value="#{bindings.ListDocumentStatusVO1.items}"
+                                             id="si5"/>
+                            </af:selectOneChoice>
+                            <af:inputText label="Pages :" id="inputText5"
+                                          converter="javax.faces.Integer"
+                                          binding="#{pageFlowScope.InternalTransmittalBean.bindEdmsPages}"
+                                          required="true" showRequired="true"
+                                          value="1"/>
+                            <af:inputText label="Remarks :" id="inputText6"
+                                          binding="#{pageFlowScope.InternalTransmittalBean.bindEdmsRemarks}"
+                                          columns="20" rows="5"/>
+                            <af:inputText label="Revisions :" id="inputText7"
+                                          required="true"
+                                          binding="#{pageFlowScope.InternalTransmittalBean.bindEdmsRevisions}"/>
+                          </af:panelFormLayout>
+                        </af:panelGroupLayout>
+                      </f:facet>
+                      <f:facet name="top">
+                        <af:panelGroupLayout id="pgl8" layout="vertical"
+                                             halign="center" valign="middle">
+                          <af:outputLabel value="Add EDMS Form"
+                                          id="outputLabel1"
+                                          styleClass="AFHeaderLevelOne"/>
+                        </af:panelGroupLayout>
+                      </f:facet>
+                    </af:decorativeBox>
+                  </af:dialog>
+                </af:popup>
+              </af:panelGroupLayout>
+            </af:dialog>
+          </af:popup>
+          <af:table var="row" rowBandingInterval="0" id="t1"
+                    styleClass="AFStretchWidth"
+                    value="#{pageFlowScope.InternalTransmittalBean.tempDoc}"
+                    binding="#{pageFlowScope.InternalTransmittalBean.bindTableDoc}"
+                    varStatus="rowStatus" fetchSize="25"
+                    columnStretching="column:c3" autoHeightRows="-1"
+                    inlineStyle="height:300.0px;">
+            <af:column sortable="false" headerText="Document Number" id="c5"
+                       width="130" align="center">
+              <!-- <af:goLink text="#{row.documentNumber}" id="gl1"
+                         destination="http://kponwjap005.pertamina.com:16300/urm/idcplg?IdcService=VIEW_IN_AUTOVUE&amp;dID=#{row.did}&amp;Markup_BasedID=0&amp;Format="
+                         targetFrame="_blank"
+                         rendered="#{row.distribution eq 'Electronic'}"/>-->
+              <af:goLink text="#{row.documentNumber}" id="gl1"
+                         destination="http://phekpdm005.pertamina.com:16200/cs/idcplg?IdcService=VIEW_IN_AUTOVUE&amp;dID=#{row.did}&amp;Markup_BasedID=0&amp;Format="
+                         targetFrame="_blank"
+                         rendered="#{row.distribution eq 'Electronic'}"/>
+              <af:outputLabel value="#{row.documentNumber}" id="ol6"
+                              rendered="#{row.distribution != 'Electronic'}"/>
+            </af:column>
+            <af:column sortable="false" headerText="Document Title" id="c3"
+                       width="100" align="center">
+              <af:outputText value="#{row.documentTitle}" id="ot1"/>
+            </af:column>
+            <af:column sortable="false" headerText="Revision" id="c1" width="50"
+                       align="center">
+              <af:outputText value="#{row.revision}" id="ot4"/>
+            </af:column>
+            <af:column sortable="false" headerText="Document Status" id="c2"
+                       align="center" width="110">
+              <af:outputText value="#{row.documentStatus}" id="ot5"/>
+            </af:column>
+            <af:column sortable="false" headerText="Pages" id="c4" width="51"
+                       align="center">
+              <af:outputText value="#{row.pages}" id="ot3"/>
+            </af:column>
+            <af:column sortable="false" headerText="Remarks" id="c6" width="113"
+                       align="center">
+              <af:outputText value="#{row.remarks}" id="ot6"/>
+            </af:column>
+            <af:column sortable="false" headerText="Distribution" id="c7"
+                       align="center" width="80">
+              <af:outputText value="#{row.distribution}" id="ot7"/>
+            </af:column>
+            <af:column sortable="false" headerText="Action" id="c8"
+                       align="center"
+                       visible="#{pageFlowScope.InternalTransmittalBean.bindOutputProjectTitle.value != 'Publish'}">
+              <af:panelGroupLayout id="pgl0">
+                <af:commandLink text="Edit" id="cl1"
+                                actionListener="#{pageFlowScope.InternalTransmittalBean.EditFile}"
+                                partialSubmit="true">
+                  <f:attribute name="EditFileIndex" value="#{rowStatus.index}"/>
+                </af:commandLink>
+                <af:spacer width="10" height="10" id="s8"/>
+                <af:commandLink text="Delete" id="cl2"
+                                actionListener="#{pageFlowScope.InternalTransmittalBean.DeleteFile}">
+                  <f:attribute name="delFileIndex" value="#{rowStatus.index}"/>
+                </af:commandLink>
+                <af:popup id="popup1"
+                          binding="#{pageFlowScope.InternalTransmittalBean.bindPopUpEditForm}"
+                          contentDelivery="lazyUncached">
+                  <af:dialog id="dialog1" closeIconVisible="false"
+                             dialogListener="#{pageFlowScope.InternalTransmittalBean.dialogBoxEditForm}">
+                    <af:decorativeBox id="decorativeBox1">
+                      <f:facet name="center">
+                        <af:panelGroupLayout id="panelGroupLayout1"
+                                             layout="vertical">
+                          <af:panelFormLayout id="panelFormLayout1">
+                            <af:outputLabel id="ol5"
+                                            binding="#{pageFlowScope.InternalTransmittalBean.bindEditIndex}"
+                                            visible="false"/>
+                            <af:panelLabelAndMessage label="Document Name : "
+                                                     id="plam3"
+                                                     binding="#{pageFlowScope.InternalTransmittalBean.bindLabelEditDocName}">
+                              <af:outputLabel id="ol4"
+                                              binding="#{pageFlowScope.InternalTransmittalBean.bindEditDocName}"/>
+                            </af:panelLabelAndMessage>
+                            <af:inputText label="Document Number :"
+                                          id="inputText1" required="true"
+                                          binding="#{pageFlowScope.InternalTransmittalBean.bindEditDocNumber}"/>
+                            <af:inputText label="Document Title :"
+                                          id="inputText2" required="true"
+                                          binding="#{pageFlowScope.InternalTransmittalBean.bindEditDocTitle}"/>
+                            <af:selectOneChoice value="#{bindings.ListDocumentStatusVO1.inputValue}"
+                                                label="Document Status :"
+                                                required="#{bindings.ListDocumentStatusVO1.hints.mandatory}"
+                                                shortDesc="#{bindings.ListDocumentStatusVO1.hints.tooltip}"
+                                                id="selectOneChoice1"
+                                                binding="#{pageFlowScope.InternalTransmittalBean.bindEditDocStatus}">
+                              <f:selectItems value="#{bindings.ListDocumentStatusVO1.items}"
+                                             id="selectItems1"/>
+                            </af:selectOneChoice>
+                            <af:inputText label="Pages :" id="inputText8"
+                                          converter="javax.faces.Integer"
+                                          binding="#{pageFlowScope.InternalTransmittalBean.bindEditPages}"/>
+                            <af:inputText label="Remarks :" id="inputText9"
+                                          binding="#{pageFlowScope.InternalTransmittalBean.bindEditRemarks}"
+                                          columns="20" rows="5"/>
+                            <af:inputText label="Revisions :" id="inputText10"
+                                          required="true"
+                                          binding="#{pageFlowScope.InternalTransmittalBean.bindEditRevisions}"/>
+                            <af:selectOneChoice value="#{bindings.ListSentHardcopyVO1.inputValue}"
+                                                label="Distributed Method :"
+                                                required="#{bindings.ListSentHardcopyVO1.hints.mandatory}"
+                                                shortDesc="#{bindings.ListSentHardcopyVO1.hints.tooltip}"
+                                                id="selectOneChoice2"
+                                                binding="#{pageFlowScope.InternalTransmittalBean.bindEditDistributionMethod}">
+                              <f:selectItems value="#{bindings.ListSentHardcopyVO1.items}"
+                                             id="selectItems2"/>
+                            </af:selectOneChoice>
+                          </af:panelFormLayout>
+                        </af:panelGroupLayout>
+                      </f:facet>
+                      <f:facet name="top">
+                        <af:panelGroupLayout id="panelGroupLayout3"
+                                             layout="vertical" halign="center"
+                                             valign="middle">
+                          <af:outputLabel value="Edit file" id="outputLabel3"
+                                          styleClass="AFHeaderLevelOne"/>
+                        </af:panelGroupLayout>
+                      </f:facet>
+                    </af:decorativeBox>
+                  </af:dialog>
+                </af:popup>
+              </af:panelGroupLayout>
+            </af:column>
+          </af:table>
+          <af:popup id="p2"
+                    binding="#{pageFlowScope.InternalTransmittalBean.binderPopUpElectronic}"
+                    contentDelivery="lazyUncached">
+            <af:dialog id="d2" closeIconVisible="false"
+                       styleClass="AFStretchWidth"
+                       dialogListener="#{pageFlowScope.InternalTransmittalBean.ElectronicDialogLsnr}">
+              <af:decorativeBox id="db1">
+                <f:facet name="center">
+                  <af:panelGroupLayout id="pgl5" layout="scroll">
+                    <af:panelFormLayout id="pfl2" styleClass="AFStretchWidth">
+                      <af:inputFile label="File :" id="if1"
+                                    valueChangeListener="#{pageFlowScope.InternalTransmittalBean.onChangeElectronicFile}"
+                                    autoSubmit="true" required="true"
+                                    binding="#{pageFlowScope.InternalTransmittalBean.bindUploadedFile}"/>
+                      <af:inputText label="Name :" id="it3"
+                                    binding="#{pageFlowScope.InternalTransmittalBean.bindElectronicName}"
+                                    required="true"/>
+                      <af:inputText label="Type :" id="it4" value="Transmittal"
+                                    readOnly="true"
+                                    binding="#{pageFlowScope.InternalTransmittalBean.bindDocType}"/>
+                      <af:inputText label="Document Number :" id="it5"
+                                    required="true"
+                                    binding="#{pageFlowScope.InternalTransmittalBean.bindDocNumber}"/>
+                      <af:inputText label="Document Title :" id="it6"
+                                    required="true"
+                                    binding="#{pageFlowScope.InternalTransmittalBean.binDocTitle}"/>
+                      <af:selectOneChoice value="#{bindings.ListDocumentStatusVO1.inputValue}"
+                                          label="Document Status :"
+                                          required="#{bindings.ListDocumentStatusVO1.hints.mandatory}"
+                                          shortDesc="#{bindings.ListDocumentStatusVO1.hints.tooltip}"
+                                          id="soc4"
+                                          binding="#{pageFlowScope.InternalTransmittalBean.bindDocStatus}">
+                        <f:selectItems value="#{bindings.ListDocumentStatusVO1.items}"
+                                       id="si6"/>
+                      </af:selectOneChoice>
+                      <af:inputText label="Pages :" id="it7"
+                                    converter="javax.faces.Integer"
+                                    required="true"
+                                    binding="#{pageFlowScope.InternalTransmittalBean.bindPages}"
+                                    value="1"/>
+                      <af:inputText label="Remarks :" id="it8"
+                                    binding="#{pageFlowScope.InternalTransmittalBean.bindRemarks}"
+                                    rows="5" columns="20"/>
+                      <af:inputText label="Revisions :" id="it9" required="true"
+                                    binding="#{pageFlowScope.InternalTransmittalBean.bindRevisions}"/>
+                    </af:panelFormLayout>
+                  </af:panelGroupLayout>
+                </f:facet>
+                <f:facet name="top">
+                  <af:panelGroupLayout id="pgl4" layout="vertical"
+                                       halign="center" valign="middle">
+                    <af:outputLabel value="Add Electronic Form" id="ol1"
+                                    styleClass="AFHeaderLevelOne"/>
+                  </af:panelGroupLayout>
+                </f:facet>
+              </af:decorativeBox>
+            </af:dialog>
+          </af:popup>
+          <af:popup id="p3"
+                    binding="#{pageFlowScope.InternalTransmittalBean.bindPopUpHardcopy}"
+                    contentDelivery="lazyUncached">
+            <af:dialog id="d3"
+                       dialogListener="#{pageFlowScope.InternalTransmittalBean.PhysicalDialogLsnr}">
+              <af:decorativeBox id="db3" inlineStyle="height:300px;">
+                <f:facet name="center">
+                  <af:panelFormLayout id="pfl3">
+                    <af:inputText label="Document Number :" id="it10"
+                                  binding="#{pageFlowScope.InternalTransmittalBean.bindHardcopyDocNumber}"
+                                  required="true" showRequired="true"/>
+                    <af:inputText label="Document Title :" id="it11"
+                                  binding="#{pageFlowScope.InternalTransmittalBean.bindHardcopyDocTitle}"
+                                  showRequired="true" required="true"/>
+                    <af:inputText label="Revision :" id="it12"
+                                  binding="#{pageFlowScope.InternalTransmittalBean.bindHardcopyRevision}"
+                                  required="true" showRequired="true"/>
+                    <af:selectOneChoice value="#{bindings.ListDocumentStatusVO1.inputValue}"
+                                        label="Document Status :"
+                                        required="#{bindings.ListDocumentStatusVO1.hints.mandatory}"
+                                        shortDesc="#{bindings.ListDocumentStatusVO1.hints.tooltip}"
+                                        id="soc5"
+                                        binding="#{pageFlowScope.InternalTransmittalBean.bindHardcopyDocStatus}"
+                                        showRequired="true">
+                      <f:selectItems value="#{bindings.ListDocumentStatusVO1.items}"
+                                     id="si7"/>
+                    </af:selectOneChoice>
+                    <af:inputText label="Pages :" id="it13"
+                                  converter="javax.faces.Integer"
+                                  binding="#{pageFlowScope.InternalTransmittalBean.bindHardcopyPages}"
+                                  value="1"/>
+                    <af:inputText label="Remarks :" id="it14"
+                                  binding="#{pageFlowScope.InternalTransmittalBean.bindHardcopyRemarks}"
+                                  columns="20" rows="5"/>
+                    <af:selectOneChoice value="#{bindings.ListSentHardcopyVO1.inputValue}"
+                                        label="Distributed Method :"
+                                        required="#{bindings.ListSentHardcopyVO1.hints.mandatory}"
+                                        shortDesc="#{bindings.ListSentHardcopyVO1.hints.tooltip}"
+                                        id="soc3"
+                                        binding="#{pageFlowScope.InternalTransmittalBean.bindHardcopyDistributionMethod}">
+                      <f:selectItems value="#{bindings.ListSentHardcopyVO1.items}"
+                                     id="si10"/>
+                    </af:selectOneChoice>
+                  </af:panelFormLayout>
+                </f:facet>
+                <f:facet name="top">
+                  <af:panelGroupLayout id="panelGroupLayout2" layout="vertical"
+                                       halign="center" valign="middle">
+                    <af:outputLabel value="Add Hardcopy Form" id="outputLabel2"
+                                    styleClass="AFHeaderLevelOne"/>
+                  </af:panelGroupLayout>
+                </f:facet>
+              </af:decorativeBox>
+            </af:dialog>
+          </af:popup>
+        </af:panelGroupLayout>
+      </af:showDetailItem>
+      <af:showDetailItem text="Distribution / Circulation Team" id="sdi3">
+        <af:panelGroupLayout id="pgl2" layout="vertical">
+          <af:selectOneRadio value="#{bindings.ViewInternalRoleVO1.inputValue}"
+                             label="Role :"
+                             required="#{bindings.ViewInternalRoleVO1.hints.mandatory}"
+                             shortDesc="#{bindings.ViewInternalRoleVO1.hints.tooltip}"
+                             id="sor1" layout="horizontal"
+                             binding="#{pageFlowScope.InternalTransmittalBean.bindSelectInternalRole}"
+                             visible="#{pageFlowScope.InternalTransmittalBean.bindOutputProjectTitle.value != 'Publish'}">
+            <f:selectItems value="#{bindings.ViewInternalRoleVO1.items}"
+                           id="si1"/>
+          </af:selectOneRadio>
+          <af:spacer width="10" height="10" id="s4"/>
+          <af:panelGroupLayout id="pgl11" layout="horizontal" valign="middle">
+            <af:inputText label="User :" id="it2"
+                          binding="#{pageFlowScope.InternalTransmittalBean.bindSelectedInternalUser}">
+              <af:autoSuggestBehavior maxSuggestedItems="10"
+                                      suggestedItems="#{pageFlowScope.InternalTransmittalBean.AutoSuggestItems}"/>
+            </af:inputText>
+            <af:button text="Browse" id="cb6" partialSubmit="true"
+                       actionListener="#{pageFlowScope.InternalTransmittalBean.showInternalUserList}">
+              <!--<af:showPopupBehavior popupId="popupInternalUser"
+                                    triggerType="click"/>-->
+            </af:button>
+          </af:panelGroupLayout>
+          <af:spacer width="10" height="10" id="s2"/>
+          <af:button text="Add To List" id="cb1"
+                            actionListener="#{pageFlowScope.InternalTransmittalBean.AddToList}"/>
+          <af:spacer width="10" height="10" id="s5"/>
+          <af:table var="row" rowBandingInterval="0" id="t3"
+                    rowSelection="single"
+                    value="#{pageFlowScope.InternalTransmittalBean.dataUser}"
+                    binding="#{pageFlowScope.InternalTransmittalBean.tableUser}"
+                    varStatus="rowStatus" styleClass="AFStretchWidth"
+                    columnStretching="column:c11">
+            <af:column sortable="false" headerText="User name" id="c10"
+                       width="200" align="center">
+              <af:outputText value="#{row.username}" id="ot10"/>
+            </af:column>
+            <af:column sortable="false" headerText="Role" id="c9" align="center"
+                       width="150">
+              <af:outputText value="#{row.contactRole}" id="ot12"/>
+            </af:column>
+            <af:column sortable="false" headerText="Email" id="c11"
+                       align="center" width="250">
+              <af:outputText value="#{row.contactEmail}" id="ot9"/>
+            </af:column>
+            <af:column sortable="false" headerText="Action" id="c13"
+                       align="center">
+              <af:commandLink text="delete" id="cl3"
+                              actionListener="#{pageFlowScope.InternalTransmittalBean.DeleteUser}">
+                <f:attribute name="delIndex" value="#{rowStatus.index}"/>
+              </af:commandLink>
+            </af:column>
+          </af:table>
+        </af:panelGroupLayout>
+        <af:popup id="popupInternalUser"
+                  binding="#{pageFlowScope.InternalTransmittalBean.bindPopupInternalUser}">
+          <af:dialog id="d5" inlineStyle="width:500pt;"
+                     dialogListener="#{pageFlowScope.InternalTransmittalBean.DialogLsnrSelectInternalUser}">
+            <af:panelGroupLayout id="pgl12" layout="vertical">
+              <af:panelGroupLayout id="pgl13" layout="horizontal">
+                <af:inputText label="Name" id="it15"
+                              binding="#{pageFlowScope.InternalTransmittalBean.bindSearchNameInternalUser}"/>
+                <af:button text="Search" id="cb7"
+                                  binding="#{pageFlowScope.InternalTransmittalBean.btnSearchInternalUser}"
+                                  partialSubmit="true"
+                                  actionListener="#{pageFlowScope.InternalTransmittalBean.BtnSearchInternalUser}"/>
+              </af:panelGroupLayout>
+              <af:spacer width="10" height="10" id="s3"/>
+              <af:table value="#{bindings.UsersInternalVO1.collectionModel}"
+                        var="row" rows="#{bindings.UsersInternalVO1.rangeSize}"
+                        emptyText="#{bindings.UsersInternalVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                        fetchSize="#{bindings.UsersInternalVO1.rangeSize}"
+                        rowBandingInterval="0"
+                        selectedRowKeys="#{bindings.UsersInternalVO1.collectionModel.selectedRow}"
+                        rowSelection="single" id="t5"
+                        styleClass="AFStretchWidth"
+                        columnStretching="column:c15"
+                        binding="#{pageFlowScope.InternalTransmittalBean.bindTableInternalUser}"
+                        selectionListener="#{bindings.UsersInternalVO1.collectionModel.makeCurrent}">
+                <af:column sortProperty="#{bindings.UsersInternalVO1.hints.Username.name}" sortable="false"
+                           headerText="#{bindings.UsersInternalVO1.hints.Username.label}" id="c18" visible="false">
+                  <af:outputText value="#{row.Username}" id="ot16"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.UsersInternalVO1.hints.Fullname.name}" sortable="false"
+                           headerText="User" id="c15">
+                  <af:outputText value="#{row.Fullname}" id="ot14"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.UsersInternalVO1.hints.Email.name}" sortable="false"
+                           headerText="Email" id="c17" width="230">
+                  <af:outputText value="#{row.Email}" id="ot15"/>
+                </af:column>
+              </af:table>
+            </af:panelGroupLayout>
+          </af:dialog>
+        </af:popup>
+        <af:popup id="p5"
+                  binding="#{pageFlowScope.InternalTransmittalBean.bindPopUpRecipient}">
+          <af:dialog id="d6" type="ok" title="Alert">
+            <af:outputText value="You have selected Recipient : #{pageFlowScope.userRecipient}" id="ot2"/>
+          </af:dialog>
+        </af:popup>
+        <af:popup id="p6"
+                  binding="#{pageFlowScope.InternalTransmittalBean.bindPopUpEnter}">
+          <af:dialog id="d7" type="ok" title="Alert">
+            <af:outputText value="Please click Search Button to search recipient" id="ot20"/>
+          </af:dialog>
+        </af:popup>
+      </af:showDetailItem>
+    </af:panelTabbed>
+    <af:menuBar id="mb1">
+      <?audit suppress oracle.jdeveloper.jsp.validate-children?>
+      <af:button text="Submit" id="cb2"
+                        actionListener="#{pageFlowScope.InternalTransmittalBean.ActionCreateTransmittal}"/>
+      <af:spacer width="10" height="10" id="s9"/>
+      <af:button text="Cancel" id="cb3"
+                        actionListener="#{pageFlowScope.InternalTransmittalBean.CancelTransmittal}"
+                        immediate="true">
+        <af:clientListener type="click" method="closeWindow"/>
+      </af:button>
+    </af:menuBar>
+    <af:popup id="popUpSuccessCreate" contentDelivery="lazyUncached"
+              binding="#{pageFlowScope.InternalTransmittalBean.bindPopUpSuccess}">
+      <af:dialog id="dialog2" inlineStyle="width:400px;" type="none"
+                 closeIconVisible="false">
+        <af:panelGroupLayout id="pgl17" styleClass="AFStretchWidth"
+                             layout="vertical">
+          <af:outputFormatted value="This Transmittal has been created and sent to recipients."
+                              id="of7" styleUsage="instruction"
+                              inlineStyle="font-family:Arial, Helvetica, sans-serif; font-size:small;"/>
+          <af:spacer width="10" height="10" id="spacer3"/>
+          <!--Updated by Nanda 190116 - open DSWF page new tab and close again -->
+          <af:button text="OK" id="button1"
+                            actionListener="#{pageFlowScope.InternalTransmittalBean.GoToHome}"/>
+                            
+         <!-- <af:button text="OK" id="button1">
+          <af:clientListener type="click" method="closeWindow"/>
+          </af:button>-->
+        </af:panelGroupLayout>
+      </af:dialog>
+    </af:popup>
+  </af:panelGroupLayout>
+</jsp:root>

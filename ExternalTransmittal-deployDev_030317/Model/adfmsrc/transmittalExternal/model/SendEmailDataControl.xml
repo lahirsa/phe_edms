@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.61.92"
+          id="SendEmailDataControl" Package="transmittalExternal.model"
+          BeanClass="transmittalExternal.model.SendEmailDataControl"
+          isJavaBased="false">
+  <MethodAccessor IsCollection="false" Type="java.lang.String" id="SendEmailTo"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="EmailTo" Type="java.lang.String" isStructured="false"/>
+    <ParameterInfo id="EmailCc" Type="java.lang.String" isStructured="false"/>
+    <ParameterInfo id="Subject" Type="java.lang.String" isStructured="false"/>
+    <ParameterInfo id="HtmlText" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="java.lang.String" id="SendEmail"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="EmailTo" Type="java.lang.String" isStructured="false"/>
+    <ParameterInfo id="Subject" Type="java.lang.String" isStructured="false"/>
+    <ParameterInfo id="HtmlText" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+</JavaBean>

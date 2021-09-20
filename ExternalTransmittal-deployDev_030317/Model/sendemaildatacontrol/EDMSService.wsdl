@@ -1,0 +1,757 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<definitions xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:tns="http://transmittalExternal/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://transmittalExternal/" name="EDMSService">
+  <types>
+    <xsd:schema>
+      <xsd:import namespace="http://transmittalExternal/" schemaLocation="EDMSServiceSoap12HttpPort1.xsd"/>
+    </xsd:schema>
+  </types>
+  <message name="GetOrganizationsByUsernameAndOrganizationID">
+    <part name="parameters" element="tns:GetOrganizationsByUsernameAndOrganizationID"/>
+  </message>
+  <message name="GetOrganizationsByUsernameAndOrganizationIDResponse">
+    <part name="parameters" element="tns:GetOrganizationsByUsernameAndOrganizationIDResponse"/>
+  </message>
+  <message name="ReminderInternalTransmittalDueDate">
+    <part name="parameters" element="tns:ReminderInternalTransmittalDueDate"/>
+  </message>
+  <message name="ReminderInternalTransmittalDueDateResponse">
+    <part name="parameters" element="tns:ReminderInternalTransmittalDueDateResponse"/>
+  </message>
+  <message name="ReminderExternalTransmittalDueDate">
+    <part name="parameters" element="tns:ReminderExternalTransmittalDueDate"/>
+  </message>
+  <message name="ReminderExternalTransmittalDueDateResponse">
+    <part name="parameters" element="tns:ReminderExternalTransmittalDueDateResponse"/>
+  </message>
+  <message name="ReminderPublishInternalTransmittalDueDate">
+    <part name="parameters" element="tns:ReminderPublishInternalTransmittalDueDate"/>
+  </message>
+  <message name="ReminderPublishInternalTransmittalDueDateResponse">
+    <part name="parameters" element="tns:ReminderPublishInternalTransmittalDueDateResponse"/>
+  </message>
+  <message name="ReminderPublishExternalTransmittalDueDate">
+    <part name="parameters" element="tns:ReminderPublishExternalTransmittalDueDate"/>
+  </message>
+  <message name="ReminderPublishExternalTransmittalDueDateResponse">
+    <part name="parameters" element="tns:ReminderPublishExternalTransmittalDueDateResponse"/>
+  </message>
+  <message name="GetOrganizationsByUsernameAndOrgName">
+    <part name="parameters" element="tns:GetOrganizationsByUsernameAndOrgName"/>
+  </message>
+  <message name="GetOrganizationsByUsernameAndOrgNameResponse">
+    <part name="parameters" element="tns:GetOrganizationsByUsernameAndOrgNameResponse"/>
+  </message>
+  <message name="GetProjectsByUsernameAndProjectID">
+    <part name="parameters" element="tns:GetProjectsByUsernameAndProjectID"/>
+  </message>
+  <message name="GetProjectsByUsernameAndProjectIDResponse">
+    <part name="parameters" element="tns:GetProjectsByUsernameAndProjectIDResponse"/>
+  </message>
+  <message name="FolderBrowseFolder">
+    <part name="parameters" element="tns:FolderBrowseFolder"/>
+  </message>
+  <message name="FolderBrowseFolderResponse">
+    <part name="parameters" element="tns:FolderBrowseFolderResponse"/>
+  </message>
+  <message name="SendEmailBusinessContact">
+    <part name="parameters" element="tns:SendEmailBusinessContact"/>
+  </message>
+  <message name="SendEmailBusinessContactResponse">
+    <part name="parameters" element="tns:SendEmailBusinessContactResponse"/>
+  </message>
+  <message name="ConnectEDMSService">
+    <part name="parameters" element="tns:ConnectEDMSService"/>
+  </message>
+  <message name="ConnectEDMSServiceResponse">
+    <part name="parameters" element="tns:ConnectEDMSServiceResponse"/>
+  </message>
+  <message name="GetPublishByUsername">
+    <part name="parameters" element="tns:GetPublishByUsername"/>
+  </message>
+  <message name="GetPublishByUsernameResponse">
+    <part name="parameters" element="tns:GetPublishByUsernameResponse"/>
+  </message>
+  <message name="GetPublishCreator">
+    <part name="parameters" element="tns:GetPublishCreator"/>
+  </message>
+  <message name="GetPublishCreatorResponse">
+    <part name="parameters" element="tns:GetPublishCreatorResponse"/>
+  </message>
+  <message name="GetProjectsByUsername">
+    <part name="parameters" element="tns:GetProjectsByUsername"/>
+  </message>
+  <message name="GetProjectsByUsernameResponse">
+    <part name="parameters" element="tns:GetProjectsByUsernameResponse"/>
+  </message>
+  <message name="GetOrganizationsByUsername">
+    <part name="parameters" element="tns:GetOrganizationsByUsername"/>
+  </message>
+  <message name="GetOrganizationsByUsernameResponse">
+    <part name="parameters" element="tns:GetOrganizationsByUsernameResponse"/>
+  </message>
+  <message name="GetTransmittalStatus">
+    <part name="parameters" element="tns:GetTransmittalStatus"/>
+  </message>
+  <message name="GetTransmittalStatusResponse">
+    <part name="parameters" element="tns:GetTransmittalStatusResponse"/>
+  </message>
+  <message name="GetTransmittalCreator">
+    <part name="parameters" element="tns:GetTransmittalCreator"/>
+  </message>
+  <message name="GetTransmittalCreatorResponse">
+    <part name="parameters" element="tns:GetTransmittalCreatorResponse"/>
+  </message>
+  <message name="GetOrganizationCreator">
+    <part name="parameters" element="tns:GetOrganizationCreator"/>
+  </message>
+  <message name="GetOrganizationCreatorResponse">
+    <part name="parameters" element="tns:GetOrganizationCreatorResponse"/>
+  </message>
+  <message name="GetSubmittalDocGUID">
+    <part name="parameters" element="tns:GetSubmittalDocGUID"/>
+  </message>
+  <message name="GetSubmittalDocGUIDResponse">
+    <part name="parameters" element="tns:GetSubmittalDocGUIDResponse"/>
+  </message>
+  <message name="Insert_DSWF_PROCESS">
+    <part name="parameters" element="tns:Insert_DSWF_PROCESS"/>
+  </message>
+  <message name="Insert_DSWF_PROCESSResponse">
+    <part name="parameters" element="tns:Insert_DSWF_PROCESSResponse"/>
+  </message>
+  <message name="UpdateDocxRobjId">
+    <part name="parameters" element="tns:UpdateDocxRobjId"/>
+  </message>
+  <message name="UpdateDocxRobjIdResponse">
+    <part name="parameters" element="tns:UpdateDocxRobjIdResponse"/>
+  </message>
+  <message name="FolderBrowseFile">
+    <part name="parameters" element="tns:FolderBrowseFile"/>
+  </message>
+  <message name="FolderBrowseFileResponse">
+    <part name="parameters" element="tns:FolderBrowseFileResponse"/>
+  </message>
+  <message name="SendingEmail">
+    <part name="parameters" element="tns:SendingEmail"/>
+  </message>
+  <message name="SendingEmailResponse">
+    <part name="parameters" element="tns:SendingEmailResponse"/>
+  </message>
+  <message name="SendEmail">
+    <part name="parameters" element="tns:SendEmail"/>
+  </message>
+  <message name="SendEmailResponse">
+    <part name="parameters" element="tns:SendEmailResponse"/>
+  </message>
+  <message name="UpdateEndDate">
+    <part name="parameters" element="tns:UpdateEndDate"/>
+  </message>
+  <message name="UpdateEndDateResponse">
+    <part name="parameters" element="tns:UpdateEndDateResponse"/>
+  </message>
+  <message name="IsAuthenticated">
+    <part name="parameters" element="tns:IsAuthenticated"/>
+  </message>
+  <message name="IsAuthenticatedResponse">
+    <part name="parameters" element="tns:IsAuthenticatedResponse"/>
+  </message>
+  <message name="GetCreator">
+    <part name="parameters" element="tns:GetCreator"/>
+  </message>
+  <message name="GetCreatorResponse">
+    <part name="parameters" element="tns:GetCreatorResponse"/>
+  </message>
+  <message name="Insert_DSWF_DOC">
+    <part name="parameters" element="tns:Insert_DSWF_DOC"/>
+  </message>
+  <message name="Insert_DSWF_DOCResponse">
+    <part name="parameters" element="tns:Insert_DSWF_DOCResponse"/>
+  </message>
+  <message name="Insert_DSWF_Log">
+    <part name="parameters" element="tns:Insert_DSWF_Log"/>
+  </message>
+  <message name="Insert_DSWF_LogResponse">
+    <part name="parameters" element="tns:Insert_DSWF_LogResponse"/>
+  </message>
+  <message name="GetContentGUID">
+    <part name="parameters" element="tns:GetContentGUID"/>
+  </message>
+  <message name="GetContentGUIDResponse">
+    <part name="parameters" element="tns:GetContentGUIDResponse"/>
+  </message>
+  <message name="GetDDocName">
+    <part name="parameters" element="tns:GetDDocName"/>
+  </message>
+  <message name="GetDDocNameResponse">
+    <part name="parameters" element="tns:GetDDocNameResponse"/>
+  </message>
+  <message name="isUsernameExists">
+    <part name="parameters" element="tns:isUsernameExists"/>
+  </message>
+  <message name="isUsernameExistsResponse">
+    <part name="parameters" element="tns:isUsernameExistsResponse"/>
+  </message>
+  <message name="SendEmailTo">
+    <part name="parameters" element="tns:SendEmailTo"/>
+  </message>
+  <message name="SendEmailToResponse">
+    <part name="parameters" element="tns:SendEmailToResponse"/>
+  </message>
+  <message name="GetUserEmail">
+    <part name="parameters" element="tns:GetUserEmail"/>
+  </message>
+  <message name="GetUserEmailResponse">
+    <part name="parameters" element="tns:GetUserEmailResponse"/>
+  </message>
+  <message name="GetConfigValue">
+    <part name="parameters" element="tns:GetConfigValue"/>
+  </message>
+  <message name="GetConfigValueResponse">
+    <part name="parameters" element="tns:GetConfigValueResponse"/>
+  </message>
+  <message name="SendEmailWithCC">
+    <part name="parameters" element="tns:SendEmailWithCC"/>
+  </message>
+  <message name="SendEmailWithCCResponse">
+    <part name="parameters" element="tns:SendEmailWithCCResponse"/>
+  </message>
+  <message name="GetPassword">
+    <part name="parameters" element="tns:GetPassword"/>
+  </message>
+  <message name="GetPasswordResponse">
+    <part name="parameters" element="tns:GetPasswordResponse"/>
+  </message>
+  <portType name="EDMSService">
+    <operation name="GetOrganizationsByUsernameAndOrganizationID">
+      <input message="tns:GetOrganizationsByUsernameAndOrganizationID"
+             wsam:Action="http://transmittalExternal/EDMSService/GetOrganizationsByUsernameAndOrganizationIDRequest"/>
+      <output message="tns:GetOrganizationsByUsernameAndOrganizationIDResponse"
+              wsam:Action="http://transmittalExternal/EDMSService/GetOrganizationsByUsernameAndOrganizationIDResponse"/>
+    </operation>
+    <operation name="ReminderInternalTransmittalDueDate">
+      <input message="tns:ReminderInternalTransmittalDueDate"
+             wsam:Action="http://transmittalExternal/EDMSService/ReminderInternalTransmittalDueDateRequest"/>
+      <output message="tns:ReminderInternalTransmittalDueDateResponse"
+              wsam:Action="http://transmittalExternal/EDMSService/ReminderInternalTransmittalDueDateResponse"/>
+    </operation>
+    <operation name="ReminderExternalTransmittalDueDate">
+      <input message="tns:ReminderExternalTransmittalDueDate"
+             wsam:Action="http://transmittalExternal/EDMSService/ReminderExternalTransmittalDueDateRequest"/>
+      <output message="tns:ReminderExternalTransmittalDueDateResponse"
+              wsam:Action="http://transmittalExternal/EDMSService/ReminderExternalTransmittalDueDateResponse"/>
+    </operation>
+    <operation name="ReminderPublishInternalTransmittalDueDate">
+      <input message="tns:ReminderPublishInternalTransmittalDueDate"
+             wsam:Action="http://transmittalExternal/EDMSService/ReminderPublishInternalTransmittalDueDateRequest"/>
+      <output message="tns:ReminderPublishInternalTransmittalDueDateResponse"
+              wsam:Action="http://transmittalExternal/EDMSService/ReminderPublishInternalTransmittalDueDateResponse"/>
+    </operation>
+    <operation name="ReminderPublishExternalTransmittalDueDate">
+      <input message="tns:ReminderPublishExternalTransmittalDueDate"
+             wsam:Action="http://transmittalExternal/EDMSService/ReminderPublishExternalTransmittalDueDateRequest"/>
+      <output message="tns:ReminderPublishExternalTransmittalDueDateResponse"
+              wsam:Action="http://transmittalExternal/EDMSService/ReminderPublishExternalTransmittalDueDateResponse"/>
+    </operation>
+    <operation name="GetOrganizationsByUsernameAndOrgName">
+      <input message="tns:GetOrganizationsByUsernameAndOrgName"
+             wsam:Action="http://transmittalExternal/EDMSService/GetOrganizationsByUsernameAndOrgNameRequest"/>
+      <output message="tns:GetOrganizationsByUsernameAndOrgNameResponse"
+              wsam:Action="http://transmittalExternal/EDMSService/GetOrganizationsByUsernameAndOrgNameResponse"/>
+    </operation>
+    <operation name="GetProjectsByUsernameAndProjectID">
+      <input message="tns:GetProjectsByUsernameAndProjectID"
+             wsam:Action="http://transmittalExternal/EDMSService/GetProjectsByUsernameAndProjectIDRequest"/>
+      <output message="tns:GetProjectsByUsernameAndProjectIDResponse"
+              wsam:Action="http://transmittalExternal/EDMSService/GetProjectsByUsernameAndProjectIDResponse"/>
+    </operation>
+    <operation name="FolderBrowseFolder">
+      <input message="tns:FolderBrowseFolder"
+             wsam:Action="http://transmittalExternal/EDMSService/FolderBrowseFolderRequest"/>
+      <output message="tns:FolderBrowseFolderResponse"
+              wsam:Action="http://transmittalExternal/EDMSService/FolderBrowseFolderResponse"/>
+    </operation>
+    <operation name="SendEmailBusinessContact">
+      <input message="tns:SendEmailBusinessContact"
+             wsam:Action="http://transmittalExternal/EDMSService/SendEmailBusinessContactRequest"/>
+      <output message="tns:SendEmailBusinessContactResponse"
+              wsam:Action="http://transmittalExternal/EDMSService/SendEmailBusinessContactResponse"/>
+    </operation>
+    <operation name="ConnectEDMSService">
+      <input message="tns:ConnectEDMSService"
+             wsam:Action="http://transmittalExternal/EDMSService/ConnectEDMSServiceRequest"/>
+      <output message="tns:ConnectEDMSServiceResponse"
+              wsam:Action="http://transmittalExternal/EDMSService/ConnectEDMSServiceResponse"/>
+    </operation>
+    <operation name="GetPublishByUsername">
+      <input message="tns:GetPublishByUsername"
+             wsam:Action="http://transmittalExternal/EDMSService/GetPublishByUsernameRequest"/>
+      <output message="tns:GetPublishByUsernameResponse"
+              wsam:Action="http://transmittalExternal/EDMSService/GetPublishByUsernameResponse"/>
+    </operation>
+    <operation name="GetPublishCreator">
+      <input message="tns:GetPublishCreator"
+             wsam:Action="http://transmittalExternal/EDMSService/GetPublishCreatorRequest"/>
+      <output message="tns:GetPublishCreatorResponse"
+              wsam:Action="http://transmittalExternal/EDMSService/GetPublishCreatorResponse"/>
+    </operation>
+    <operation name="GetProjectsByUsername">
+      <input message="tns:GetProjectsByUsername"
+             wsam:Action="http://transmittalExternal/EDMSService/GetProjectsByUsernameRequest"/>
+      <output message="tns:GetProjectsByUsernameResponse"
+              wsam:Action="http://transmittalExternal/EDMSService/GetProjectsByUsernameResponse"/>
+    </operation>
+    <operation name="GetOrganizationsByUsername">
+      <input message="tns:GetOrganizationsByUsername"
+             wsam:Action="http://transmittalExternal/EDMSService/GetOrganizationsByUsernameRequest"/>
+      <output message="tns:GetOrganizationsByUsernameResponse"
+              wsam:Action="http://transmittalExternal/EDMSService/GetOrganizationsByUsernameResponse"/>
+    </operation>
+    <operation name="GetTransmittalStatus">
+      <input message="tns:GetTransmittalStatus"
+             wsam:Action="http://transmittalExternal/EDMSService/GetTransmittalStatusRequest"/>
+      <output message="tns:GetTransmittalStatusResponse"
+              wsam:Action="http://transmittalExternal/EDMSService/GetTransmittalStatusResponse"/>
+    </operation>
+    <operation name="GetTransmittalCreator">
+      <input message="tns:GetTransmittalCreator"
+             wsam:Action="http://transmittalExternal/EDMSService/GetTransmittalCreatorRequest"/>
+      <output message="tns:GetTransmittalCreatorResponse"
+              wsam:Action="http://transmittalExternal/EDMSService/GetTransmittalCreatorResponse"/>
+    </operation>
+    <operation name="GetOrganizationCreator">
+      <input message="tns:GetOrganizationCreator"
+             wsam:Action="http://transmittalExternal/EDMSService/GetOrganizationCreatorRequest"/>
+      <output message="tns:GetOrganizationCreatorResponse"
+              wsam:Action="http://transmittalExternal/EDMSService/GetOrganizationCreatorResponse"/>
+    </operation>
+    <operation name="GetSubmittalDocGUID">
+      <input message="tns:GetSubmittalDocGUID"
+             wsam:Action="http://transmittalExternal/EDMSService/GetSubmittalDocGUIDRequest"/>
+      <output message="tns:GetSubmittalDocGUIDResponse"
+              wsam:Action="http://transmittalExternal/EDMSService/GetSubmittalDocGUIDResponse"/>
+    </operation>
+    <operation name="Insert_DSWF_PROCESS">
+      <input message="tns:Insert_DSWF_PROCESS"
+             wsam:Action="http://transmittalExternal/EDMSService/Insert_DSWF_PROCESSRequest"/>
+      <output message="tns:Insert_DSWF_PROCESSResponse"
+              wsam:Action="http://transmittalExternal/EDMSService/Insert_DSWF_PROCESSResponse"/>
+    </operation>
+    <operation name="UpdateDocxRobjId">
+      <input message="tns:UpdateDocxRobjId"
+             wsam:Action="http://transmittalExternal/EDMSService/UpdateDocxRobjIdRequest"/>
+      <output message="tns:UpdateDocxRobjIdResponse"
+              wsam:Action="http://transmittalExternal/EDMSService/UpdateDocxRobjIdResponse"/>
+    </operation>
+    <operation name="FolderBrowseFile">
+      <input message="tns:FolderBrowseFile"
+             wsam:Action="http://transmittalExternal/EDMSService/FolderBrowseFileRequest"/>
+      <output message="tns:FolderBrowseFileResponse"
+              wsam:Action="http://transmittalExternal/EDMSService/FolderBrowseFileResponse"/>
+    </operation>
+    <operation name="SendingEmail">
+      <input message="tns:SendingEmail" wsam:Action="http://transmittalExternal/EDMSService/SendingEmailRequest"/>
+      <output message="tns:SendingEmailResponse"
+              wsam:Action="http://transmittalExternal/EDMSService/SendingEmailResponse"/>
+    </operation>
+    <operation name="SendEmail">
+      <input message="tns:SendEmail" wsam:Action="http://transmittalExternal/EDMSService/SendEmailRequest"/>
+      <output message="tns:SendEmailResponse" wsam:Action="http://transmittalExternal/EDMSService/SendEmailResponse"/>
+    </operation>
+    <operation name="UpdateEndDate">
+      <input message="tns:UpdateEndDate" wsam:Action="http://transmittalExternal/EDMSService/UpdateEndDateRequest"/>
+      <output message="tns:UpdateEndDateResponse"
+              wsam:Action="http://transmittalExternal/EDMSService/UpdateEndDateResponse"/>
+    </operation>
+    <operation name="IsAuthenticated">
+      <input message="tns:IsAuthenticated" wsam:Action="http://transmittalExternal/EDMSService/IsAuthenticatedRequest"/>
+      <output message="tns:IsAuthenticatedResponse"
+              wsam:Action="http://transmittalExternal/EDMSService/IsAuthenticatedResponse"/>
+    </operation>
+    <operation name="GetCreator">
+      <input message="tns:GetCreator" wsam:Action="http://transmittalExternal/EDMSService/GetCreatorRequest"/>
+      <output message="tns:GetCreatorResponse" wsam:Action="http://transmittalExternal/EDMSService/GetCreatorResponse"/>
+    </operation>
+    <operation name="Insert_DSWF_DOC">
+      <input message="tns:Insert_DSWF_DOC" wsam:Action="http://transmittalExternal/EDMSService/Insert_DSWF_DOCRequest"/>
+      <output message="tns:Insert_DSWF_DOCResponse"
+              wsam:Action="http://transmittalExternal/EDMSService/Insert_DSWF_DOCResponse"/>
+    </operation>
+    <operation name="Insert_DSWF_Log">
+      <input message="tns:Insert_DSWF_Log" wsam:Action="http://transmittalExternal/EDMSService/Insert_DSWF_LogRequest"/>
+      <output message="tns:Insert_DSWF_LogResponse"
+              wsam:Action="http://transmittalExternal/EDMSService/Insert_DSWF_LogResponse"/>
+    </operation>
+    <operation name="GetContentGUID">
+      <input message="tns:GetContentGUID" wsam:Action="http://transmittalExternal/EDMSService/GetContentGUIDRequest"/>
+      <output message="tns:GetContentGUIDResponse"
+              wsam:Action="http://transmittalExternal/EDMSService/GetContentGUIDResponse"/>
+    </operation>
+    <operation name="GetDDocName">
+      <input message="tns:GetDDocName" wsam:Action="http://transmittalExternal/EDMSService/GetDDocNameRequest"/>
+      <output message="tns:GetDDocNameResponse"
+              wsam:Action="http://transmittalExternal/EDMSService/GetDDocNameResponse"/>
+    </operation>
+    <operation name="isUsernameExists">
+      <input message="tns:isUsernameExists"
+             wsam:Action="http://transmittalExternal/EDMSService/isUsernameExistsRequest"/>
+      <output message="tns:isUsernameExistsResponse"
+              wsam:Action="http://transmittalExternal/EDMSService/isUsernameExistsResponse"/>
+    </operation>
+    <operation name="SendEmailTo">
+      <input message="tns:SendEmailTo" wsam:Action="http://transmittalExternal/EDMSService/SendEmailToRequest"/>
+      <output message="tns:SendEmailToResponse"
+              wsam:Action="http://transmittalExternal/EDMSService/SendEmailToResponse"/>
+    </operation>
+    <operation name="GetUserEmail">
+      <input message="tns:GetUserEmail" wsam:Action="http://transmittalExternal/EDMSService/GetUserEmailRequest"/>
+      <output message="tns:GetUserEmailResponse"
+              wsam:Action="http://transmittalExternal/EDMSService/GetUserEmailResponse"/>
+    </operation>
+    <operation name="GetConfigValue">
+      <input message="tns:GetConfigValue" wsam:Action="http://transmittalExternal/EDMSService/GetConfigValueRequest"/>
+      <output message="tns:GetConfigValueResponse"
+              wsam:Action="http://transmittalExternal/EDMSService/GetConfigValueResponse"/>
+    </operation>
+    <operation name="SendEmailWithCC">
+      <input message="tns:SendEmailWithCC" wsam:Action="http://transmittalExternal/EDMSService/SendEmailWithCCRequest"/>
+      <output message="tns:SendEmailWithCCResponse"
+              wsam:Action="http://transmittalExternal/EDMSService/SendEmailWithCCResponse"/>
+    </operation>
+    <operation name="GetPassword">
+      <input message="tns:GetPassword" wsam:Action="http://transmittalExternal/EDMSService/GetPasswordRequest"/>
+      <output message="tns:GetPasswordResponse"
+              wsam:Action="http://transmittalExternal/EDMSService/GetPasswordResponse"/>
+    </operation>
+  </portType>
+  <binding name="EDMSServiceSoap12HttpPortBinding" type="tns:EDMSService">
+    <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="GetOrganizationsByUsernameAndOrganizationID">
+      <soap12:operation soapAction="" soapActionRequired="false"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="ReminderInternalTransmittalDueDate">
+      <soap12:operation soapAction="" soapActionRequired="false"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="ReminderExternalTransmittalDueDate">
+      <soap12:operation soapAction="" soapActionRequired="false"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="ReminderPublishInternalTransmittalDueDate">
+      <soap12:operation soapAction="" soapActionRequired="false"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="ReminderPublishExternalTransmittalDueDate">
+      <soap12:operation soapAction="" soapActionRequired="false"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="GetOrganizationsByUsernameAndOrgName">
+      <soap12:operation soapAction="" soapActionRequired="false"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="GetProjectsByUsernameAndProjectID">
+      <soap12:operation soapAction="" soapActionRequired="false"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="FolderBrowseFolder">
+      <soap12:operation soapAction="" soapActionRequired="false"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="SendEmailBusinessContact">
+      <soap12:operation soapAction="" soapActionRequired="false"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="ConnectEDMSService">
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="GetPublishByUsername">
+      <soap12:operation soapAction="" soapActionRequired="false"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="GetPublishCreator">
+      <soap12:operation soapAction="" soapActionRequired="false"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="GetProjectsByUsername">
+      <soap12:operation soapAction="" soapActionRequired="false"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="GetOrganizationsByUsername">
+      <soap12:operation soapAction="" soapActionRequired="false"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="GetTransmittalStatus">
+      <soap12:operation soapAction="" soapActionRequired="false"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="GetTransmittalCreator">
+      <soap12:operation soapAction="" soapActionRequired="false"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="GetOrganizationCreator">
+      <soap12:operation soapAction="" soapActionRequired="false"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="GetSubmittalDocGUID">
+      <soap12:operation soapAction="" soapActionRequired="false"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="Insert_DSWF_PROCESS">
+      <soap12:operation soapAction="" soapActionRequired="false"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="UpdateDocxRobjId">
+      <soap12:operation soapAction="" soapActionRequired="false"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="FolderBrowseFile">
+      <soap12:operation soapAction="" soapActionRequired="false"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="SendingEmail">
+      <soap12:operation soapAction="" soapActionRequired="false"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="SendEmail">
+      <soap12:operation soapAction="" soapActionRequired="false"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="UpdateEndDate">
+      <soap12:operation soapAction="" soapActionRequired="false"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="IsAuthenticated">
+      <soap12:operation soapAction="" soapActionRequired="false"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="GetCreator">
+      <soap12:operation soapAction="" soapActionRequired="false"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="Insert_DSWF_DOC">
+      <soap12:operation soapAction="" soapActionRequired="false"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="Insert_DSWF_Log">
+      <soap12:operation soapAction="" soapActionRequired="false"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="GetContentGUID">
+      <soap12:operation soapAction="" soapActionRequired="false"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="GetDDocName">
+      <soap12:operation soapAction="" soapActionRequired="false"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="isUsernameExists">
+      <soap12:operation soapAction="" soapActionRequired="false"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="SendEmailTo">
+      <soap12:operation soapAction="" soapActionRequired="false"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="GetUserEmail">
+      <soap12:operation soapAction="" soapActionRequired="false"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="GetConfigValue">
+      <soap12:operation soapAction="" soapActionRequired="false"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="SendEmailWithCC">
+      <soap12:operation soapAction="" soapActionRequired="false"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="GetPassword">
+      <soap12:operation soapAction="" soapActionRequired="false"/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="EDMSService">
+    <port name="EDMSServiceSoap12HttpPort" binding="tns:EDMSServiceSoap12HttpPortBinding">
+      <soap12:address location="http://localhost:7101/ExternalTransmittal-Model-context-root/SendEmailDataControlService"/>
+    </port>
+  </service>
+</definitions>

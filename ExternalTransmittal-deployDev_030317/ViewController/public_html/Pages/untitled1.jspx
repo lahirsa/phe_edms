@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="d1">
+      <af:messages id="m1"/>
+      <af:form id="f1" usesUpload="true">
+        <!--af:panelFormLayout id="pfl1">
+          <af:inputText value="#{bindings.Id.inputValue}"
+                        label="#{bindings.Id.hints.label}"
+                        required="#{bindings.Id.hints.mandatory}"
+                        columns="#{bindings.Id.hints.displayWidth}"
+                        maximumLength="#{bindings.Id.hints.precision}"
+                        shortDesc="#{bindings.Id.hints.tooltip}" id="it1">
+            <f:validator binding="#{bindings.Id.validator}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.PublishStatus.inputValue}"
+                        label="#{bindings.PublishStatus.hints.label}"
+                        required="#{bindings.PublishStatus.hints.mandatory}"
+                        columns="#{bindings.PublishStatus.hints.displayWidth}"
+                        maximumLength="#{bindings.PublishStatus.hints.precision}"
+                        shortDesc="#{bindings.PublishStatus.hints.tooltip}"
+                        id="it2">
+            <f:validator binding="#{bindings.PublishStatus.validator}"/>
+          </af:inputText>
+        </af:panelFormLayout>
+        <af:commandButton actionListener="#{bindings.Commit.execute}"
+                          text="Commit"
+                          id="cb1"/>
+       
+        <af:outputText value="Nama  : #{securityContext.userName}" id="ot1"/-->
+        <af:region value="#{bindings.taskflowtest1.regionModel}" id="r1"/>
+      </af:form>
+    </af:document>
+  </f:view>
+</jsp:root>

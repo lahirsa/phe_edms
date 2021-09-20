@@ -1,0 +1,26 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+<html>
+  <head>
+    <title>Error</title>
+  </head>
+  <script>
+  //nanda 201114 - cookie for login page
+  function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0; i<ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1);
+        if (c.indexOf(name) != -1) return c.substring(name.length, c.length);
+    }
+    return "";
+}
+  function onLoad()
+  {
+        
+        window.location = "http://phekpdm005.pertamina.com:16200/cs/login";
+       
+    }
+  </script>
+  <body onLoad="onLoad()"></body>
+</html>

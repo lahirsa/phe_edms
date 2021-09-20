@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="task-flow-monitoring">
+    <default-activity id="__1">checkUserName</default-activity>
+    <managed-bean id="__17">
+      <managed-bean-name id="__19">monitoringBean</managed-bean-name>
+      <managed-bean-class id="__16">beans.MonitoringCID</managed-bean-class>
+      <managed-bean-scope id="__18">pageFlow</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__27">
+      <managed-bean-name id="__29">PoiBean</managed-bean-name>
+      <managed-bean-class id="__28">beans.PoiBean</managed-bean-class>
+      <managed-bean-scope id="__30">request</managed-bean-scope>
+    </managed-bean>
+    <view id="listRequestCID">
+      <page>/taskflow/listRequestCID.jsff</page>
+    </view>
+    <view id="DetailCID">
+      <page>/taskflow/DetailCID.jsff</page>
+    </view>
+    <method-call id="checkUserName">
+      <method>#{pageFlowScope.monitoringBean.queryUser}</method>
+      <outcome id="__21">
+        <fixed-outcome>queryUser</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__6">
+      <from-activity-id id="__7">listRequestCID</from-activity-id>
+      <control-flow-case id="__9">
+        <from-outcome id="__10">detail</from-outcome>
+        <to-activity-id id="__8">DetailCID</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__11">
+      <from-activity-id id="__12">DetailCID</from-activity-id>
+      <control-flow-case id="__13">
+        <from-outcome id="__15">back</from-outcome>
+        <to-activity-id id="__14">listRequestCID</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__2">
+      <from-activity-id id="__3">checkUserName</from-activity-id>
+      <control-flow-case id="__4">
+        <from-outcome id="__20">queryUser</from-outcome>
+        <to-activity-id id="__5">listRequestCID</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__23">
+      <from-activity-id id="__22">*</from-activity-id>
+      <control-flow-case id="__25">
+        <from-outcome id="__26">callMethod</from-outcome>
+        <to-activity-id id="__24">checkUserName</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

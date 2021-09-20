@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.66.73"
+                id="task_flow_monitoring_task_flow_monitoring_checkUserNamePageDef"
+                Package="CID.view.pageDefs" SkipValidation="true">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="monitoringVO1" RangeSize="10"
+              DataControl="AppModuleDataControl" id="monitoringVO1Iterator"/>
+  </executables>
+  <bindings>
+    <action id="Commit" DataControl="AppModuleDataControl"
+            RequiresUpdateModel="true" Action="commitTransaction"/>
+    <tree IterBinding="monitoringVO1Iterator" id="monitoringVO1">
+      <nodeDefinition DefName="CID.VO.monitoringVO" Name="monitoringVO10">
+        <AttrNames>
+          <Item Value="Idrequest"/>
+          <Item Value="Cidcreatedate"/>
+          <Item Value="Cidpurpose"/>
+          <Item Value="Cidrequestor"/>
+          <Item Value="Cidrequestorsupervisor"/>
+          <Item Value="Cidstatusrequest"/>
+          <Item Value="Cidtdclead"/>
+          <Item Value="LastUpdate"/>
+          <Item Value="TransmittalNumber"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

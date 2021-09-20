@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE PDefViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<PDefViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SendEmailDTUDataControl"
+  Version="12.2.1.22.48"
+  StaticDef="transmittalExternal.view.SendEmailDTUDataControl">
+  <DesignTime>
+    <Attr Name="_DCName" Value="transmittalExternal.view.DataControls.SendEmailDTUDataControl"/>
+    <Attr Name="_SDName" Value="transmittalExternal.view.SendEmailDTUDataControl"/>
+  </DesignTime>
+</PDefViewObject>

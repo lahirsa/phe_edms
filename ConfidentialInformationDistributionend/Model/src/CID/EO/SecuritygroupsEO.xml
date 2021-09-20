@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SecuritygroupsEO"
+  Version="11.1.1.66.73"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="SECURITYGROUPS"
+  AliasName="SecuritygroupsEO"
+  BindingStyle="OracleName"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access"/>
+    <AttrArray Name="_publishEvents"/>
+  </DesignTime>
+  <Attribute
+    Name="Dgroupname"
+    IsNotNull="true"
+    Precision="30"
+    ColumnName="DGROUPNAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SECURITYGROUPS"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Ddescription"
+    Precision="80"
+    ColumnName="DDESCRIPTION"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SECURITYGROUPS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="80"/>
+    </DesignTime>
+  </Attribute>
+  <Key
+    Name="PkSecuritygroups"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="PK_SECURITYGROUPS"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="CID.EO.SecuritygroupsEO.Dgroupname"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0011760">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0011760"/>
+      <Attr Name="_checkCondition" Value='"DGROUPNAME" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="CID.EO.SecuritygroupsEO.Dgroupname"/>
+    </AttrArray>
+  </Key>
+</Entity>

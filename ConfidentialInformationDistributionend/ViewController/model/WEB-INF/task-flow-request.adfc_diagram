@@ -1,0 +1,65 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1"/>
+   <View
+      id="View2">
+      <property
+         name="activityId">request</property>
+      <property
+         name="pageFragment">true</property>
+      <property
+         name="start">false</property>
+      <property
+         name="x">572.0</property>
+      <property
+         name="y">197.84473</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>request&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="page">/taskflow/request.jsff</property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="thumbnailExpanded">false</property>
+   </View>
+   <View
+      id="View4">
+      <property
+         name="activityId">CreateRequest</property>
+      <property
+         name="pageFragment">true</property>
+      <property
+         name="x">303.0</property>
+      <property
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>CreateRequest&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="y">197.14355</property>
+      <property
+         name="page">/taskflow/CreateRequest.jsff</property>
+      <property
+         name="exceptionHandler">false</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase5"
+      from="View4"
+      to="View2">
+      <property
+         name="fromOutcome">Next</property>
+      <property
+         name="sdm:polyPoints">R46,344.01312,193.29297,531.0,193.99414,L46</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase6"
+      from="View2"
+      to="View4">
+      <property
+         name="fromOutcome">Back</property>
+      <property
+         name="sdm:polyPoints">L54,530.9869,200.99414,344.0,200.29297,R54</property>
+   </ControlFlowCase>
+</SDM>

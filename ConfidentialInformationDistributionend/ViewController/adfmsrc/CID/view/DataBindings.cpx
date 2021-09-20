@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application"
+             version="11.1.1.66.73" id="DataBindings" SeparateXMLFiles="false"
+             Package="CID.view" ClientType="Generic">
+  <definitionFactories>
+    <factory nameSpace="http://xmlns.oracle.com/adf/controller/binding"
+             className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl"/>
+    <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+  </definitionFactories>
+  <pageMap>
+    <page path="/taskflow/request.jsff" usageId="CID_view_requestPageDef"/>
+    <page path="/pages/request.jspx" usageId="CID_view_requestPageDef1"/>
+    <page path="/taskflow/CreateRequest.jsff"
+          usageId="CID_view_CreateRequestPageDef"/>
+    <page path="/taskflow/inboxApprove.jsff"
+          usageId="CID_view_inboxApprovePageDef"/>
+    <page path="/pages/inboxApproval.jspx"
+          usageId="CID_view_inboxApprovalPageDef"/>
+    <page path="/taskflow/listApprove.jsff"
+          usageId="CID_view_listApprovePageDef"/>
+    <page path="/pages/Attach.jspx" usageId="CID_view_CIDPageDef"/>
+    <page path="/taskflow/attach.jsff" usageId="CID_view_attachPageDef"/>
+    <page path="/taskflow/coba.jsff" usageId="CID_view_cobaPageDef"/>
+    <page path="/taskflow/listRequestCID.jsff"
+          usageId="CID_view_listRequestCIDPageDef"/>
+    <page path="/taskflow/DetailCID.jsff" usageId="CID_view_DetailCIDPageDef"/>
+    <page path="/pages/monitoring.jspx" usageId="CID_view_monitoringPageDef"/>
+    <page path="/WEB-INF/task-flow-monitoring.xml#task-flow-monitoring@checkUserName"
+          usageId="CID_view_task_flow_monitoring_task_flow_monitoring_checkUserNamePageDef"/>
+    <page path="/pages/tesInsernnewrow.jspx" usageId="CID_view_tesInsernnewrowPageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="CID_view_requestPageDef" path="taskflow.requestPageDef"/>
+    <page id="CID_view_requestPageDef1" path="pages.requestPageDef"/>
+    <page id="CID_view_CreateRequestPageDef"
+          path="taskflow.CreateRequestPageDef"/>
+    <page id="CID_view_inboxApprovePageDef"
+          path="taskflow.inboxApprovePageDef"/>
+    <page id="CID_view_inboxApprovalPageDef" path="pages.inboxApprovalPageDef"/>
+    <page id="CID_view_listApprovePageDef" path="taskflow.listApprovePageDef"/>
+    <page id="CID_view_CIDPageDef" path="pages.CIDPageDef"/>
+    <page id="CID_view_attachPageDef" path="taskflow.attachPageDef"/>
+    <page id="CID_view_cobaPageDef" path="taskflow.cobaPageDef"/>
+    <page id="CID_view_listRequestCIDPageDef"
+          path="taskflow.listRequestCIDPageDef"/>
+    <page id="CID_view_DetailCIDPageDef" path="taskflow.DetailCIDPageDef"/>
+    <page id="CID_view_monitoringPageDef" path="pages.monitoringPageDef"/>
+    <page id="CID_view_task_flow_monitoring_task_flow_monitoring_checkUserNamePageDef"
+          path="CID.view.pageDefs.task_flow_monitoring_task_flow_monitoring_checkUserNamePageDef"/>
+    <page id="CID_view_tesInsernnewrowPageDef" path="pages.tesInsernnewrowPageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <dc id="SendEmailDataControl"
+        path="CID.model.SendEmailDataControl"/>
+    <dc id="SendEmailServiceDataControl"
+        path="CID.model.SendEmailServiceDataControl"/>
+    <dc id="SendEmailService"
+        path="CID.model.SendEmailService"/>
+    <dc id="EDMSWebservice" path="CID.model.EDMSWebservice"/>
+    <BC4JDataControl id="AppModuleDataControl" Package="CID.Module"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl"
+                     SupportsTransactions="true" SupportsFindMode="true"
+                     SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true"
+                     Configuration="AppModuleLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+    <BC4JDataControl id="AppModuleExternalTransmittalDataControl"
+                     Package="transmittalExternal.model"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl"
+                     SupportsTransactions="true" SupportsFindMode="true"
+                     SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true"
+                     Configuration="AppModuleExternalTransmittalLocal"
+                     syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+  </dataControlUsages>
+</Application>

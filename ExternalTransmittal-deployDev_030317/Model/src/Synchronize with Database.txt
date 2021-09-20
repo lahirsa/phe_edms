@@ -1,0 +1,6 @@
+The following Synchronization Actions were performed successfully:
+
+Entity :PheDocProcess
+  Attribute :DocTitle
+    Change Precision to 1000
+  Create Attribute for column: SUBMIT_DATE

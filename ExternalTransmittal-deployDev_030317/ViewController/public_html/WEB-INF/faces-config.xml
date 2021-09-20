@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<faces-config version="2.2" xmlns="http://java.sun.com/xml/ns/javaee">
+  <application>
+    <default-render-kit-id>oracle.adf.rich</default-render-kit-id>
+    
+  </application>
+ <validator>
+    <validator-id>ValidatorMessage</validator-id>
+    <validator-class>com.utils.ValidatorMessage</validator-class>
+  </validator>
+  <validator>
+    <validator-id>TransmittalValidator</validator-id>
+    <validator-class>com.utils.TransmittalValidator</validator-class>
+  </validator> 
+</faces-config>

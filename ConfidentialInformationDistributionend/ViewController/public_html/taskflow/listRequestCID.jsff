@@ -1,0 +1,186 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelStretchLayout id="psl1" styleClass="AFStretchWidth"
+                         inlineStyle="height:29px;">
+    <f:facet name="top">
+      <af:panelGroupLayout id="pgl3" styleClass="AFStretchWidth"
+                           inlineStyle="background-color:#23B318;">
+        <af:outputLabel value="CID Status" id="ol1"
+                        inlineStyle="color:White; font-size:large; font-weight:bold;"/>
+      </af:panelGroupLayout>
+    </f:facet>
+  </af:panelStretchLayout>
+  <af:panelGroupLayout id="pgl1" styleClass="AFStretchWidth" layout="vertical">
+    <af:image source="/Image/Monitoring.png" id="i1"/>
+    <af:outputText value="#{bindings.Idrequest.inputValue}" id="ot6"
+                   visible="false" binding="#{pageFlowScope.monitoringBean.bindIDRequest}"/>
+    <af:inputText label="Label 1" id="it2"
+                  value="#{bindings.Idrequest.inputValue}" autoSubmit="true"
+                  binding="#{pageFlowScope.monitoringBean.inptIdRequest}"
+                  visible="false"/>
+    <af:outputText id="ot14"
+                   binding="#{pageFlowScope.monitoringBean.CID_SUPERADMIN}"/>
+    <af:popup id="p2">
+      <af:dialog id="d2">
+        <af:outputLabel value="CID Status has been update successfully" id="ol3"/>
+      </af:dialog>
+    </af:popup>
+    <af:popup id="p1" binding="#{pageFlowScope.monitoringBean.bindUpdateCID}">
+      <af:dialog id="d1"
+                 dialogListener="#{pageFlowScope.monitoringBean.DialogListenerUpdateStatus}">
+        <af:panelGroupLayout id="pgl2" layout="vertical">
+          <af:outputLabel value="Edit CID Status" id="ol2"
+                          inlineStyle="font-size:medium; color:Blue;"/>
+          <af:spacer width="10" height="10" id="s2"/>
+          <af:outputText value="#{bindings.Cidtdclead.inputValue}" id="ot16"
+                         binding="#{pageFlowScope.monitoringBean.bindTdcLead}"
+                         visible="false"/>
+          <af:outputText value="#{bindings.Cidrequestorsupervisor.inputValue}"
+                         id="ot17"
+                         binding="#{pageFlowScope.monitoringBean.bindSupervisor}"
+                         visible="false"/>
+          <af:outputText value="#{bindings.Idrequest.inputValue}" id="ot15"
+                         visible="false"/>
+        </af:panelGroupLayout>
+        <af:panelFormLayout id="pfl1"
+                            binding="#{pageFlowScope.monitoringBean._bindTableCID}">
+          <af:panelLabelAndMessage label="Transmittal Number" id="plam2">
+            <af:outputText value="#{bindings.TransmittalNumber.inputValue}"
+                           id="ot13"/>
+          </af:panelLabelAndMessage>
+          <af:panelLabelAndMessage label="Requestor" id="plam1">
+            <af:outputText value="#{bindings.Cidrequestor.inputValue}"
+                           id="ot11"/>
+          </af:panelLabelAndMessage>
+          <af:panelLabelAndMessage label="Purpose" id="plam3">
+            <af:outputText value="#{bindings.Cidpurpose.inputValue}" id="ot7"
+                           truncateAt="0"/>
+          </af:panelLabelAndMessage>
+          <af:panelLabelAndMessage label="Status" id="plam4">
+            <af:outputText value="#{bindings.Cidstatusrequest.inputValue}"
+                           id="ot10" binding="#{pageFlowScope.monitoringBean.bindCIDStatus}"/>
+          </af:panelLabelAndMessage>
+          <af:panelLabelAndMessage label="Create Date"
+                                   id="plam5">
+            <af:outputFormatted value="#{bindings.Ciddaterequest.inputValue}"
+                                id="of1">
+              <af:convertDateTime pattern="#{bindings.Ciddaterequest.format}"/>
+            </af:outputFormatted>
+          </af:panelLabelAndMessage>
+          <af:selectOneChoice label="New Status" id="soc1" editable="always"
+                              value="#{pageFlowScope.monitoringBean.bindCIDStatus.value}"
+                              inlineStyle="font-weight:bolder;"
+                              binding="#{pageFlowScope.monitoringBean.bindNewStatus}"
+                              autoSubmit="true"
+                              valueChangeListener="#{pageFlowScope.monitoringBean.getNewStatus}">
+           <!-- <af:selectItem label="Draft" value="Draft" id="si3"/>-->
+            <af:selectItem label="Request" value="Requested" id="si6"
+                           rendered="#{bindings.Cidstatusrequest.inputValue=='Draft' || bindings.Cidstatusrequest.inputValue=='Requested'}"/> 
+            <af:selectItem label="Supervisor Approved"
+                           value="Approve SPV" id="si8"
+                           rendered="#{bindings.Cidstatusrequest.inputValue == 'Requested' || bindings.Cidstatusrequest.inputValue == 'Approve SPV'}"/>
+            <af:selectItem label="Supervisor Reject" value="Reject SPV With Remarks"
+                           id="si5"
+                           rendered="#{bindings.Cidstatusrequest.inputValue == 'Requested' || bindings.Cidstatusrequest.inputValue == 'Reject SPV With Remarks'}"/>
+            <af:selectItem label="TDC Lead Approved" value="Approve TDC Lead"
+                           id="si1"
+                           rendered="#{bindings.Cidstatusrequest.inputValue == 'Approve TDC Lead' || bindings.Cidstatusrequest.inputValue == 'Approve SPV'}"/>
+            <af:selectItem label="TDC Lead Reject" value="Reject TDC Lead With Remarks"
+                           id="si4"
+                           rendered="#{bindings.Cidstatusrequest.inputValue == 'Reject TDC Lead With Remarks' || bindings.Cidstatusrequest.inputValue == 'Approve SPV'}"/>
+         <!--   <af:selectItem label="Created" value="Created" id="si2"/>
+            <af:selectItem label="Published" value="Publish" id="si7"/> -->
+          </af:selectOneChoice>
+          <af:inputText label="Remarks" id="it1" rows="4"
+                        valueChangeListener="#{pageFlowScope.monitoringBean.getRemarks}"/>
+        </af:panelFormLayout>
+      </af:dialog>
+    </af:popup>
+    <af:resource type="javascript">
+      function handleTableDoubleClick(evt){ var table = evt.getSource();
+      AdfCustomEvent.queue(table, "TableDoubleClickEvent",{}, true);
+      evt.cancel(); }
+    </af:resource>
+    <af:panelCollection id="pc1" styleClass="AFStretchWidth"
+                        inlineStyle="height:430px;">
+      <f:facet name="toolbar">
+        <af:toolbar id="t2">
+          <af:commandToolbarButton text="Export to Excel" id="ctb1"
+                                   icon="/Image/excel.png">
+            <af:fileDownloadActionListener contentType="application/vnd.ms-excel"
+                                           filename="CID Status.xls"
+                                           method="#{PoiBean.generateExcelCIDList}"/>
+          </af:commandToolbarButton>
+        </af:toolbar>
+      </f:facet>
+      <af:table value="#{bindings.monitoringVO1.collectionModel}" var="row"
+                rows="#{bindings.monitoringVO1.rangeSize}"
+                emptyText="#{bindings.monitoringVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                fetchSize="#{bindings.monitoringVO1.rangeSize}"
+                rowBandingInterval="0"
+                filterModel="#{bindings.monitoringVO1Query.queryDescriptor}"
+                queryListener="#{bindings.monitoringVO1Query.processQuery}"
+                filterVisible="true" varStatus="vs"
+                selectedRowKeys="#{bindings.monitoringVO1.collectionModel.selectedRow}"
+                selectionListener="#{bindings.monitoringVO1.collectionModel.makeCurrent}"
+                rowSelection="single" id="t1" styleClass="AFStretchWidth"
+                binding="#{pageFlowScope.monitoringBean.bindTableCID}">
+        <af:column id="c7" headerText="No" width="23">
+          <af:outputText value="#{vs.index+1}" id="ot9"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.monitoringVO1.hints.Numcid.name}" filterable="true" sortable="true"
+                   headerText="Transmittal No" id="c1" width="200"
+                   filterFeatures="caseInsensitive">
+          <af:outputText value="#{row.TransmittalNumber}" id="ot3"
+                         rendered="false"/>
+          <af:commandLink text="#{row.TransmittalNumber}" id="cl1"
+                          action="#{pageFlowScope.monitoringBean.detailCID}"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.monitoringVO1.hints.Cidrequestor.name}"
+                   filterable="true" sortable="true" headerText="Requestor"
+                   id="c4" width="144" filterFeatures="caseInsensitive">
+          <af:outputText value="#{row.Cidrequestor}" id="ot2"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.monitoringVO1.hints.Cidpurpose.name}"
+                   filterable="true" sortable="true" headerText="Purpose"
+                   id="c5" width="275" filterFeatures="caseInsensitive">
+          <af:outputText value="#{row.Cidpurpose}" id="ot5"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.monitoringVO1.hints.Cidrequestorsupervisor.name}" id="c6" headerText="Supervisor" width="125" sortable="true"
+                   filterable="true" filterFeatures="caseInsensitive">
+          <af:outputText value="#{row.Cidrequestorsupervisor}" id="ot12"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.monitoringVO1.hints.LastUpdate.name}"
+                   filterable="true" sortable="true" headerText="Last Update"
+                   id="c2" width="103">
+          <f:facet name="filter">
+            <af:inputDate value="#{vs.filterCriteria.LastUpdate}" id="id1"/>
+          </f:facet>
+          <af:outputText value="#{row.LastUpdate}" id="ot4">
+            <af:convertDateTime pattern="#{bindings.monitoringVO1.hints.LastUpdate.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.monitoringVO1.hints.Cidstatusrequest.name}"
+                   filterable="true" sortable="true" headerText="Status"
+                   id="c3" width="130" filterFeatures="caseInsensitive">
+          <af:outputText value="#{row.Cidstatusrequest}" id="ot1"
+                         rendered="true"/>
+        </af:column>
+        <af:column id="c8" headerText="Action" width="50"
+                   align="center"
+                   visible="#{pageFlowScope.monitoringBean.superadmin == pageFlowScope.monitoringBean.username}"
+                   rendered="#{pageFlowScope.monitoringBean.superadmin == pageFlowScope.monitoringBean.username}">
+          <af:button id="cb1"
+                            icon="/Image/edit.png"
+                            action="#{pageFlowScope.monitoringBean.changeStatusCID}"/>
+        </af:column>
+        <af:clientListener method="handleTableDoubleClick" type="dblClick"/>
+        <af:serverListener type="TableDoubleClickEvent"
+                           method="#{pageFlowScope.monitoringBean.handleTableDoubleClick}"/>
+      </af:table>
+    </af:panelCollection>
+  </af:panelGroupLayout>
+  <!--oracle-jdev-comment:preferred-managed-bean-name:monitoringBean-->
+</jsp:root>

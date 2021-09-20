@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="task-flow-request">
+    <default-activity id="__1">CreateRequest</default-activity>
+    <managed-bean id="__7">
+      <managed-bean-name id="__9">requestBean</managed-bean-name>
+      <managed-bean-class id="__8">beans.requestClass</managed-bean-class>
+      <managed-bean-scope id="__6">pageFlow</managed-bean-scope>
+    </managed-bean>
+    <view id="request">
+      <page>/taskflow/request.jsff</page>
+    </view>
+    <view id="CreateRequest">
+      <page>/taskflow/CreateRequest.jsff</page>
+    </view>
+    <control-flow-rule id="__10">
+      <from-activity-id id="__11">CreateRequest</from-activity-id>
+      <control-flow-case id="__13">
+        <from-outcome id="__14">Next</from-outcome>
+        <to-activity-id id="__12">request</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__15">
+      <from-activity-id id="__16">request</from-activity-id>
+      <control-flow-case id="__18">
+        <from-outcome id="__19">Back</from-outcome>
+        <to-activity-id id="__17">CreateRequest</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

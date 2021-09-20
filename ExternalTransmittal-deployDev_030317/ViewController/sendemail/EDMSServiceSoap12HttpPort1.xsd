@@ -1,0 +1,487 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xsd:schema xmlns:ns0="http://transmittalExternal/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://transmittalExternal/">
+  <xsd:complexType name="ConnectEDMSService"/>
+  <xsd:complexType name="ConnectEDMSServiceResponse"/>
+  <xsd:complexType name="FolderBrowseFile">
+    <xsd:sequence>
+      <xsd:element name="path" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FolderBrowseFileResponse">
+    <xsd:sequence>
+      <xsd:element name="return" type="ns0:childFiles" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FolderBrowseFolder">
+    <xsd:sequence>
+      <xsd:element name="path" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FolderBrowseFolderResponse">
+    <xsd:sequence>
+      <xsd:element name="return" type="ns0:folders" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="GetConfigValue">
+    <xsd:sequence>
+      <xsd:element name="keyConfig" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="GetConfigValueResponse">
+    <xsd:sequence>
+      <xsd:element name="return" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="GetContentGUID">
+    <xsd:sequence>
+      <xsd:element name="transmittalID" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="GetContentGUIDResponse">
+    <xsd:sequence>
+      <xsd:element name="return" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="GetCreator">
+    <xsd:sequence>
+      <xsd:element name="transmittalNo" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="GetCreatorResponse">
+    <xsd:sequence>
+      <xsd:element name="return" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="GetDDocName">
+    <xsd:sequence>
+      <xsd:element name="transmittalID" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="GetDDocNameResponse">
+    <xsd:sequence>
+      <xsd:element name="return" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="GetOrganizationCreator">
+    <xsd:sequence>
+      <xsd:element name="transmittalNo" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="GetOrganizationCreatorResponse">
+    <xsd:sequence>
+      <xsd:element name="return" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="GetOrganizationsByUsername">
+    <xsd:sequence>
+      <xsd:element name="Username" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="GetOrganizationsByUsernameAndOrgName">
+    <xsd:sequence>
+      <xsd:element name="Username" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="organizationName" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="GetOrganizationsByUsernameAndOrgNameResponse">
+    <xsd:sequence>
+      <xsd:element name="return" type="ns0:organizations" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="GetOrganizationsByUsernameAndOrganizationID">
+    <xsd:sequence>
+      <xsd:element name="Username" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="organizationID" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="year" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="GetOrganizationsByUsernameAndOrganizationIDResponse">
+    <xsd:sequence>
+      <xsd:element name="return" type="ns0:organizations" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="GetOrganizationsByUsernameResponse">
+    <xsd:sequence>
+      <xsd:element name="return" type="ns0:organizations" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="GetPassword">
+    <xsd:sequence>
+      <xsd:element name="Username" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="GetPasswordResponse">
+    <xsd:sequence>
+      <xsd:element name="return" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="GetProjectsByUsername">
+    <xsd:sequence>
+      <xsd:element name="Username" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="GetProjectsByUsernameAndProjectID">
+    <xsd:sequence>
+      <xsd:element name="Username" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="projectID" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="GetProjectsByUsernameAndProjectIDResponse">
+    <xsd:sequence>
+      <xsd:element name="return" type="ns0:projects" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="GetProjectsByUsernameResponse">
+    <xsd:sequence>
+      <xsd:element name="return" type="ns0:projects" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="GetPublishByUsername">
+    <xsd:sequence>
+      <xsd:element name="Username" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="GetPublishByUsernameResponse">
+    <xsd:sequence>
+      <xsd:element name="return" type="ns0:publish" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="GetPublishCreator">
+    <xsd:sequence>
+      <xsd:element name="transmittalNo" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="GetPublishCreatorResponse">
+    <xsd:sequence>
+      <xsd:element name="return" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="GetSubmittalDocGUID">
+    <xsd:sequence>
+      <xsd:element name="transmittalNo" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="GetSubmittalDocGUIDResponse">
+    <xsd:sequence>
+      <xsd:element name="return" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="GetTransmittalCreator">
+    <xsd:sequence>
+      <xsd:element name="transmittalID" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="GetTransmittalCreatorResponse">
+    <xsd:sequence>
+      <xsd:element name="return" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="GetTransmittalStatus">
+    <xsd:sequence>
+      <xsd:element name="transmittalID" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="GetTransmittalStatusResponse">
+    <xsd:sequence>
+      <xsd:element name="return" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="GetUserEmail">
+    <xsd:sequence>
+      <xsd:element name="username" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="GetUserEmailResponse">
+    <xsd:sequence>
+      <xsd:element name="return" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Insert_DSWF_DOC">
+    <xsd:sequence>
+      <xsd:element name="did" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="transmittalId" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="dDocName" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="docFormat" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="userLogin" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="fileName" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="fileNameNoExt" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="fileNameSplitBySpace" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Insert_DSWF_DOCResponse">
+    <xsd:sequence>
+      <xsd:element name="return" type="xsd:boolean" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Insert_DSWF_Log">
+    <xsd:sequence>
+      <xsd:element name="transmittalId" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="dDocName" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="userLogin" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Insert_DSWF_LogResponse">
+    <xsd:sequence>
+      <xsd:element name="return" type="xsd:boolean" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Insert_DSWF_PROCESS">
+    <xsd:sequence>
+      <xsd:element name="transmittalId" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="did" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="transmittalCreator" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="userLogin" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="fileName" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Insert_DSWF_PROCESSResponse">
+    <xsd:sequence>
+      <xsd:element name="return" type="xsd:boolean" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="IsAuthenticated">
+    <xsd:sequence>
+      <xsd:element name="Username" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="Password" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="IsAuthenticatedResponse">
+    <xsd:sequence>
+      <xsd:element name="return" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="isUsernameExists">
+    <xsd:sequence>
+      <xsd:element name="Username" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="isUsernameExistsResponse">
+    <xsd:sequence>
+      <xsd:element name="return" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ReminderExternalTransmittalDueDate"/>
+  <xsd:complexType name="ReminderExternalTransmittalDueDateResponse">
+    <xsd:sequence>
+      <xsd:element name="return" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ReminderInternalTransmittalDueDate"/>
+  <xsd:complexType name="ReminderInternalTransmittalDueDateResponse">
+    <xsd:sequence>
+      <xsd:element name="return" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ReminderPublishExternalTransmittalDueDate"/>
+  <xsd:complexType name="ReminderPublishExternalTransmittalDueDateResponse">
+    <xsd:sequence>
+      <xsd:element name="return" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ReminderPublishInternalTransmittalDueDate"/>
+  <xsd:complexType name="ReminderPublishInternalTransmittalDueDateResponse">
+    <xsd:sequence>
+      <xsd:element name="return" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SendEmail">
+    <xsd:sequence>
+      <xsd:element name="EmailTo" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="Subject" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="HtmlText" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SendEmailBusinessContact">
+    <xsd:sequence>
+      <xsd:element name="EmailTo" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="username" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="password" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SendEmailBusinessContactResponse">
+    <xsd:sequence>
+      <xsd:element name="return" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SendEmailResponse">
+    <xsd:sequence>
+      <xsd:element name="return" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SendEmailTo">
+    <xsd:sequence>
+      <xsd:element name="EmailTo" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="EmailCc" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="Subject" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="HtmlText" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SendEmailToResponse">
+    <xsd:sequence>
+      <xsd:element name="return" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SendEmailWithCC">
+    <xsd:sequence>
+      <xsd:element name="EmailTo" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="Subject" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="HtmlText" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="CcTo" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SendEmailWithCCResponse">
+    <xsd:sequence>
+      <xsd:element name="return" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SendingEmail"/>
+  <xsd:complexType name="SendingEmailResponse">
+    <xsd:sequence>
+      <xsd:element name="return" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="UpdateDocxRobjId">
+    <xsd:sequence>
+      <xsd:element name="did" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="dDocName" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="folderGUID" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="documentsGUID" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="UpdateDocxRobjIdResponse">
+    <xsd:sequence>
+      <xsd:element name="return" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="UpdateEndDate">
+    <xsd:sequence>
+      <xsd:element name="transmittalNo" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="userLogin" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="UpdateEndDateResponse">
+    <xsd:sequence>
+      <xsd:element name="return" type="xsd:boolean" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="childFiles">
+    <xsd:sequence>
+      <xsd:element name="DDocName" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="DDocTitle" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="DID" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="DOriginalName" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="DReleaseDate" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="XAuthor" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="XDocName" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="XDocNumber" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="folders">
+    <xsd:sequence>
+      <xsd:element name="FFolderGUID" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="FFolderName" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="organizations">
+    <xsd:sequence>
+      <xsd:element name="ID" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="creator" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="organization_Name" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="path" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="transmittalNo" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="userName" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="year" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="projects">
+    <xsd:sequence>
+      <xsd:element name="ID" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="creator" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="path" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="project_Title" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="transmittalNo" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="userName" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="publish">
+    <xsd:sequence>
+      <xsd:element name="ID" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="creator" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="path" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="transmittalNo" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="username" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="ConnectEDMSService" type="ns0:ConnectEDMSService"/>
+  <xsd:element name="ConnectEDMSServiceResponse" type="ns0:ConnectEDMSServiceResponse"/>
+  <xsd:element name="FolderBrowseFile" type="ns0:FolderBrowseFile"/>
+  <xsd:element name="FolderBrowseFileResponse" type="ns0:FolderBrowseFileResponse"/>
+  <xsd:element name="FolderBrowseFolder" type="ns0:FolderBrowseFolder"/>
+  <xsd:element name="FolderBrowseFolderResponse" type="ns0:FolderBrowseFolderResponse"/>
+  <xsd:element name="GetConfigValue" type="ns0:GetConfigValue"/>
+  <xsd:element name="GetConfigValueResponse" type="ns0:GetConfigValueResponse"/>
+  <xsd:element name="GetContentGUID" type="ns0:GetContentGUID"/>
+  <xsd:element name="GetContentGUIDResponse" type="ns0:GetContentGUIDResponse"/>
+  <xsd:element name="GetCreator" type="ns0:GetCreator"/>
+  <xsd:element name="GetCreatorResponse" type="ns0:GetCreatorResponse"/>
+  <xsd:element name="GetDDocName" type="ns0:GetDDocName"/>
+  <xsd:element name="GetDDocNameResponse" type="ns0:GetDDocNameResponse"/>
+  <xsd:element name="GetOrganizationCreator" type="ns0:GetOrganizationCreator"/>
+  <xsd:element name="GetOrganizationCreatorResponse" type="ns0:GetOrganizationCreatorResponse"/>
+  <xsd:element name="GetOrganizationsByUsername" type="ns0:GetOrganizationsByUsername"/>
+  <xsd:element name="GetOrganizationsByUsernameAndOrgName" type="ns0:GetOrganizationsByUsernameAndOrgName"/>
+  <xsd:element name="GetOrganizationsByUsernameAndOrgNameResponse" type="ns0:GetOrganizationsByUsernameAndOrgNameResponse"/>
+  <xsd:element name="GetOrganizationsByUsernameAndOrganizationID" type="ns0:GetOrganizationsByUsernameAndOrganizationID"/>
+  <xsd:element name="GetOrganizationsByUsernameAndOrganizationIDResponse" type="ns0:GetOrganizationsByUsernameAndOrganizationIDResponse"/>
+  <xsd:element name="GetOrganizationsByUsernameResponse" type="ns0:GetOrganizationsByUsernameResponse"/>
+  <xsd:element name="GetPassword" type="ns0:GetPassword"/>
+  <xsd:element name="GetPasswordResponse" type="ns0:GetPasswordResponse"/>
+  <xsd:element name="GetProjectsByUsername" type="ns0:GetProjectsByUsername"/>
+  <xsd:element name="GetProjectsByUsernameAndProjectID" type="ns0:GetProjectsByUsernameAndProjectID"/>
+  <xsd:element name="GetProjectsByUsernameAndProjectIDResponse" type="ns0:GetProjectsByUsernameAndProjectIDResponse"/>
+  <xsd:element name="GetProjectsByUsernameResponse" type="ns0:GetProjectsByUsernameResponse"/>
+  <xsd:element name="GetPublishByUsername" type="ns0:GetPublishByUsername"/>
+  <xsd:element name="GetPublishByUsernameResponse" type="ns0:GetPublishByUsernameResponse"/>
+  <xsd:element name="GetPublishCreator" type="ns0:GetPublishCreator"/>
+  <xsd:element name="GetPublishCreatorResponse" type="ns0:GetPublishCreatorResponse"/>
+  <xsd:element name="GetSubmittalDocGUID" type="ns0:GetSubmittalDocGUID"/>
+  <xsd:element name="GetSubmittalDocGUIDResponse" type="ns0:GetSubmittalDocGUIDResponse"/>
+  <xsd:element name="GetTransmittalCreator" type="ns0:GetTransmittalCreator"/>
+  <xsd:element name="GetTransmittalCreatorResponse" type="ns0:GetTransmittalCreatorResponse"/>
+  <xsd:element name="GetTransmittalStatus" type="ns0:GetTransmittalStatus"/>
+  <xsd:element name="GetTransmittalStatusResponse" type="ns0:GetTransmittalStatusResponse"/>
+  <xsd:element name="GetUserEmail" type="ns0:GetUserEmail"/>
+  <xsd:element name="GetUserEmailResponse" type="ns0:GetUserEmailResponse"/>
+  <xsd:element name="Insert_DSWF_DOC" type="ns0:Insert_DSWF_DOC"/>
+  <xsd:element name="Insert_DSWF_DOCResponse" type="ns0:Insert_DSWF_DOCResponse"/>
+  <xsd:element name="Insert_DSWF_Log" type="ns0:Insert_DSWF_Log"/>
+  <xsd:element name="Insert_DSWF_LogResponse" type="ns0:Insert_DSWF_LogResponse"/>
+  <xsd:element name="Insert_DSWF_PROCESS" type="ns0:Insert_DSWF_PROCESS"/>
+  <xsd:element name="Insert_DSWF_PROCESSResponse" type="ns0:Insert_DSWF_PROCESSResponse"/>
+  <xsd:element name="IsAuthenticated" type="ns0:IsAuthenticated"/>
+  <xsd:element name="IsAuthenticatedResponse" type="ns0:IsAuthenticatedResponse"/>
+  <xsd:element name="isUsernameExists" type="ns0:isUsernameExists"/>
+  <xsd:element name="isUsernameExistsResponse" type="ns0:isUsernameExistsResponse"/>
+  <xsd:element name="ReminderExternalTransmittalDueDate" type="ns0:ReminderExternalTransmittalDueDate"/>
+  <xsd:element name="ReminderExternalTransmittalDueDateResponse" type="ns0:ReminderExternalTransmittalDueDateResponse"/>
+  <xsd:element name="ReminderInternalTransmittalDueDate" type="ns0:ReminderInternalTransmittalDueDate"/>
+  <xsd:element name="ReminderInternalTransmittalDueDateResponse" type="ns0:ReminderInternalTransmittalDueDateResponse"/>
+  <xsd:element name="ReminderPublishExternalTransmittalDueDate" type="ns0:ReminderPublishExternalTransmittalDueDate"/>
+  <xsd:element name="ReminderPublishExternalTransmittalDueDateResponse" type="ns0:ReminderPublishExternalTransmittalDueDateResponse"/>
+  <xsd:element name="ReminderPublishInternalTransmittalDueDate" type="ns0:ReminderPublishInternalTransmittalDueDate"/>
+  <xsd:element name="ReminderPublishInternalTransmittalDueDateResponse" type="ns0:ReminderPublishInternalTransmittalDueDateResponse"/>
+  <xsd:element name="SendEmail" type="ns0:SendEmail"/>
+  <xsd:element name="SendEmailBusinessContact" type="ns0:SendEmailBusinessContact"/>
+  <xsd:element name="SendEmailBusinessContactResponse" type="ns0:SendEmailBusinessContactResponse"/>
+  <xsd:element name="SendEmailResponse" type="ns0:SendEmailResponse"/>
+  <xsd:element name="SendEmailTo" type="ns0:SendEmailTo"/>
+  <xsd:element name="SendEmailToResponse" type="ns0:SendEmailToResponse"/>
+  <xsd:element name="SendEmailWithCC" type="ns0:SendEmailWithCC"/>
+  <xsd:element name="SendEmailWithCCResponse" type="ns0:SendEmailWithCCResponse"/>
+  <xsd:element name="SendingEmail" type="ns0:SendingEmail"/>
+  <xsd:element name="SendingEmailResponse" type="ns0:SendingEmailResponse"/>
+  <xsd:element name="UpdateDocxRobjId" type="ns0:UpdateDocxRobjId"/>
+  <xsd:element name="UpdateDocxRobjIdResponse" type="ns0:UpdateDocxRobjIdResponse"/>
+  <xsd:element name="UpdateEndDate" type="ns0:UpdateEndDate"/>
+  <xsd:element name="UpdateEndDateResponse" type="ns0:UpdateEndDateResponse"/>
+</xsd:schema>

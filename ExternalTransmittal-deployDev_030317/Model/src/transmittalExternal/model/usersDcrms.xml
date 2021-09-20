@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="usersDcrms"
+  Version="11.1.1.66.73"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="USERSDCRMS"
+  AliasName="usersDcrms"
+  BindingStyle="JDBC"
+  UseGlueCode="false">
+  <DesignTime>
+    <AttrArray Name="_publishEvents"/>
+  </DesignTime>
+  <Attribute
+    Name="UDescription"
+    Precision="1000"
+    ColumnName="U_DESCRIPTION"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="USERSDCRMS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1000"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="UName"
+    IsNotNull="true"
+    Precision="200"
+    ColumnName="U_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="USERSDCRMS"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="200"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="UPassword"
+    IsNotNull="true"
+    Precision="50"
+    ColumnName="U_PASSWORD"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="USERSDCRMS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+  </Attribute>
+  <Key
+    Name="SysC0081908">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0081908"/>
+      <Attr Name="_checkCondition" Value='"U_NAME" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="transmittalExternal.model.usersDcrms.UName"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0081909">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0081909"/>
+      <Attr Name="_checkCondition" Value='"U_PASSWORD" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="transmittalExternal.model.usersDcrms.UPassword"/>
+    </AttrArray>
+  </Key>
+</Entity>

@@ -1,0 +1,15 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<BC4JConfig version="11.1" xmlns="http://xmlns.oracle.com/bc4j/configuration">
+   <AppModuleConfigBag ApplicationName="transmittalExternal.model.AppModuleExternalTransmittal">
+      <AppModuleConfig DeployPlatform="LOCAL" JDBCName="EDMSConn" jbo.project="transmittalExternal.model.Model" name="AppModuleExternalTransmittalLocal" jbo.txn.disconnect_level="1" ApplicationName="transmittalExternal.model.AppModuleExternalTransmittal">
+         <AM-Pooling jbo.doconnectionpooling="true"/>
+         <Database jbo.locking.mode="optimistic"/>
+         <Security AppModuleJndiName="transmittalExternal.model.AppModuleExternalTransmittal"/>
+      </AppModuleConfig>
+      <AppModuleConfig DeployPlatform="LOCAL" JDBCName="EDMSConn" jbo.project="transmittalExternal.model.Model" name="AppModuleExternalTransmittalShared" ApplicationName="transmittalExternal.model.AppModuleExternalTransmittal">
+         <AM-Pooling jbo.ampool.dynamicjdbccredentials="false" jbo.ampool.isuseexclusive="false" jbo.ampool.maxpoolsize="1" jbo.ampool.resetnontransactionalstate="false"/>
+         <Database jbo.locking.mode="optimistic"/>
+         <Security AppModuleJndiName="transmittalExternal.model.AppModuleExternalTransmittal"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+</BC4JConfig>

@@ -1,0 +1,61 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1"/>
+   <View
+      id="View2">
+      <property
+         name="activityId">inboxApprove</property>
+      <property
+         name="page">/taskflow/inboxApprove.jsff</property>
+      <property
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>inboxApprove&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">183.89648</property>
+      <property
+         name="pageFragment">true</property>
+      <property
+         name="x">173.0</property>
+   </View>
+   <View
+      id="View3">
+      <property
+         name="activityId">listApprove</property>
+      <property
+         name="page">/taskflow/listApprove.jsff</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>listApprove&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">187.48535</property>
+      <property
+         name="x">538.0</property>
+      <property
+         name="pageFragment">true</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase5"
+      from="View3"
+      to="View2">
+      <property
+         name="fromOutcome">Back</property>
+      <property
+         name="sdm:polyPoints">L46,497.0,183.63477,214.04439,180.0459,R46</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase4"
+      from="View2"
+      to="View3">
+      <property
+         name="fromOutcome">Next</property>
+      <property
+         name="sdm:polyPoints">R54,214.0,187.0459,496.95563,190.63477,L54</property>
+   </ControlFlowCase>
+</SDM>

@@ -1,0 +1,592 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelGroupLayout id="pgl1" layout="vertical">
+    <!--add label by nanda - 200116 -->
+    <af:panelGroupLayout id="pgl151" layout="horizontal"
+                         styleClass="AFStretchWidth"
+                         inlineStyle="font-weight:bold; height:33px;">
+      <af:outputLabel value="Document Secure Workflow - Detail Transmittal"
+                      id="ol7"
+                      inlineStyle="font-family:Arial, Helvetica, sans-serif; font-size:large; font-weight:bold; color:Navy;"/>
+      <af:goLink text="HOME" id="gl21"
+                 inlineStyle="text-align:right;font-weight:bold;">
+        <af:clientListener type="click" method="closeWindow"/>
+      </af:goLink>
+    </af:panelGroupLayout>
+    <af:spacer width="10" height="10" id="s1"/>
+    <af:decorativeBox id="db1" centerLandmark="main" topLandmark="main"
+                      styleClass="AFStretchWidth" topHeight="80px"
+                      inlineStyle="height:400pt;">
+      <f:facet name="center">
+        <af:panelGroupLayout id="pgl14" styleClass="AFStretchWidth"
+                             layout="vertical">
+          <af:panelTabbed id="pt1" inlineStyle="height:420px;"
+                          styleClass="AFStretchWidth">
+            <af:showDetailItem text="User" id="sdi1">
+              <af:panelGroupLayout id="pgl5" layout="horizontal"
+                                   inlineStyle="background-color:rgb(17,73,136);"
+                                   valign="middle" styleClass="AFStretchWidth">
+                <af:outputLabel value="Supporting Documents" id="outputLabel1"
+                                inlineStyle="color:White; font-family:Arial, Helvetica, sans-serif; font-size:small; font-weight:bold;"/>
+              </af:panelGroupLayout>
+              <af:panelGroupLayout id="pgl6" layout="vertical">
+                <af:spacer width="10" height="10" id="s9"/>
+                <af:panelGroupLayout id="pgl9" layout="horizontal"
+                                     styleClass="AFStretchWidth">
+                  <af:panelGroupLayout id="pgl10" layout="horizontal">
+                    <af:selectOneChoice value="#{bindings.TransmittalReceiverListVO1.inputValue}"
+                                        label="Recipient :"
+                                        required="#{bindings.TransmittalReceiverListVO1.hints.mandatory}"
+                                        shortDesc="#{bindings.TransmittalReceiverListVO1.hints.tooltip}"
+                                        id="soc1"
+                                        binding="#{pageFlowScope.DetailInteralSummaryBean.bindReceiver}"
+                                        valueChangeListener="#{pageFlowScope.DetailInteralSummaryBean.ReceiverChange}"
+                                        autoSubmit="true">
+                      <f:selectItems value="#{bindings.TransmittalReceiverListVO1.items}"
+                                     id="si1"/>
+                    </af:selectOneChoice>
+                    <af:spacer width="10" height="10" id="s3"/>
+                    <af:button text="Add User" id="cb2"
+                                      actionListener="#{pageFlowScope.DetailInteralSummaryBean.AddUser}"
+                                      binding="#{pageFlowScope.DetailInteralSummaryBean.bindButtonAddUser}"
+                                      disabled="#{bindings.TransmittalStatus.inputValue == 'In Progress' ? false : true}"/>
+                    <af:spacer width="10" height="10" id="s4"/>
+                    <af:button text="Change User" id="cb3"
+                                      actionListener="#{pageFlowScope.DetailInteralSummaryBean.ChangeUser}"
+                                      binding="#{pageFlowScope.DetailInteralSummaryBean.bindButtonChangeUser}"
+                                      disabled="#{bindings.TransmittalStatus.inputValue == 'In Progress' ? false : true}"/>
+                    <af:spacer width="10" height="10" id="s6"/>
+                    <af:button text="Export Supporting Documents"
+                                      id="cb1" partialSubmit="true">
+                      <af:fileDownloadActionListener method="#{pageFlowScope.DetailInteralSummaryBean.DownloadSupportingDoc}"
+                                                     filename="#{pageFlowScope.DetailInteralSummaryBean.zipName}"/>
+                    </af:button>
+                    <!--add by VINO 010616-->
+                    <!--actionListener="#{pageFlowScope.DetailInteralSummaryBean.DeleteUser}"-->
+                    <af:spacer width="10" height="10" id="s12"/>
+                    <af:button text="Delete User" id="cb22"                                      
+                                      binding="#{pageFlowScope.DetailInteralSummaryBean.bindButtonDeleteUser}"
+                                      disabled="#{bindings.TransmittalStatus.inputValue == 'In Progress' ? false : true}">
+                      <af:showPopupBehavior popupId="p2-popUpDelete"
+                                            triggerType="click"/>
+                    </af:button>
+                    <!-- add by nanda 260216 -->
+                    <af:spacer width="10" height="10" id="s8"/>
+                    <af:popup id="p2-popUpDelete">
+                      <af:dialog id="d6" type="none">
+                        <af:outputText value="Are you sure you want to delete this recipient ?" id="ot25"/>
+                        <f:facet name="buttonBar">
+                          <af:group id="g1">
+                            <af:button text="OK" id="cb9"
+                                              actionListener="#{pageFlowScope.DetailInteralSummaryBean.DeleteUser}"/>
+                            <af:button text="Cancel" id="cb10"/>
+                          </af:group>
+                        </f:facet>
+                      </af:dialog>
+                    </af:popup>
+                    <af:button text="Update Due Date" id="cb21"
+                                      actionListener="#{pageFlowScope.DetailInteralSummaryBean.EditDueDate}"
+                                      binding="#{pageFlowScope.DetailInteralSummaryBean.bindButtonEditDuedate}"
+                                      disabled="#{bindings.TransmittalStatus.inputValue == 'In Progress' ? false : true}"/>
+                    <af:popup id="popupEditDuedate"
+                              contentDelivery="lazyUncached"
+                              binding="#{pageFlowScope.DetailInteralSummaryBean.bindPopupDuedate}">
+                      <af:dialog id="d4" inlineStyle="width:500pt;"
+                                 dialogListener="#{pageFlowScope.DetailInteralSummaryBean.DialogLsnrUpdateDuedate}">
+                      <af:inputText label="Transmittal ID" value="#{pageFlowScope.transmittalId}" id="ot22"
+                                    readOnly="true"/>
+                                     <!--value="#{bindings.TransmittalDuedate.inputValue}"-->
+                        <af:inputDate label="Update Due Date :" id="id1111"
+                                      binding="#{pageFlowScope.DetailInteralSummaryBean.bindTransmittalDueDate}" showRequired="true"
+                                      required="true"
+                                     
+                                      editable="always">
+                         <af:convertDateTime pattern="#{bindings.TransmittalDuedate.format}"/>
+                        </af:inputDate>
+                        
+                      </af:dialog>
+                    </af:popup>
+                    <af:popup id="popupUser"
+                              binding="#{pageFlowScope.DetailInteralSummaryBean.bindPopUpUser}"
+                              contentDelivery="lazyUncached">
+                      <af:dialog id="d5" inlineStyle="width:500pt;"
+                                 dialogListener="#{pageFlowScope.DetailInteralSummaryBean.DialogLsnrSelectUser}">
+                        <af:panelGroupLayout id="pgl12" layout="vertical">
+                          <af:selectOneRadio value="#{bindings.ViewInternalRoleVO1.inputValue}"
+                                             label="Role :"
+                                             required="#{bindings.ViewInternalRoleVO1.hints.mandatory}"
+                                             shortDesc="#{bindings.ViewInternalRoleVO1.hints.tooltip}"
+                                             id="sor1" layout="horizontal"
+                                             binding="#{pageFlowScope.DetailInteralSummaryBean.bindRole}">
+                            <f:selectItems value="#{bindings.ViewInternalRoleVO1.items}"
+                                           id="si2"/>
+                          </af:selectOneRadio>
+                          <af:spacer width="10" height="10" id="s5"/>
+                          <af:panelGroupLayout id="pgl13" layout="horizontal">
+                            <af:inputText label="Name" id="it15"
+                                          binding="#{pageFlowScope.DetailInteralSummaryBean.bindSearchNameUser}"/>
+                            <af:button text="Search" id="cb7"
+                                              partialSubmit="true"
+                                              actionListener="#{pageFlowScope.DetailInteralSummaryBean.SearchUser}"/>
+                          </af:panelGroupLayout>
+                          <af:spacer width="10" height="10" id="spacer1"/>
+                          <af:table value="#{bindings.UsersInternalVO1.collectionModel}"
+                                    var="row"
+                                    rows="#{bindings.UsersInternalVO1.rangeSize}"
+                                    emptyText="#{bindings.UsersInternalVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                    fetchSize="25" rowBandingInterval="0"
+                                    selectedRowKeys="#{bindings.UsersInternalVO1.collectionModel.selectedRow}"
+                                    selectionListener="#{bindings.UsersInternalVO1.collectionModel.makeCurrent}"
+                                    rowSelection="single" id="t5"
+                                    styleClass="AFStretchWidth"
+                                    columnStretching="column:c15"
+                                    binding="#{pageFlowScope.DetailInteralSummaryBean.bindtableInternalUser}">
+                            <af:column sortProperty="Username" sortable="false"
+                                       headerText="#{bindings.UsersInternalVO1.hints.Username.label}"
+                                       id="c18" visible="false">
+                              <af:outputText value="#{row.Username}" id="ot16"/>
+                            </af:column>
+                            <af:column sortProperty="Fullname" sortable="false"
+                                       headerText="User" id="c15">
+                              <af:outputText value="#{row.Fullname}" id="ot14"/>
+                            </af:column>
+                            <af:column sortProperty="Email" sortable="false"
+                                       headerText="Email" id="c17" width="230">
+                              <af:outputText value="#{row.Email}" id="ot15"/>
+                            </af:column>
+                          </af:table>
+                        </af:panelGroupLayout>
+                      </af:dialog>
+                    </af:popup>
+                  </af:panelGroupLayout>
+                </af:panelGroupLayout>
+                <af:spacer width="10" height="10" id="s2"/>
+                <af:table value="#{bindings.DetailInternalSupportinDocVO1.collectionModel}"
+                          var="row"
+                          rows="#{bindings.DetailInternalSupportinDocVO1.rangeSize}"
+                          emptyText="#{bindings.DetailInternalSupportinDocVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          rowBandingInterval="0"
+                          selectedRowKeys="#{bindings.DetailInternalSupportinDocVO1.collectionModel.selectedRow}"
+                          selectionListener="#{pageFlowScope.DetailInteralSummaryBean.SupportingSelection}"
+                          rowSelection="multiple" id="t4"
+                          styleClass="AFStretchWidth"
+                          binding="#{pageFlowScope.DetailInteralSummaryBean.tblSupporting}"
+                          inlineStyle="height:200px;"
+                          columnStretching="column:c14">
+                  <af:column sortProperty="Id" sortable="false" headerText=""
+                             id="c7" width="35" align="center">
+                    <f:facet name="header">
+                      <af:selectBooleanCheckbox text="" label="" id="sb09"
+                                                valueChangeListener="#{pageFlowScope.DetailInteralSummaryBean.CheckBoxSupporting}"
+                                                autoSubmit="true"/>
+                    </f:facet>
+                    <af:panelGroupLayout id="pgl20" valign="middle"
+                                         halign="center">
+                      <af:selectBooleanCheckbox value="#{row.bindings.Mark.inputValue}"
+                                                label="#{row.bindings.Mark.label}"
+                                                shortDesc="#{bindings.DetailInternalSupportinDocVO1.hints.Mark.tooltip}"
+                                                id="sbc2" autoSubmit="true"/>
+                    </af:panelGroupLayout>
+                  </af:column>
+                  <af:column sortProperty="Id" sortable="false"
+                             headerText="#{bindings.DetailInternalSupportinDocVO1.hints.Id.label}"
+                             id="c21" rendered="false">
+                    <af:outputText value="#{row.Id}" id="ot20"/>
+                  </af:column>
+                  <af:column sortProperty="Description" sortable="false"
+                             headerText="Doc Status" id="c16" width="120">
+                    <af:panelGroupLayout id="pgl8" layout="vertical"
+                                         valign="middle" halign="center">
+                      <af:panelGroupLayout id="pgl19">
+                        <af:image source="/Images/approve.png"
+                                  shortDesc="approve" id="i1"
+                                  visible="#{row.Action eq 1 or row.Action eq 2 }"
+                                  inlineStyle="width:30px;"/>
+                        <af:image source="/Images/Delegated.png"
+                                  shortDesc="delegated" id="i2"
+                                  visible="#{row.Action eq 3}"/>
+                        <af:image source="/Images/not approve.png" id="i3"
+                                  visible="#{row.Action eq 5}"/>
+                        <af:image source="/Images/not applicable.png"
+                                  shortDesc="not applicable" id="i4"
+                                  visible="#{row.Action eq 6}"
+                                  inlineStyle="width:30px;"/>
+                      </af:panelGroupLayout>
+                      <af:outputText value="#{row.Description}" id="ot18"/>
+                    </af:panelGroupLayout>
+                  </af:column>
+                  <af:column sortProperty="DocName" sortable="false"
+                             headerText="Document Name" id="c14" width="200">
+                    <af:panelLabelAndMessage label="Document Name" id="plam6">
+                      <af:goLink text="#{row.DocName}" id="gl3"
+                               destination="#{DetailTransmittal.currentAddress}#{row.Id}&amp;Markup_BasedID=0&amp;Format="
+                               targetFrame="_blank"/>
+                    </af:panelLabelAndMessage>
+                    <af:panelLabelAndMessage label="Document Title" id="plam7">
+                    <af:outputText value="#{row.DocTitle}" id="ot12"/>
+                    </af:panelLabelAndMessage>
+                    <af:panelLabelAndMessage label="Document Status :"
+                                             id="plam4">
+                      <af:outputText value="#{row.DisplayStatus}" id="ot23"/>
+                    </af:panelLabelAndMessage>
+                    <af:panelLabelAndMessage label="Note :" id="plam5">
+                      <af:outputText value="#{row.Notes}" id="ot10"/>
+                    </af:panelLabelAndMessage>
+                  </af:column>
+                  <af:column sortProperty="DocNumber" sortable="false"
+                             headerText="#{bindings.DetailInternalSupportinDocVO1.hints.DocNumber.label}"
+                             id="c23" rendered="false">
+                    <af:outputText value="#{row.DocNumber}" id="ot24"/>
+                  </af:column>
+                  <af:column sortProperty="Action" sortable="false"
+                             headerText="#{bindings.DetailInternalSupportinDocVO1.hints.Action.label}"
+                             id="c22" rendered="false">
+                    <af:outputText value="#{row.Action}" id="ot19"/>
+                  </af:column>
+                  <af:column sortProperty="Recipient" sortable="false" id="c10"
+                             width="106" headerText="">
+                    <af:commandLink text="Distribution History" id="cl1"
+                                    partialSubmit="true">
+                      <af:showPopupBehavior triggerType="click" popupId="::p1"/>
+                    </af:commandLink>
+                  </af:column>
+                </af:table>
+                <af:popup id="p1" contentDelivery="lazyUncached"
+                          popupFetchListener="#{pageFlowScope.DetailInteralSummaryBean.PopUpFetchDistributionHistory}">
+                  <af:dialog id="d2">
+                    <af:panelGroupLayout id="pgl21" layout="vertical"
+                                         styleClass="AFStretchWidth">
+                      <af:panelLabelAndMessage label="Document Number :"
+                                               id="panelLabelAndMessage1">
+                        <af:outputText value="#{bindings.DocNumber.inputValue}"
+                                       id="outputText9"/>
+                      </af:panelLabelAndMessage>
+                      <af:spacer width="10" height="10" id="s10"/>
+                      <af:table value="#{bindings.HistoryDocNumber1.collectionModel}"
+                                var="row"
+                                rows="#{bindings.HistoryDocNumber1.rangeSize}"
+                                emptyText="#{bindings.HistoryDocNumber1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                fetchSize="#{bindings.HistoryDocNumber1.rangeSize}"
+                                rowBandingInterval="0" id="table1"
+                                partialTriggers="::p1"
+                                styleClass="AFStretchWidth">
+                        <af:column sortProperty="RevisionNumber"
+                                   sortable="false" headerText="Revision Number"
+                                   id="column1">
+                          <af:outputText value="#{row.RevisionNumber}"
+                                         id="outputText1"/>
+                        </af:column>
+                        <af:column sortProperty="TransmittalNumber"
+                                   sortable="false"
+                                   headerText="Transmittal Number" id="column2">
+                          <af:outputText value="#{row.TransmittalNumber}"
+                                         id="outputText2"/>
+                        </af:column>
+                        <af:column sortProperty="Sender" sortable="false"
+                                   headerText="#{bindings.HistoryDocNumber1.hints.Sender.label}"
+                                   id="column3">
+                          <af:outputText value="#{row.Sender}"
+                                         id="outputText3"/>
+                        </af:column>
+                        <af:column sortProperty="Recepient" sortable="false"
+                                   headerText="#{bindings.HistoryDocNumber1.hints.Recepient.label}"
+                                   id="column4">
+                          <af:outputText value="#{row.Recepient}"
+                                         id="outputText4"/>
+                        </af:column>
+                        <af:column sortProperty="DocumentStatus"
+                                   sortable="false" headerText="Document Status"
+                                   id="column5">
+                          <af:outputText value="#{row.DocumentStatus}"
+                                         id="outputText5"/>
+                        </af:column>
+                        <af:column sortProperty="DocumentType" sortable="false"
+                                   headerText="Document Type" id="column6">
+                          <af:outputText value="#{row.DocumentType}"
+                                         id="outputText6"/>
+                        </af:column>
+                        <af:column sortProperty="ReviewStatus" sortable="false"
+                                   headerText="Review Status" id="column7">
+                          <af:outputText value="#{row.ReviewStatus}"
+                                         id="outputText7"/>
+                        </af:column>
+                        <af:column sortProperty="SubmitDate" sortable="false"
+                                   headerText="Submit Date" id="column8">
+                          <af:outputText value="#{row.SubmitDate}"
+                                         id="outputText8">
+                            <af:convertDateTime pattern="#{bindings.HistoryDocNumber1.hints.SubmitDate.format}"/>
+                          </af:outputText>
+                        </af:column>
+                      </af:table>
+                    </af:panelGroupLayout>
+                  </af:dialog>
+                </af:popup>
+              </af:panelGroupLayout>
+              <!--modified by nanda 081214-->
+              <af:panelGroupLayout id="panelGroupLayout1" layout="vertical"
+                                   inlineStyle="background-color:rgb(17,73,136);">
+                <af:panelGroupLayout id="pgl23" layout="horizontal"
+                                     inlineStyle="background-color:rgb(17,73,136);">
+                  <af:outputLabel value="Submittal Documents" id="outputLabel2"
+                                  inlineStyle="color:White; font-family:Arial, Helvetica, sans-serif; font-size:small; font-weight:bold;"/>
+                  <af:outputText value=" ( Total Doc : #{bindings.DetailExternalSubmittalDoc1Iterator.estimatedRowCount}) "
+                                 id="ot21"
+                                 inlineStyle="color:White; font-family:Arial, Helvetica, sans-serif; font-size:small; font-weight:bold;"
+                                 partialTriggers="t1"/>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout id="pgl24" layout="horizontal"
+                                     inlineStyle="background-color:rgb(17,73,136);">
+                  <af:outputLabel value="Selected :" id="ol2"
+                                  inlineStyle="color:White; font-family:Arial, Helvetica, sans-serif; font-size:small; font-weight:bold;"/>
+                  <af:outputText id="ot26"
+                                 binding="#{pageFlowScope.DetailInteralSummaryBean.countCheckBox}"
+                                 inlineStyle="color:White; font-family:Arial, Helvetica, sans-serif; font-size:small; font-weight:bold;"
+                                 partialTriggers="t1" clientComponent="true"
+                                 value=""/>
+                  <!--<af:outputText value="  row no. [ #{ (bindings.DetailExternalSubmittalDoc1Iterator.rangeStart &lt; 0 ? 1 : bindings.DetailExternalSubmittalDoc1Iterator.rangeStart+1) + ( bindings.DetailExternalSubmittalDoc1Iterator.currentRowIndexInRange == -1 ? 0 : bindings.DetailExternalSubmittalDoc1Iterator.currentRowIndexInRange)}] of [#{bindings.DetailExternalSubmittalDoc1Iterator.estimatedRowCount}]"
+                                 id="ot22"
+                                 inlineStyle="color:White; font-family:Arial, Helvetica, sans-serif; font-size:small; font-weight:bold;"
+                                 partialTriggers="t2"/>-->
+                </af:panelGroupLayout>
+              </af:panelGroupLayout>
+              <!-- end modified -->
+              <af:panelGroupLayout id="panelGroupLayout2" layout="vertical">
+                <af:table value="#{bindings.DetailExternalSubmittalDoc1.collectionModel}"
+                          var="row"
+                          rows="#{bindings.DetailExternalSubmittalDoc1.rangeSize}"
+                          emptyText="#{bindings.DetailExternalSubmittalDoc1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          fetchSize="#{bindings.DetailExternalSubmittalDoc1.rangeSize}"
+                          rowBandingInterval="0"
+                          selectedRowKeys="#{bindings.DetailExternalSubmittalDoc1.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.DetailExternalSubmittalDoc1.collectionModel.makeCurrent}"
+                          rowSelection="single" id="t1"
+                          columnStretching="column:c3"
+                          styleClass="AFStretchWidth"
+                          binding="#{pageFlowScope.DetailInteralSummaryBean.tblSubmittal}"
+                          inlineStyle="height:120px;">
+                  <af:column sortProperty="Mark1" sortable="false" id="c11"
+                             width="30" align="center">
+                    <f:facet name="header">
+                      <af:selectBooleanCheckbox text="" label="" id="sbc1"
+                                                valueChangeListener="#{pageFlowScope.DetailInteralSummaryBean.CheckBoxSubmittal}"
+                                                autoSubmit="true"/>
+                    </f:facet>
+                    <af:selectBooleanCheckbox value="#{row.bindings.Mark1.inputValue}"
+                                              label="#{row.bindings.Mark1.label}"
+                                              shortDesc="#{bindings.DetailExternalSubmittalDoc1.hints.Mark1.tooltip}"
+                                              id="sbc12" autoSubmit="true"
+                                              valueChangeListener="#{pageFlowScope.DetailInteralSummaryBean.countCheckBox1}"/>
+                  </af:column>
+                  <af:column sortProperty="DocTitle" sortable="false"
+                             headerText="Document Title" id="c3">
+                    <af:outputText value="#{row.DocTitle}" id="ot6"/>
+                  </af:column>
+                  <af:column sortProperty="Uploader" sortable="false"
+                             headerText="Submit By" id="c1" width="150">
+                    <af:outputText value="#{row.UploaderName}" id="ot4"/>
+                  </af:column>
+                  <af:column sortProperty="UploadDate" sortable="false"
+                             headerText="Submit Date" id="c4">
+                    <af:outputText value="#{row.UploadDate}" id="ot7">
+                      <af:convertDateTime pattern="#{bindings.DetailExternalSubmittalDoc1.hints.UploadDate.format}"/>
+                    </af:outputText>
+                  </af:column>
+                  <af:column sortProperty="Id" sortable="false"
+                             headerText="Action" id="c2">
+                    <af:goLink text="Export" id="gl2"
+                               destination="#{DetailTransmittal.getFileURL}#{row.Id}"/>
+                  </af:column>
+                </af:table>
+              </af:panelGroupLayout>
+            </af:showDetailItem>
+            <af:showDetailItem text="Reference" id="sdi2">
+              <af:panelGroupLayout id="pgl11" layout="vertical">
+                <af:table value="#{bindings.DetailExternalReference1.collectionModel}"
+                          var="row"
+                          rows="#{bindings.DetailExternalReference1.rangeSize}"
+                          emptyText="#{bindings.DetailExternalReference1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          fetchSize="#{bindings.DetailExternalReference1.rangeSize}"
+                          rowBandingInterval="0" id="t2"
+                          styleClass="AFStretchWidth"
+                          columnStretching="column:c6">
+                  <af:column sortProperty="TransmittalId" sortable="false"
+                             headerText="#{bindings.DetailExternalReference1.hints.TransmittalId.label}"
+                             id="c5" width="300">
+                    <af:outputText value="#{row.TransmittalId}" id="ot5"/>
+                  </af:column>
+                  <af:column sortProperty="TransmittalReference"
+                             sortable="false"
+                             headerText="#{bindings.DetailExternalReference1.hints.TransmittalReference.label}"
+                             id="c6">
+                    <af:outputText value="#{row.TransmittalReference}"
+                                   id="ot8"/>
+                  </af:column>
+                </af:table>
+              </af:panelGroupLayout>
+            </af:showDetailItem>
+            <af:showDetailItem text="History" id="sdi3">
+              <af:table value="#{bindings.DetailExternalHistory1.collectionModel}"
+                        var="row"
+                        rows="#{bindings.DetailExternalHistory1.rangeSize}"
+                        emptyText="#{bindings.DetailExternalHistory1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                        fetchSize="#{bindings.DetailExternalHistory1.rangeSize}"
+                        rowBandingInterval="0"
+                        selectedRowKeys="#{bindings.DetailExternalHistory1.collectionModel.selectedRow}"
+                        selectionListener="#{bindings.DetailExternalHistory1.collectionModel.makeCurrent}"
+                        rowSelection="single" id="t3"
+                        styleClass="AFStretchWidth"
+                        columnStretching="column:c13">
+                <af:column sortProperty="Username" sortable="false"
+                           headerText="Performer" id="c8">
+                  <af:outputText value="#{row.Username}" id="ot13"/>
+                </af:column>
+                <af:column sortProperty="Event" sortable="false"
+                           headerText="Event" id="c12">
+                  <af:outputText value="#{row.Event}" id="ot9"/>
+                </af:column>
+                <af:column sortProperty="ActionDate" sortable="false"
+                           headerText="Action" id="c9">
+                  <af:outputText value="#{row.ActionDate}" id="ot17">
+                    <af:convertDateTime pattern="#{bindings.DetailExternalHistory1.hints.ActionDate.format}"
+                                        type="both"/>
+                  </af:outputText>
+                </af:column>
+                <af:column sortProperty="Description" sortable="false"
+                           headerText="#{bindings.DetailExternalHistory1.hints.Description.label}"
+                           id="c13">
+                  <af:outputText value="#{row.Description}" id="ot11"/>
+                </af:column>
+              </af:table>
+            </af:showDetailItem>
+          </af:panelTabbed>
+          <af:panelGroupLayout id="pgl15" layout="horizontal"
+                               styleClass="AFStretchWidth">
+            <af:panelGroupLayout id="pgl16" valign="middle" halign="left"
+                                 layout="horizontal">
+              <af:button text="Finish" id="cb4" partialSubmit="true"
+                                binding="#{pageFlowScope.DetailInteralSummaryBean.bindBtnFinish}"
+                                disabled="#{bindings.TransmittalStatus.inputValue == 'In Progress' ? false : true}"
+                                visible="#{bindings.TransmittalStatus.inputValue == 'In Progress' ? true : false}">
+                <af:showPopupBehavior triggerType="click"
+                                      popupId="popUpFInish"/>
+              </af:button>
+              <af:spacer width="10" height="10" id="s7"/>
+              <af:button text="Abort" id="cb5" partialSubmit="true"
+                                binding="#{pageFlowScope.DetailInteralSummaryBean.bindBtnAbort}"
+                                disabled="#{bindings.TransmittalStatus.inputValue == 'In Progress' ? false : true}"
+                                visible="#{bindings.TransmittalStatus.inputValue == 'In Progress' ? true : false}">
+                <af:showPopupBehavior triggerType="click" popupId="popUpAbort"/>
+              </af:button>
+              <af:popup id="popUpFInish" contentDelivery="lazyUncached">
+                <af:dialog id="d1" title="Finish Reason"
+                           inlineStyle="width:300px;"
+                           dialogListener="#{pageFlowScope.DetailInteralSummaryBean.Finish}">
+                  <af:panelGroupLayout id="pgl18">
+                    <af:inputText label="Reason :" id="it1" columns="25"
+                                  rows="5"
+                                  binding="#{pageFlowScope.DetailInteralSummaryBean.bindFinishReason}"
+                                  required="true" showRequired="true"/>
+                  </af:panelGroupLayout>
+                </af:dialog>
+              </af:popup>
+              <af:popup id="popUpAbort" contentDelivery="lazyUncached">
+                <af:dialog id="dialog1" title="Abort Reason"
+                           inlineStyle="width:300px;"
+                           dialogListener="#{pageFlowScope.DetailInteralSummaryBean.Abort}">
+                  <af:panelGroupLayout id="panelGroupLayout3">
+                    <af:inputText label="Reason :" id="inputText1" columns="25"
+                                  rows="5"
+                                  binding="#{pageFlowScope.DetailInteralSummaryBean.bindAbortReason}"/>
+                  </af:panelGroupLayout>
+                </af:dialog>
+              </af:popup>
+            </af:panelGroupLayout>
+            <af:panelGroupLayout id="pgl17" layout="horizontal" valign="middle"
+                                 halign="right">
+              <af:button text="Forward" id="cb6"
+                                actionListener="#{pageFlowScope.DetailInteralSummaryBean.Forward}"
+                                disabled="#{pageFlowScope.DetailInteralSummaryBean.isPublish eq 'Publish'}"/>
+              <af:spacer width="10" height="10" id="s81"/>
+              <af:button text="Close Screen" id="cb8">
+                <af:clientListener type="click" method="closeWindow"/>
+                <!--<af:checkUncommittedDataBehavior/>-->
+              </af:button>
+              <af:popup id="popupForward" contentDelivery="lazyUncached"
+                        binding="#{pageFlowScope.DetailInteralSummaryBean.bindPopUpForward}">
+                <af:dialog id="d3" closeIconVisible="false"
+                           dialogListener="#{pageFlowScope.DetailInteralSummaryBean.ForwardTransmittal}">
+                  <af:panelGroupLayout id="pgl22" styleClass="AFStretchWidth">
+                    <af:panelFormLayout id="pfl2">
+                      <af:selectBooleanCheckbox label="Close Transmittal :"
+                                                id="sbc3" autoSubmit="true"
+                                                text="(Check if you want to close transmittal)"
+                                                binding="#{pageFlowScope.DetailInteralSummaryBean.bindCloseTransmittal}"/>
+                      <af:spacer width="10" height="10" id="s11"/>
+                      <af:selectOneRadio value="#{bindings.ForwardSelectionVo1.inputValue}"
+                                         label="Forward Type :"
+                                         required="#{bindings.ForwardSelectionVo1.hints.mandatory}"
+                                         shortDesc="#{bindings.ForwardSelectionVo1.hints.tooltip}"
+                                         id="sor2">
+                        <f:selectItems value="#{bindings.ForwardSelectionVo1.items}"
+                                       id="si3"/>
+                      </af:selectOneRadio>
+                    </af:panelFormLayout>
+                  </af:panelGroupLayout>
+                </af:dialog>
+              </af:popup>
+            </af:panelGroupLayout>
+            <af:resource type="javascript">
+              <!--modified by nanda - 0312 -->
+              
+              function GoToReview() {
+                window.history.back();
+              }
+              function closeWindow() {
+                window.close();
+              }
+            
+            </af:resource>
+          </af:panelGroupLayout>
+        </af:panelGroupLayout>
+      </f:facet>
+      <f:facet name="top">
+        <af:panelGroupLayout id="pgl2" layout="vertical">
+          <af:panelGroupLayout id="pgl3" layout="vertical"
+                               inlineStyle="background-color:rgb(17,73,136);">
+            <af:outputLabel value="General Info" id="ol1"
+                            inlineStyle="color:White; font-family:Arial, Helvetica, sans-serif; font-size:small; font-weight:bold;"/>
+          </af:panelGroupLayout>
+          <af:panelGroupLayout id="pgl4" layout="horizontal"
+                               styleClass="AFStretchWidth">
+            <af:panelFormLayout id="pfl1">
+              <af:panelLabelAndMessage label="Transmittal No. :" id="plam1">
+                <af:outputText value="#{bindings.TransmittalId.inputValue}"
+                               id="ot2"/>
+              </af:panelLabelAndMessage>
+              <af:panelLabelAndMessage label="Subject :" id="plam3">
+                <af:outputText value="#{bindings.TransmittalSubject.inputValue}"
+                               id="ot3"/>
+              </af:panelLabelAndMessage>
+              <af:panelLabelAndMessage label="Due Date :" id="plam2">
+                <af:outputText value="#{bindings.TransmittalDuedate.inputValue}"
+                               binding="#{pageFlowScope.DetailInteralSummaryBean.dueDate}"
+                               id="ot1" clientComponent="true">
+                  <af:convertDateTime pattern="#{bindings.TransmittalDuedate.format}"/>
+                </af:outputText>
+              </af:panelLabelAndMessage>
+            </af:panelFormLayout>
+            <af:panelGroupLayout id="pgl7" halign="right" valign="bottom"
+                                 layout="vertical" inlineStyle="height:55.0px">
+              <af:goLink text="Click Here to see Cover Note" id="gl1"
+                         inlineStyle="font-weight:bold; font-size:12.0px;"
+                         destination="#{DetailTransmittal.currentAddress}#{bindings.CoverNotedId.inputValue}"
+                         targetFrame="_blank"/>
+            </af:panelGroupLayout>
+          </af:panelGroupLayout>
+        </af:panelGroupLayout>
+      </f:facet>
+    </af:decorativeBox>
+  </af:panelGroupLayout>
+</jsp:root>

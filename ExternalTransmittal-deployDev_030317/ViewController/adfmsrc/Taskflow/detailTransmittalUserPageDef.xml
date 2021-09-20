@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.61.92" id="detailTransmittalUserPageDef"
+                Package="Taskflow">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <invokeAction Binds="SetLoadTransmittalId" id="ExecLoadTransmittal"
+                  Refresh="ifNeeded"
+                  RefreshCondition="${!adfFacesContext.postback}"/>
+    <iterator id="GetConfigVO1Iterator" Binds="GetConfigVO1"
+              DataControl="AppModuleExternalTransmittalDataControl"
+              RangeSize="25"/>
+    <iterator id="CoverNoteInfoVO1Iterator" Binds="CoverNoteInfoVO1"
+              DataControl="AppModuleExternalTransmittalDataControl"
+              RangeSize="25"/>
+    <iterator Binds="PheDswfDocSubmittalVO1" RangeSize="25"
+              DataControl="AppModuleExternalTransmittalDataControl"
+              id="PheDswfDocSubmittalVO1Iterator"/>
+    <iterator Binds="DetailExternalReference1" RangeSize="25"
+              DataControl="AppModuleExternalTransmittalDataControl"
+              id="DetailExternalReference1Iterator"/>
+    <iterator Binds="DetailExternalHistory1" RangeSize="25"
+              DataControl="AppModuleExternalTransmittalDataControl"
+              id="DetailExternalHistory1Iterator"/>
+    <iterator Binds="TdcDetailExternal1" RangeSize="25"
+              DataControl="AppModuleExternalTransmittalDataControl"
+              id="TdcDetailExternal1Iterator"/>
+    <iterator Binds="DetailExternalSupportingDoc1" RangeSize="25"
+              DataControl="AppModuleExternalTransmittalDataControl"
+              id="DetailExternalSupportingDoc1Iterator"/>
+    <iterator Binds="HistoryDocNumber1" RangeSize="25"
+              DataControl="AppModuleExternalTransmittalDataControl"
+              id="HistoryDocNumber1Iterator"/>
+    <iterator Binds="UserRoleinTransmittalVO1" RangeSize="25"
+              DataControl="AppModuleExternalTransmittalDataControl"
+              id="UserRoleinTransmittalVO1Iterator"/>
+    <iterator Binds="ListDocumentStatusVO1" RangeSize="25"
+              DataControl="AppModuleExternalTransmittalDataControl"
+              id="ListDocumentStatusVO1Iterator"/>
+    <iterator id="IsDocExistVO1Iterator" Binds="IsDocExistVO1"
+              DataControl="AppModuleExternalTransmittalDataControl"
+              RangeSize="25"/>
+    <iterator id="UsersInternalVO1Iterator" Binds="UsersInternalVO1"
+              DataControl="AppModuleExternalTransmittalDataControl"
+              RangeSize="25"/>
+    <iterator id="DetailInteralSupportingDocForUser1Iterator"
+              Binds="DetailInteralSupportingDocForUser1"
+              DataControl="AppModuleExternalTransmittalDataControl"
+              RangeSize="25"/>
+    <iterator id="GetEmailVO1Iterator" Binds="GetEmailVO1"
+              DataControl="AppModuleExternalTransmittalDataControl"
+              RangeSize="25"/>
+    <iterator Binds="PheDelegateView1" RangeSize="25"
+              DataControl="AppModuleExternalTransmittalDataControl"
+              id="PheDelegateView1Iterator"/>
+    <iterator id="DetailInternalSupportingDocForDelegate1Iterator"
+              Binds="DetailInternalSupportingDocForDelegate1"
+              DataControl="AppModuleExternalTransmittalDataControl"
+              RangeSize="25"/>
+    <iterator Binds="IsDelegateVO1" RangeSize="10"
+              DataControl="AppModuleExternalTransmittalDataControl"
+              id="IsDelegateVO1Iterator"/>
+    <iterator id="PheDelegateDavidVO1Iterator" Binds="PheDelegateDavidVO1"
+              DataControl="AppModuleExternalTransmittalDataControl"
+              RangeSize="25"/>
+    <iterator Binds="GetFullnameDelegateTo1" RangeSize="10"
+              DataControl="AppModuleExternalTransmittalDataControl"
+              id="GetFullnameDelegateTo1Iterator"/>
+    <iterator Binds="IsRoleExist1" RangeSize="10"
+              DataControl="AppModuleExternalTransmittalDataControl"
+              id="IsRoleExist1Iterator"/>
+  </executables>
+  <bindings>
+    <methodAction id="SetLoadTransmittalId"
+                  InstanceName="AppModuleExternalTransmittalDataControl.dataProvider"
+                  DataControl="AppModuleExternalTransmittalDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="SetLoadTransmittalId" IsViewObjectMethod="false"/>
+    <attributeValues IterBinding="TdcDetailExternal1Iterator"
+                     id="TransmittalId">
+      <AttrNames>
+        <Item Value="TransmittalId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="TdcDetailExternal1Iterator"
+                     id="TransmittalSubject">
+      <AttrNames>
+        <Item Value="TransmittalSubject"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="TdcDetailExternal1Iterator"
+                     id="TransmittalDuedate">
+      <AttrNames>
+        <Item Value="TransmittalDuedate"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="GetConfigVO1Iterator" id="ExecuteGetConfigWithParams"
+            InstanceName="AppModuleExternalTransmittalDataControl.GetConfigVO1"
+            DataControl="AppModuleExternalTransmittalDataControl"
+            RequiresUpdateModel="true" Action="executeWithParams">
+      <NamedData NDName="keyConfig" NDType="java.lang.String"/>
+    </action>
+    <attributeValues IterBinding="GetConfigVO1Iterator" id="KeyValue">
+      <AttrNames>
+        <Item Value="KeyValue"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CoverNoteInfoVO1Iterator" id="CoverNotedId">
+      <AttrNames>
+        <Item Value="Id"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="DetailExternalReference1Iterator"
+          id="DetailExternalReference1">
+      <nodeDefinition DefName="transmittalExternal.vo.DetailExternalReference"
+                      Name="DetailExternalReference10">
+        <AttrNames>
+          <Item Value="TransmittalId"/>
+          <Item Value="TransmittalReference"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="DetailExternalHistory1Iterator"
+          id="DetailExternalHistory1">
+      <nodeDefinition DefName="transmittalExternal.vo.DetailExternalHistory"
+                      Name="DetailExternalHistory10">
+        <AttrNames>
+          <Item Value="Username"/>
+          <Item Value="Event"/>
+          <Item Value="ActionDate"/>
+          <Item Value="Description"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="DetailExternalSupportingDoc1Iterator"
+          id="DetailExternalSupportingDoc1">
+      <nodeDefinition DefName="transmittalExternal.vo.DetailExternalSupportingDoc"
+                      Name="DetailExternalSupportingDoc10">
+        <AttrNames>
+          <Item Value="Mark"/>
+          <Item Value="DocName"/>
+          <Item Value="DocTitle"/>
+          <Item Value="DocStatus"/>
+          <Item Value="Remarks"/>
+          <Item Value="Id"/>
+          <Item Value="DisplayStatus"/>
+          <Item Value="SeqId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="PheDswfDocSubmittalVO1Iterator"
+          id="PheDswfDocSubmittalVO1">
+      <nodeDefinition DefName="transmittalExternal.vo.PheDswfDocSubmittalVO"
+                      Name="PheDswfDocSubmittalVO10">
+        <AttrNames>
+          <Item Value="DocTitle"/>
+          <Item Value="UploadDate"/>
+          <Item Value="Uploader"/>
+          <Item Value="ContentId"/>
+          <Item Value="SeqId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="DetailExternalSupportingDoc1Iterator"
+                     id="DocNumber">
+      <AttrNames>
+        <Item Value="DocNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="HistoryDocNumber1Iterator" id="HistoryDocNumber1">
+      <nodeDefinition DefName="transmittalExternal.vo.HistoryDocNumber"
+                      Name="HistoryDocNumber10">
+        <AttrNames>
+          <Item Value="RevisionNumber"/>
+          <Item Value="TransmittalNumber"/>
+          <Item Value="Sender"/>
+          <Item Value="Recepient"/>
+          <Item Value="DocumentStatus"/>
+          <Item Value="DocumentType"/>
+          <Item Value="ReviewStatus"/>
+          <Item Value="SubmitDate"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="HistoryDocNumber1Iterator" id="ExecuteHistoryDocNumber"
+            InstanceName="AppModuleExternalTransmittalDataControl.HistoryDocNumber1"
+            DataControl="AppModuleExternalTransmittalDataControl"
+            RequiresUpdateModel="true" Action="executeWithParams">
+      <NamedData NDName="docNumber" NDType="java.lang.String"/>
+    </action>
+    <attributeValues IterBinding="UserRoleinTransmittalVO1Iterator" id="Role">
+      <AttrNames>
+        <Item Value="Role"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="ListDocumentStatusVO1Iterator" ListOperMode="navigation"
+          ListIter="ListDocumentStatusVO1Iterator" id="ListDocumentStatusVO1"
+          DTSupportsMRU="true">
+      <AttrNames>
+        <Item Value="Value"/>
+      </AttrNames>
+    </list>
+    <action IterBinding="IsDocExistVO1Iterator" id="EWIsDocExist"
+            InstanceName="AppModuleExternalTransmittalDataControl.IsDocExistVO1"
+            DataControl="AppModuleExternalTransmittalDataControl"
+            RequiresUpdateModel="true" Action="executeWithParams">
+      <NamedData NDName="folderGUID" NDType="java.lang.String"/>
+      <NamedData NDName="fileName" NDType="java.lang.String"/>
+    </action>
+    <tree IterBinding="UsersInternalVO1Iterator" id="UsersInternalVO1">
+      <nodeDefinition DefName="transmittalExternal.vo.UsersInternalVO"
+                      Name="UsersInternalVO10">
+        <AttrNames>
+          <Item Value="Username"/>
+          <Item Value="Email"/>
+          <Item Value="Fullname"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="DetailInteralSupportingDocForUser1Iterator"
+          id="DetailInteralSupportingDocForUser1">
+      <nodeDefinition DefName="transmittalExternal.vo.DetailInteralSupportingDocForUser"
+                      Name="DetailInteralSupportingDocForUser10">
+        <AttrNames>
+          <Item Value="UniqueId"/>
+          <Item Value="Action"/>
+          <Item Value="ContentId"/>
+          <Item Value="Description"/>
+          <Item Value="Did"/>
+          <Item Value="DisplayStatus"/>
+          <Item Value="DocName"/>
+          <Item Value="DocNumber"/>
+          <Item Value="DocSource"/>
+          <Item Value="DocStatus"/>
+          <Item Value="DocTitle"/>
+          <Item Value="DocType"/>
+          <Item Value="Format"/>
+          <Item Value="Id"/>
+          <Item Value="Notes"/>
+          <Item Value="Pages"/>
+          <Item Value="PublishStatus"/>
+          <Item Value="Receiver"/>
+          <Item Value="Recipient"/>
+          <Item Value="Remarks"/>
+          <Item Value="Revision"/>
+          <Item Value="SeqId"/>
+          <Item Value="TransmittalId"/>
+          <Item Value="Type"/>
+          <Item Value="UploadDate"/>
+          <Item Value="Uploader"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="SendEmail" InstanceName="SendEmailDTUDataControl"
+                  DataControl="SendEmailDTUDataControl" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="SendEmail"
+                  IsViewObjectMethod="false"
+                  ReturnName="data.SendEmailDTUDataControl.methodResults.SendEmail_SendEmailDTUDataControl_SendEmail_result">
+      <NamedData NDName="EmailTo" NDType="java.lang.String"/>
+      <NamedData NDName="Subject" NDType="java.lang.String"/>
+      <NamedData NDName="HtmlText" NDType="java.lang.String"/>
+    </methodAction>
+    <attributeValues IterBinding="TdcDetailExternal1Iterator"
+                     id="TransmittalCreator">
+      <AttrNames>
+        <Item Value="TransmittalCreator"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="GetEmailVO1Iterator" id="ExecuteGetEmail"
+            InstanceName="AppModuleExternalTransmittalDataControl.GetEmailVO1"
+            DataControl="AppModuleExternalTransmittalDataControl"
+            RequiresUpdateModel="true" Action="executeWithParams">
+      <NamedData NDName="name"
+                 NDValue="#{bindings.TransmittalCreator.inputValue}"
+                 NDType="java.lang.String"/>
+    </action>
+    <attributeValues IterBinding="GetEmailVO1Iterator" id="Demail">
+      <AttrNames>
+        <Item Value="Demail"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="PheDelegateView1Iterator" id="PheDelegateView1">
+      <nodeDefinition DefName="transmittalExternal.vo.PheDelegateView"
+                      Name="PheDelegateView10">
+        <AttrNames>
+          <Item Value="DelegateFrom"/>
+          <Item Value="DelegateTo"/>
+          <Item Value="StatusDesc"/>
+          <Item Value="StartDate"/>
+          <Item Value="EndDate"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="createPheDelegate"
+                  InstanceName="AppModuleExternalTransmittalDataControl.dataProvider"
+                  DataControl="AppModuleExternalTransmittalDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="createPheDelegate" IsViewObjectMethod="false"
+                  ReturnName="data.AppModuleExternalTransmittalDataControl.methodResults.createPheDelegate_AppModuleExternalTransmittalDataControl_dataProvider_createPheDelegate_result"/>
+    <action id="Commit" DataControl="AppModuleExternalTransmittalDataControl"
+            RequiresUpdateModel="true" Action="commitTransaction"/>
+    <tree IterBinding="DetailInternalSupportingDocForDelegate1Iterator"
+          id="DetailInternalSupportingDocForDelegate1">
+      <nodeDefinition DefName="transmittalExternal.vo.DetailInternalSupportingDocForDelegate"
+                      Name="DetailInternalSupportingDocForDelegate10">
+        <AttrNames>
+          <Item Value="UniqueId"/>
+          <Item Value="Action"/>
+          <Item Value="ContentId"/>
+          <Item Value="Description"/>
+          <Item Value="Did"/>
+          <Item Value="DisplayStatus"/>
+          <Item Value="DocName"/>
+          <Item Value="DocNumber"/>
+          <Item Value="DocSource"/>
+          <Item Value="DocStatus"/>
+          <Item Value="DocTitle"/>
+          <Item Value="DocType"/>
+          <Item Value="Format"/>
+          <Item Value="Id"/>
+          <Item Value="Notes"/>
+          <Item Value="Pages"/>
+          <Item Value="PublishStatus"/>
+          <Item Value="Receiver"/>
+          <Item Value="Recipient"/>
+          <Item Value="Remarks"/>
+          <Item Value="Revision"/>
+          <Item Value="SeqId"/>
+          <Item Value="TransmittalId"/>
+          <Item Value="Type"/>
+          <Item Value="UploadDate"/>
+          <Item Value="Uploader"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="IsDelegateVO1Iterator" id="ExecuteIsDelegate"
+            InstanceName="AppModuleExternalTransmittalDataControl.IsDelegateVO1"
+            DataControl="AppModuleExternalTransmittalDataControl"
+            RequiresUpdateModel="true" Action="executeWithParams">
+      <NamedData NDName="transmittalId" NDType="java.lang.String"/>
+      <NamedData NDName="delegateTo" NDType="java.lang.String"/>
+    </action>
+    <attributeValues IterBinding="IsDelegateVO1Iterator" id="isDelegate">
+      <AttrNames>
+        <Item Value="Total"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PheDelegateView1Iterator" id="EndDate">
+      <AttrNames>
+        <Item Value="EndDate"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="PheDelegateDavidVO1Iterator" id="PheDelegateDavidVO1">
+      <nodeDefinition DefName="transmittalExternal.vo.PheDelegateDavidVO"
+                      Name="PheDelegateDavidVO10">
+        <AttrNames>
+          <Item Value="DelegateFrom"/>
+          <Item Value="DelegatePid"/>
+          <Item Value="DelegateTo"/>
+          <Item Value="EndDate"/>
+          <Item Value="Id"/>
+          <Item Value="StartDate"/>
+          <Item Value="StatusCode"/>
+          <Item Value="StatusDesc"/>
+          <Item Value="TransmittalId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="PheDelegateDavidVO1Iterator"
+                     id="DelegateFrom">
+      <AttrNames>
+        <Item Value="DelegateFrom"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="GetFullnameDelegateTo1Iterator"
+            id="GetFullNameDelegateTo"
+            InstanceName="AppModuleExternalTransmittalDataControl.GetFullnameDelegateTo1"
+            DataControl="AppModuleExternalTransmittalDataControl"
+            RequiresUpdateModel="true" Action="executeWithParams">
+      <NamedData NDName="transmittalId" NDType="java.lang.String"/>
+    </action>
+    <attributeValues IterBinding="GetFullnameDelegateTo1Iterator"
+                     id="Dfullname">
+      <AttrNames>
+        <Item Value="Dfullname"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="IsRoleExist1Iterator" id="ExecuteIsRoleExist"
+            InstanceName="AppModuleExternalTransmittalDataControl.IsRoleExist1"
+            DataControl="AppModuleExternalTransmittalDataControl"
+            RequiresUpdateModel="true" Action="executeWithParams">
+      <NamedData NDName="role" NDType="java.lang.String"/>
+      <NamedData NDName="name" NDType="java.lang.String"/>
+    </action>
+    <attributeValues IterBinding="IsRoleExist1Iterator" id="Isroleexist">
+      <AttrNames>
+        <Item Value="Isroleexist"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

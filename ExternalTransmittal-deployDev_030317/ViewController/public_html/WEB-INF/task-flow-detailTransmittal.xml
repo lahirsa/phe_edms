@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="task-flow-detailTransmittal">
+    <default-activity id="__56">router1</default-activity>
+    <input-parameter-definition id="__51">
+      <name id="__50">transmittalType</name>
+    </input-parameter-definition>
+    <input-parameter-definition id="__52">
+      <name id="__53">transmittalId</name>
+    </input-parameter-definition>
+    <input-parameter-definition id="__55">
+      <name id="__54">dUser</name>
+    </input-parameter-definition>
+    <input-parameter-definition id="__6">
+      <name id="__5">isTdc</name>
+    </input-parameter-definition>
+    <managed-bean id="__12">
+      <managed-bean-name id="__10">LoadDetailBean</managed-bean-name>
+      <managed-bean-class id="__13">com.action.LoadDetailClass</managed-bean-class>
+      <managed-bean-scope id="__11">pageFlow</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__2">
+      <managed-bean-name id="__4">DetailTransmittal</managed-bean-name>
+      <managed-bean-class id="__3">com.action.DetailTransmittal</managed-bean-class>
+      <managed-bean-scope id="__1">request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__9">
+      <managed-bean-name id="__7">DetailInteralSummaryBean</managed-bean-name>
+      <managed-bean-class id="__8">com.action.DetailInteralSummaryClass</managed-bean-class>
+      <managed-bean-scope id="__14">pageFlow</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__18">
+      <managed-bean-name id="__17">DetailExternalSummaryBean</managed-bean-name>
+      <managed-bean-class id="__16">com.action.DetailExternalSummaryClass</managed-bean-class>
+      <managed-bean-scope id="__15">pageFlow</managed-bean-scope>
+    </managed-bean>
+    <view id="detailTransmittal">
+      <page>/Taskflow/detailTransmittal.jsff</page>
+    </view>
+    <view id="detailInternalTransmittal">
+      <page>/Taskflow/detailInternalTransmittal.jsff</page>
+    </view>
+    <router id="router1">
+      <case>
+        <expression>#{pageFlowScope.LoadDetailBean.isInternal == 'External'}</expression>
+        <outcome id="__20">ExternalTransmittal</outcome>
+      </case>
+      <case>
+        <expression>#{pageFlowScope.LoadDetailBean.isInternal == 'Internal'}</expression>
+        <outcome id="__33">InternalTransmittal</outcome>
+      </case>
+      <default-outcome>ExternalTransmittal</default-outcome>
+    </router>
+    <control-flow-rule id="__21">
+      <from-activity-id id="__22">router1</from-activity-id>
+      <control-flow-case id="__23">
+        <from-outcome id="__24">ExternalTransmittal</from-outcome>
+        <to-activity-id id="__25">detailTransmittal</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__26">
+        <from-outcome id="__27">InternalTransmittal</from-outcome>
+        <to-activity-id id="__28">detailInternalTransmittal</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

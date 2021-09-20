@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="task-flow-approval">
+    <default-activity id="__1">inboxApprove</default-activity>
+    <managed-bean id="__2">
+      <managed-bean-name id="__5">inboxBeans</managed-bean-name>
+      <managed-bean-class id="__3">beans.inboxClass</managed-bean-class>
+      <managed-bean-scope id="__4">pageFlow</managed-bean-scope>
+    </managed-bean>
+    <view id="inboxApprove">
+      <page>/taskflow/inboxApprove.jsff</page>
+    </view>
+    <view id="listApprove">
+      <page>/taskflow/listApprove.jsff</page>
+    </view>
+    <control-flow-rule id="__6">
+      <from-activity-id id="__7">inboxApprove</from-activity-id>
+      <control-flow-case id="__8">
+        <from-outcome id="__10">Next</from-outcome>
+        <to-activity-id id="__9">listApprove</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__11">
+      <from-activity-id id="__12">listApprove</from-activity-id>
+      <control-flow-case id="__13">
+        <from-outcome id="__15">Back</from-outcome>
+        <to-activity-id id="__14">inboxApprove</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

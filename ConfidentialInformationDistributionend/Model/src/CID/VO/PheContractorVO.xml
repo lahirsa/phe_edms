@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="PheContractorVO"
+  Version="11.1.1.66.73"
+  InheritPersonalization="merge"
+  SelectList="PheContractorEO.ID, 
+       PheContractorEO.CONTRACTOR_CODE, 
+       PheContractorEO.CONTRACTOR_NAME, 
+       PheContractorEO.CONTRACTOR_ADDRESS, 
+       PheContractorEO.CONTRACTOR_PHONENUMBER, 
+       PheContractorEO.MODIFIED_DATE"
+  FromList="PHE_CONTRACTOR PheContractorEO"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|VarAccess"/>
+  </DesignTime>
+  <EntityUsage
+    Name="PheContractorEO"
+    Entity="CID.EO.PheContractorEO"/>
+  <ViewAttribute
+    Name="Id"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Id"
+    EntityUsage="PheContractorEO"
+    AliasName="ID"/>
+  <ViewAttribute
+    Name="ContractorCode"
+    PrecisionRule="true"
+    EntityAttrName="ContractorCode"
+    EntityUsage="PheContractorEO"
+    AliasName="CONTRACTOR_CODE"/>
+  <ViewAttribute
+    Name="ContractorName"
+    PrecisionRule="true"
+    EntityAttrName="ContractorName"
+    EntityUsage="PheContractorEO"
+    AliasName="CONTRACTOR_NAME"/>
+  <ViewAttribute
+    Name="ContractorAddress"
+    PrecisionRule="true"
+    EntityAttrName="ContractorAddress"
+    EntityUsage="PheContractorEO"
+    AliasName="CONTRACTOR_ADDRESS"/>
+  <ViewAttribute
+    Name="ContractorPhonenumber"
+    PrecisionRule="true"
+    EntityAttrName="ContractorPhonenumber"
+    EntityUsage="PheContractorEO"
+    AliasName="CONTRACTOR_PHONENUMBER"/>
+  <ViewAttribute
+    Name="ModifiedDate"
+    PrecisionRule="true"
+    EntityAttrName="ModifiedDate"
+    EntityUsage="PheContractorEO"
+    AliasName="MODIFIED_DATE"/>
+</ViewObject>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="PheCidParticipantVO"
+  Version="11.1.1.66.73"
+  InheritPersonalization="merge"
+  SelectList="PheCidParticipantEO.IDPARTICIPANT, 
+       PheCidParticipantEO.IDREQUEST, 
+       PheCidParticipantEO.CIDREQUESTOR, 
+       PheCidParticipantEO.CIDRECEIVER, 
+       PheCidParticipantEO.STARTDATE, 
+       PheCidParticipantEO.ENDDATE, 
+       PheCidParticipantEO.DELEGATESTATUS, 
+       PheCidParticipantEO.ROWID"
+  FromList="PHE_CID_PARTICIPANT PheCidParticipantEO"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|VarAccess"/>
+  </DesignTime>
+  <EntityUsage
+    Name="PheCidParticipantEO"
+    Entity="CID.EO.PheCidParticipantEO"/>
+  <ViewAttribute
+    Name="Idparticipant"
+    PrecisionRule="true"
+    EntityAttrName="Idparticipant"
+    EntityUsage="PheCidParticipantEO"
+    AliasName="IDPARTICIPANT"/>
+  <ViewAttribute
+    Name="Idrequest"
+    PrecisionRule="true"
+    EntityAttrName="Idrequest"
+    EntityUsage="PheCidParticipantEO"
+    AliasName="IDREQUEST"/>
+  <ViewAttribute
+    Name="Cidrequestor"
+    PrecisionRule="true"
+    EntityAttrName="Cidrequestor"
+    EntityUsage="PheCidParticipantEO"
+    AliasName="CIDREQUESTOR"/>
+  <ViewAttribute
+    Name="Cidreceiver"
+    PrecisionRule="true"
+    EntityAttrName="Cidreceiver"
+    EntityUsage="PheCidParticipantEO"
+    AliasName="CIDRECEIVER"/>
+  <ViewAttribute
+    Name="Startdate"
+    PrecisionRule="true"
+    EntityAttrName="Startdate"
+    EntityUsage="PheCidParticipantEO"
+    AliasName="STARTDATE"/>
+  <ViewAttribute
+    Name="Enddate"
+    PrecisionRule="true"
+    EntityAttrName="Enddate"
+    EntityUsage="PheCidParticipantEO"
+    AliasName="ENDDATE"/>
+  <ViewAttribute
+    Name="Delegatestatus"
+    PrecisionRule="true"
+    EntityAttrName="Delegatestatus"
+    EntityUsage="PheCidParticipantEO"
+    AliasName="DELEGATESTATUS"/>
+  <ViewAttribute
+    Name="RowID"
+    IsUpdateable="false"
+    PrecisionRule="true"
+    EntityAttrName="RowID"
+    EntityUsage="PheCidParticipantEO"
+    AliasName="ROWID"/>
+</ViewObject>

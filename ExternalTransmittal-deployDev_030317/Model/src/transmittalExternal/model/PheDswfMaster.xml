@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="PheDswfMaster"
+  Version="11.1.1.66.73"
+  InheritPersonalization="true"
+  DBObjectType="table"
+  DBObjectName="PHE_DSWF_MASTER"
+  AliasName="PheDswfMaster"
+  BindingStyle="OracleName"
+  UseGlueCode="false">
+  <DesignTime>
+    <AttrArray Name="_publishEvents"/>
+  </DesignTime>
+  <Attribute
+    Name="TransmittalId"
+    IsNotNull="true"
+    Precision="50"
+    ColumnName="TRANSMITTAL_ID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PHE_DSWF_MASTER"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="TransmittalType"
+    Precision="20"
+    ColumnName="TRANSMITTAL_TYPE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PHE_DSWF_MASTER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="TransmittalRnrCode"
+    Precision="20"
+    ColumnName="TRANSMITTAL_RNR_CODE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PHE_DSWF_MASTER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="5"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="TransmittalSubject"
+    Precision="200"
+    ColumnName="TRANSMITTAL_SUBJECT"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PHE_DSWF_MASTER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="200"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ProjectorganizationId"
+    Precision="50"
+    ColumnName="PROJECTORGANIZATION_ID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PHE_DSWF_MASTER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="TransmittalCreator"
+    Precision="50"
+    ColumnName="TRANSMITTAL_CREATOR"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PHE_DSWF_MASTER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="TransmittalCreatedate"
+    ColumnName="TRANSMITTAL_CREATEDATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="PHE_DSWF_MASTER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="TransmittalDuedate"
+    ColumnName="TRANSMITTAL_DUEDATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="PHE_DSWF_MASTER">
+  </Attribute>
+  <Attribute
+    Name="TransmittalStatus"
+    Precision="20"
+    ColumnName="TRANSMITTAL_STATUS"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PHE_DSWF_MASTER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="RejectReason"
+    Precision="1000"
+    ColumnName="REJECT_REASON"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PHE_DSWF_MASTER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1000"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="AbortedReason"
+    Precision="1000"
+    ColumnName="ABORTED_REASON"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PHE_DSWF_MASTER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1000"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="FinishReason"
+    Precision="1000"
+    ColumnName="FINISH_REASON"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PHE_DSWF_MASTER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1000"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ProjectorganizationName"
+    Precision="100"
+    ColumnName="PROJECTORGANIZATION_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PHE_DSWF_MASTER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Contractor"
+    Precision="200"
+    ColumnName="CONTRACTOR"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PHE_DSWF_MASTER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="200"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ContractNo"
+    Precision="50"
+    ColumnName="CONTRACT_NO"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PHE_DSWF_MASTER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ContractorCode"
+    Precision="50"
+    ColumnName="CONTRACTOR_CODE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PHE_DSWF_MASTER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="WoNo"
+    Precision="1000"
+    ColumnName="WO_NO"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PHE_DSWF_MASTER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1000"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Companyap"
+    Precision="100"
+    ColumnName="COMPANYAP"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PHE_DSWF_MASTER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </Attribute>
+  <Key
+    Name="PheDswfMasterPk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="PHE_DSWF_MASTER_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="transmittalExternal.model.PheDswfMaster.TransmittalId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0059772">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0059772"/>
+      <Attr Name="_checkCondition" Value='"TRANSMITTAL_ID" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="transmittalExternal.model.PheDswfMaster.TransmittalId"/>
+    </AttrArray>
+  </Key>
+</Entity>

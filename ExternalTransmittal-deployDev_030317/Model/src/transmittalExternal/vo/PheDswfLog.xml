@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="PheDswfLog"
+  Version="11.1.1.61.92"
+  InheritPersonalization="true"
+  SelectList="PheDswfLog.ACTION, 
+       PheDswfLog.ACTION_DATE, 
+       PheDswfLog.DESCRIPTION, 
+       PheDswfLog.ID, 
+       PheDswfLog.TRANSMITTAL_ID, 
+       PheDswfLog.USERNAME"
+  FromList="PHE_DSWF_LOG PheDswfLog"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="transmittalExternal.vo.PheDswfLog_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <EntityUsage
+    Name="PheDswfLog"
+    Entity="transmittalExternal.model.PheDswfLog"/>
+  <ViewAttribute
+    Name="Action"
+    PrecisionRule="true"
+    EntityAttrName="Action"
+    EntityUsage="PheDswfLog"
+    AliasName="ACTION"/>
+  <ViewAttribute
+    Name="ActionDate"
+    PrecisionRule="true"
+    EntityAttrName="ActionDate"
+    EntityUsage="PheDswfLog"
+    AliasName="ACTION_DATE"/>
+  <ViewAttribute
+    Name="Description"
+    PrecisionRule="true"
+    EntityAttrName="Description"
+    EntityUsage="PheDswfLog"
+    AliasName="DESCRIPTION"/>
+  <ViewAttribute
+    Name="Id"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Id"
+    EntityUsage="PheDswfLog"
+    AliasName="ID"/>
+  <ViewAttribute
+    Name="TransmittalId"
+    PrecisionRule="true"
+    EntityAttrName="TransmittalId"
+    EntityUsage="PheDswfLog"
+    AliasName="TRANSMITTAL_ID"/>
+  <ViewAttribute
+    Name="Username"
+    PrecisionRule="true"
+    EntityAttrName="Username"
+    EntityUsage="PheDswfLog"
+    AliasName="USERNAME"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="transmittalExternal.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

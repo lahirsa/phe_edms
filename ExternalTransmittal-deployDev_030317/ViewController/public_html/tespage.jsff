@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <af:inputText label="Label 1" id="it1"/>
+  <af:inputText label="Label 2" id="it2"/>
+  <af:commandButton text="commandButton 1" id="cb1"/>
+  <af:commandButton text="commandButton 2" id="cb2"/>
+  <af:commandButton text="commandButton 3" id="cb3"/>
+</jsp:root>

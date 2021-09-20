@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.61.92" id="detailTransmittalPageDef"
+                Package="Taskflow">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables">
+      <variable Name="countVar" Type="integer"/>
+    </variableIterator>
+    <iterator Binds="DetailExternalSupportingDoc1" RangeSize="25"
+              DataControl="AppModuleExternalTransmittalDataControl"
+              id="DetailExternalSupportingDoc1Iterator"/>
+    <iterator Binds="DetailExternalSubmittalDoc1" RangeSize="25"
+              DataControl="AppModuleExternalTransmittalDataControl"
+              id="DetailExternalSubmittalDoc1Iterator"/>
+    <iterator Binds="TransmittalReceiverListVO1" RangeSize="25"
+              DataControl="AppModuleExternalTransmittalDataControl"
+              id="TransmittalReceiverListVO1Iterator"/>
+    <invokeAction Binds="ExecDetailSubmittalByUploader"
+                  id="ExecDetailSubmittal" Refresh="ifNeeded"
+                  RefreshCondition="${!adfFacesContext.postback}"/>
+    <iterator Binds="GetConfigVO1" RangeSize="10"
+              DataControl="AppModuleExternalTransmittalDataControl"
+              id="GetConfigVO1Iterator" Refresh="never"/>
+    <iterator Binds="HistoryDocNumber1" RangeSize="25"
+              DataControl="AppModuleExternalTransmittalDataControl"
+              id="HistoryDocNumber1Iterator"/>
+    <searchRegion id="DetailExternalSupportingDoc1Query"
+                  Binds="DetailExternalSupportingDoc1Iterator"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <searchRegion id="DetailExternalSubmittalDoc1Query"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="DetailExternalSubmittalDoc1Iterator"/>
+    <iterator Binds="TdcDetailExternal1" RangeSize="25"
+              DataControl="AppModuleExternalTransmittalDataControl"
+              id="TdcDetailExternal1Iterator"/>
+    <iterator Binds="CoverNoteInfoVO1" RangeSize="10"
+              DataControl="AppModuleExternalTransmittalDataControl"
+              id="CoverNoteInfoVO1Iterator"/>
+    <iterator Binds="DetailExternalReference1" RangeSize="25"
+              DataControl="AppModuleExternalTransmittalDataControl"
+              id="DetailExternalReference1Iterator"/>
+    <iterator Binds="DetailExternalHistory1" RangeSize="25"
+              DataControl="AppModuleExternalTransmittalDataControl"
+              id="DetailExternalHistory1Iterator"/>
+    <iterator Binds="ForwardSelectionVo1" RangeSize="25"
+              DataControl="AppModuleExternalTransmittalDataControl"
+              id="ForwardSelectionVo1Iterator"/>
+    <iterator id="GetFolderByTransmittalIdVO1Iterator"
+              Binds="GetFolderByTransmittalIdVO1"
+              DataControl="AppModuleExternalTransmittalDataControl"
+              RangeSize="25"/>
+    <iterator Binds="UpdatePublishStatusDoc1" RangeSize="10"
+              DataControl="AppModuleExternalTransmittalDataControl"
+              id="UpdatePublishStatusDoc1Iterator"/>
+    <iterator Binds="DocPublishing1" RangeSize="10"
+              DataControl="AppModuleExternalTransmittalDataControl"
+              id="DocPublishing1Iterator"/>
+    <iterator Binds="GetAllRecepientEmailByTransmittalIDVO1" RangeSize="10"
+              DataControl="AppModuleExternalTransmittalDataControl"
+              id="GetAllRecepientEmailByTransmittalIDVO1Iterator"/>
+  </executables>
+  <bindings>
+    <button IterBinding="DetailExternalSupportingDoc1Iterator" id="Mark"
+            DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="Mark"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="true"/>
+        <Item Value="false"/>
+      </ValueList>
+    </button>
+    <button IterBinding="DetailExternalSubmittalDoc1Iterator" id="Mark1"
+            DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="Mark1"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="true"/>
+        <Item Value="false"/>
+      </ValueList>
+    </button>
+    <action IterBinding="DetailExternalSupportingDoc1Iterator"
+            id="ExecuteExternalSupportingDoc"
+            InstanceName="AppModuleExternalTransmittalDataControl.DetailExternalSupportingDoc1"
+            DataControl="AppModuleExternalTransmittalDataControl"
+            RequiresUpdateModel="true" Action="executeWithParams">
+      <NamedData NDName="transmittal_id" NDValue="" NDType="java.lang.String"/>
+    </action>
+    <tree IterBinding="DetailExternalSupportingDoc1Iterator"
+          id="DetailExternalSupportingDoc1">
+      <nodeDefinition DefName="transmittalExternal.vo.DetailExternalSupportingDoc"
+                      Name="DetailExternalSupportingDoc10">
+        <AttrNames>
+          <Item Value="Mark"/>
+          <Item Value="TransmittalId"/>
+          <Item Value="DocName"/>
+          <Item Value="DocTitle"/>
+          <Item Value="DocStatus"/>
+          <Item Value="Remarks"/>
+          <Item Value="DocNumber"/>
+          <Item Value="Id"/>
+          <Item Value="DisplayStatus"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="DetailExternalSubmittalDoc1Iterator"
+          id="DetailExternalSubmittalDoc1">
+      <nodeDefinition DefName="transmittalExternal.vo.DetailExternalSubmittalDoc"
+                      Name="DetailExternalSubmittalDoc10">
+        <AttrNames>
+          <Item Value="Id"/>
+          <Item Value="TransmittalId"/>
+          <Item Value="ContentId"/>
+          <Item Value="Type"/>
+          <Item Value="Format"/>
+          <Item Value="Uploader"/>
+          <Item Value="UploadDate"/>
+          <Item Value="DocName"/>
+          <Item Value="DocTitle"/>
+          <Item Value="DocNumber"/>
+          <Item Value="DocStatus"/>
+          <Item Value="DocSource"/>
+          <Item Value="Pages"/>
+          <Item Value="Remarks"/>
+          <Item Value="Revision"/>
+          <Item Value="PublishStatus"/>
+          <Item Value="DocType"/>
+          <Item Value="SeqId"/>
+          <Item Value="UploaderName"/>
+          <Item Value="Mark1"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <list IterBinding="TransmittalReceiverListVO1Iterator"
+          ListOperMode="navigation"
+          ListIter="TransmittalReceiverListVO1Iterator"
+          id="TransmittalReceiverListVO1" DTSupportsMRU="true">
+      <AttrNames>
+        <Item Value="Fullname"/>
+      </AttrNames>
+    </list>
+    <methodAction id="ExecDetailSubmittalByUploader"
+                  InstanceName="AppModuleExternalTransmittalDataControl.dataProvider"
+                  DataControl="AppModuleExternalTransmittalDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="ExecDetailSubmittalByUploader"
+                  IsViewObjectMethod="false"/>
+    <action IterBinding="GetConfigVO1Iterator" id="ExecuteGetConfigWithParams"
+            InstanceName="AppModuleExternalTransmittalDataControl.GetConfigVO1"
+            DataControl="AppModuleExternalTransmittalDataControl"
+            RequiresUpdateModel="true" Action="executeWithParams">
+      <NamedData NDName="keyConfig" NDType="java.lang.String"/>
+    </action>
+    <attributeValues IterBinding="GetConfigVO1Iterator" id="KeyValue">
+      <AttrNames>
+        <Item Value="KeyValue"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="HistoryDocNumber1Iterator" id="HistoryDocNumber1">
+      <nodeDefinition DefName="transmittalExternal.vo.HistoryDocNumber"
+                      Name="HistoryDocNumber10">
+        <AttrNames>
+          <Item Value="DocumentNumber"/>
+          <Item Value="RevisionNumber"/>
+          <Item Value="TransmittalNumber"/>
+          <Item Value="Sender"/>
+          <Item Value="Recepient"/>
+          <Item Value="DocumentStatus"/>
+          <Item Value="DocumentType"/>
+          <Item Value="ReviewStatus"/>
+          <Item Value="SubmitDate"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="HistoryDocNumber1Iterator" id="ExecuteHistoryDocNumber"
+            InstanceName="AppModuleExternalTransmittalDataControl.HistoryDocNumber1"
+            DataControl="AppModuleExternalTransmittalDataControl"
+            RequiresUpdateModel="true" Action="executeWithParams">
+      <NamedData NDName="docNumber" NDValue="" NDType="java.lang.String"/>
+    </action>
+    <attributeValues IterBinding="DetailExternalSupportingDoc1Iterator"
+                     id="DocNumber">
+      <AttrNames>
+        <Item Value="DocNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="TdcDetailExternal1Iterator"
+                     id="TransmittalId">
+      <AttrNames>
+        <Item Value="TransmittalId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="TdcDetailExternal1Iterator"
+                     id="TransmittalSubject">
+      <AttrNames>
+        <Item Value="TransmittalSubject"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="TdcDetailExternal1Iterator"
+                     id="TransmittalDuedate">
+      <AttrNames>
+        <Item Value="TransmittalDuedate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="TdcDetailExternal1Iterator" id="ContractNo">
+      <AttrNames>
+        <Item Value="ContractNo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="TdcDetailExternal1Iterator" id="WoNo">
+      <AttrNames>
+        <Item Value="WoNo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CoverNoteInfoVO1Iterator" id="CoverNotedId">
+      <AttrNames>
+        <Item Value="Id"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="TdcDetailExternal1Iterator"
+                     id="ProjectorganizationName">
+      <AttrNames>
+        <Item Value="ProjectorganizationName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="TdcDetailExternal1Iterator"
+                     id="TransmittalRnrCode">
+      <AttrNames>
+        <Item Value="TransmittalRnrCode"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="DetailExternalReference1Iterator"
+          id="DetailExternalReference1">
+      <nodeDefinition DefName="transmittalExternal.vo.DetailExternalReference"
+                      Name="DetailExternalReference10">
+        <AttrNames>
+          <Item Value="TransmittalId"/>
+          <Item Value="TransmittalReference"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="DetailExternalHistory1Iterator"
+          id="DetailExternalHistory1">
+      <nodeDefinition DefName="transmittalExternal.vo.DetailExternalHistory"
+                      Name="DetailExternalHistory10">
+        <AttrNames>
+          <Item Value="Username"/>
+          <Item Value="Event"/>
+          <Item Value="ActionDate"/>
+          <Item Value="Description"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="TdcDetailExternal1Iterator" id="FinishReason">
+      <AttrNames>
+        <Item Value="FinishReason"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="TdcDetailExternal1Iterator"
+                     id="TransmittalStatus">
+      <AttrNames>
+        <Item Value="TransmittalStatus"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="TdcDetailExternal1Iterator" id="RejectReason">
+      <AttrNames>
+        <Item Value="RejectReason"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="TdcDetailExternal1Iterator"
+                     id="AbortedReason">
+      <AttrNames>
+        <Item Value="AbortedReason"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="UpdateStatusDSWFMaster"
+                  InstanceName="AppModuleExternalTransmittalDataControl.dataProvider"
+                  DataControl="AppModuleExternalTransmittalDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="UpdateStatusDSWFMaster" IsViewObjectMethod="false"
+                  ReturnName="data.AppModuleExternalTransmittalDataControl.methodResults.UpdateStatusDSWFMaster_AppModuleExternalTransmittalDataControl_dataProvider_UpdateStatusDSWFMaster_result">
+      <NamedData NDName="transmittalStatus" NDValue=""
+                 NDType="java.lang.String"/>
+    </methodAction>
+    <list IterBinding="ForwardSelectionVo1Iterator" ListOperMode="navigation"
+          ListIter="ForwardSelectionVo1Iterator" id="ForwardSelectionVo1"
+          DTSupportsMRU="false">
+      <AttrNames>
+        <Item Value="Description"/>
+      </AttrNames>
+    </list>
+    <action IterBinding="GetFolderByTransmittalIdVO1Iterator"
+            id="ExecuteGetFguid"
+            InstanceName="AppModuleExternalTransmittalDataControl.GetFolderByTransmittalIdVO1"
+            DataControl="AppModuleExternalTransmittalDataControl"
+            RequiresUpdateModel="true" Action="executeWithParams">
+      <NamedData NDName="folderName" NDType="java.lang.String"/>
+    </action>
+    <attributeValues IterBinding="GetFolderByTransmittalIdVO1Iterator"
+                     id="Ffolderguid">
+      <AttrNames>
+        <Item Value="Ffolderguid"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="UpdatePublishStatusDoc1Iterator" id="GetPublishId"
+            InstanceName="AppModuleExternalTransmittalDataControl.UpdatePublishStatusDoc1"
+            DataControl="AppModuleExternalTransmittalDataControl"
+            RequiresUpdateModel="true" Action="executeWithParams">
+      <NamedData NDName="transmittalId" NDType="java.lang.String"/>
+    </action>
+    <action IterBinding="DocPublishing1Iterator" id="GetDocPublishing"
+            InstanceName="AppModuleExternalTransmittalDataControl.DocPublishing1"
+            DataControl="AppModuleExternalTransmittalDataControl"
+            RequiresUpdateModel="true" Action="executeWithParams">
+      <NamedData NDName="transmittalId" NDType="java.lang.String"/>
+    </action>
+    <methodAction id="SendEmailTo" InstanceName="SendEmailDTUDataControl"
+                  DataControl="SendEmailDTUDataControl" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="SendEmailTo"
+                  IsViewObjectMethod="false"
+                  ReturnName="data.SendEmailDTUDataControl.methodResults.SendEmailTo_SendEmailDTUDataControl_SendEmailTo_result">
+      <NamedData NDName="EmailTo" NDType="java.lang.String"/>
+      <NamedData NDName="EmailCc" NDType="java.lang.String"/>
+      <NamedData NDName="Subject" NDType="java.lang.String"/>
+      <NamedData NDName="HtmlText" NDType="java.lang.String"/>
+    </methodAction>
+    <action IterBinding="GetAllRecepientEmailByTransmittalIDVO1Iterator"
+            id="GetAllRecepientEmail"
+            InstanceName="AppModuleExternalTransmittalDataControl.GetAllRecepientEmailByTransmittalIDVO1"
+            DataControl="AppModuleExternalTransmittalDataControl"
+            RequiresUpdateModel="true" Action="executeWithParams">
+      <NamedData NDName="transmittalId" NDType="java.lang.String"/>
+    </action>
+    <attributeValues IterBinding="variables" id="countVar1">
+      <AttrNames>
+        <Item Value="countVar"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

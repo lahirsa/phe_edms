@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="monitoringVO"
+  Version="11.1.1.66.73"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full"
+  UseGlueCode="false"
+  OrderBy='"IDREQUEST"'>
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="CID.VO.monitoringVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <Variable
+    Name="requestor"
+    Kind="viewcriteria"
+    Type="java.lang.String"
+    IsUpdateable="false"/>
+  <SQLQuery>
+    <![CDATA[select a.*, case when cidstatusrequest like 'Reject%' and docStatus = 0 then 
+(select distinct(PHE_CID_LISTDOCREQUEST.CIDSTATUSDOCREQUEST) from phe_cid_listdocrequest where idrequest=a.idrequest) 
+else CIDSTATUSREQUEST
+ end Status
+ from (
+select  distinct dname,CIDDATEREQUEST,phe_cid_listrequest.idrequest,PHE_CID_CREATE.NUMCID, nvl(PHE_CID_CREATE.NUMCID,'Draft-'||to_char(CIDDATEREQUEST, 'ddMonyy_hh:mi')) "Transmittal Number",
+ PHE_CID_LISTREQUEST.CIDREQUESTOR, PHE_CID_LISTREQUEST.CIDPURPOSE , PHE_CID_LISTREQUEST.CIDSTATUSREQUEST,
+decode(CIDSTATUSREQUEST,'Approve SPV',CIDDATEAPPROVESV,'Approve TDC Lead',CIDDATEAPPROVETDCLEAD,CIDDATEREQUEST) "Last Update",
+PHE_CID_CREATE.CIDCREATEDATE,PHE_CID_LISTREQUEST.CIDREQUESTORSUPERVISOR,PHE_CID_LISTREQUEST.CIDTDCLEAD,
+(select count(idrequest) from phe_cid_listdocrequest where CIDSTATUSDOCREQUEST LIKE '%Reject%' and idrequest=phe_cid_listrequest.idrequest) docStatus
+from phe_cid_listrequest left outer join  phe_cid_create on  PHE_CID_LISTREQUEST.IDREQUEST = PHE_CID_CREATE.IDREQUEST
+inner join users on PHE_CID_LISTREQUEST.CIDREQUESTOR=USERS.DFULLNAME
+) a]]>
+  </SQLQuery>
+  <ViewAttribute
+    Name="Dname"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="200"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="DNAME"
+    Expression="DNAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="200"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Ciddaterequest"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.sql.Timestamp"
+    ColumnType="TIMESTAMP"
+    AliasName="CIDDATEREQUEST"
+    Expression="CIDDATEREQUEST"
+    SQLType="TIMESTAMP">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="11"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <FMT_FORMATTER
+          ResId="CID.VO.monitoringVO.Ciddaterequest_FMT_FORMATTER"/>
+        <FMT_FORMAT
+          ResId="CID.VO.monitoringVO.Ciddaterequest_FMT_FORMAT"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Idrequest"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="38"
+    Scale="0"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="IDREQUEST"
+    Expression="IDREQUEST"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Numcid"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="100"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="NUMCID"
+    Expression="NUMCID"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="TransmittalNumber"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="100"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName='"Transmittal Number"'
+    Expression='"Transmittal Number"'
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Cidrequestor"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="100"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="CIDREQUESTOR"
+    Expression="CIDREQUESTOR"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Cidpurpose"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="1000"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="CIDPURPOSE"
+    Expression="CIDPURPOSE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1000"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Cidstatusrequest"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="100"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="CIDSTATUSREQUEST"
+    Expression="CIDSTATUSREQUEST"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="LastUpdate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.sql.Timestamp"
+    ColumnType="TIMESTAMP"
+    AliasName='"Last Update"'
+    Expression='"Last Update"'
+    SQLType="TIMESTAMP">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="11"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Cidcreatedate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.sql.Timestamp"
+    ColumnType="TIMESTAMP"
+    AliasName="CIDCREATEDATE"
+    Expression="CIDCREATEDATE"
+    SQLType="TIMESTAMP">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="11"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <FMT_FORMATTER
+          ResId="CID.VO.monitoringVO.Cidcreatedate_FMT_FORMATTER"/>
+        <FMT_FORMAT
+          ResId="CID.VO.monitoringVO.Cidcreatedate_FMT_FORMAT"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Cidrequestorsupervisor"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="100"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="CIDREQUESTORSUPERVISOR"
+    Expression="CIDREQUESTORSUPERVISOR"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Cidtdclead"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="100"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="CIDTDCLEAD"
+    Expression="CIDTDCLEAD"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Docstatus"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="DOCSTATUS"
+    Expression="DOCSTATUS"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Status"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="100"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="STATUS"
+    Expression="STATUS"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="CID.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

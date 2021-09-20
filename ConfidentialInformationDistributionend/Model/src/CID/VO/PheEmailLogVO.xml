@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="PheEmailLogVO"
+  Version="11.1.1.66.73"
+  InheritPersonalization="merge"
+  SelectList="PheEmailLogEO.STR_FROM, 
+       PheEmailLogEO.STR_TO, 
+       PheEmailLogEO.STR_SUBJECT, 
+       PheEmailLogEO.DATE_SENT, 
+       PheEmailLogEO.RESULT_VALUE, 
+       PheEmailLogEO.ROWID"
+  FromList="PHE_EMAIL_LOG PheEmailLogEO"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|VarAccess"/>
+  </DesignTime>
+  <EntityUsage
+    Name="PheEmailLogEO"
+    Entity="CID.EO.PheEmailLogEO"/>
+  <ViewAttribute
+    Name="StrFrom"
+    PrecisionRule="true"
+    EntityAttrName="StrFrom"
+    EntityUsage="PheEmailLogEO"
+    AliasName="STR_FROM"/>
+  <ViewAttribute
+    Name="StrTo"
+    PrecisionRule="true"
+    EntityAttrName="StrTo"
+    EntityUsage="PheEmailLogEO"
+    AliasName="STR_TO"/>
+  <ViewAttribute
+    Name="StrSubject"
+    PrecisionRule="true"
+    EntityAttrName="StrSubject"
+    EntityUsage="PheEmailLogEO"
+    AliasName="STR_SUBJECT"/>
+  <ViewAttribute
+    Name="DateSent"
+    PrecisionRule="true"
+    EntityAttrName="DateSent"
+    EntityUsage="PheEmailLogEO"
+    AliasName="DATE_SENT"/>
+  <ViewAttribute
+    Name="ResultValue"
+    PrecisionRule="true"
+    EntityAttrName="ResultValue"
+    EntityUsage="PheEmailLogEO"
+    AliasName="RESULT_VALUE"/>
+  <ViewAttribute
+    Name="RowID"
+    IsUpdateable="false"
+    PrecisionRule="true"
+    EntityAttrName="RowID"
+    EntityUsage="PheEmailLogEO"
+    AliasName="ROWID"/>
+</ViewObject>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.22.48" id="tesInsernnewrowPageDef"
+                Package="pages">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="PheCidListdocrequestVO1" RangeSize="25" DataControl="AppModuleDataControl"
+              id="PheCidListdocrequestVO1Iterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="PheCidListdocrequestVO1Iterator" id="Idlist">
+      <AttrNames>
+        <Item Value="Idlist"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PheCidListdocrequestVO1Iterator" id="Idrequest">
+      <AttrNames>
+        <Item Value="Idrequest"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PheCidListdocrequestVO1Iterator" id="Diddoc">
+      <AttrNames>
+        <Item Value="Diddoc"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PheCidListdocrequestVO1Iterator" id="Ciddocnumber">
+      <AttrNames>
+        <Item Value="Ciddocnumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PheCidListdocrequestVO1Iterator" id="Ciddoctitle">
+      <AttrNames>
+        <Item Value="Ciddoctitle"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PheCidListdocrequestVO1Iterator" id="Ciddocsource">
+      <AttrNames>
+        <Item Value="Ciddocsource"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PheCidListdocrequestVO1Iterator" id="Cidcontractor">
+      <AttrNames>
+        <Item Value="Cidcontractor"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PheCidListdocrequestVO1Iterator" id="Cidstatusdocrequest">
+      <AttrNames>
+        <Item Value="Cidstatusdocrequest"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PheCidListdocrequestVO1Iterator" id="Cidremarkrequestor">
+      <AttrNames>
+        <Item Value="Cidremarkrequestor"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PheCidListdocrequestVO1Iterator" id="Cidremarksv">
+      <AttrNames>
+        <Item Value="Cidremarksv"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PheCidListdocrequestVO1Iterator" id="Cidremarktdc">
+      <AttrNames>
+        <Item Value="Cidremarktdc"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PheCidListdocrequestVO1Iterator" id="Cidremarktdclead">
+      <AttrNames>
+        <Item Value="Cidremarktdclead"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PheCidListdocrequestVO1Iterator" id="Cidusercontractor">
+      <AttrNames>
+        <Item Value="Cidusercontractor"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PheCidListdocrequestVO1Iterator" id="booleanApprove">
+      <AttrNames>
+        <Item Value="booleanApprove"/>
+      </AttrNames>
+    </attributeValues>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="AppModuleDataControl"/>
+    <action IterBinding="PheCidListdocrequestVO1Iterator" id="CreateInsert"
+            InstanceName="AppModuleDataControl.PheCidListdocrequestVO1" DataControl="AppModuleDataControl"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+  </bindings>
+</pageDefinition>

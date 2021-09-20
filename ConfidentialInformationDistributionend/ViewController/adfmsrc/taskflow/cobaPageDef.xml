@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.66.73" id="cobaPageDef" Package="taskflow">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="PheCidListdocrequestVO1" RangeSize="25"
+              DataControl="AppModuleDataControl"
+              id="PheCidListdocrequestVO1Iterator"/>
+    <searchRegion Binds="PheCidListdocrequestVO1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="PheCidListdocrequestVO1Query"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="PheCidListdocrequestVO1Iterator"
+          id="PheCidListdocrequestVO1">
+      <nodeDefinition DefName="CID.VO.PheCidListdocrequestVO"
+                      Name="PheCidListdocrequestVO10">
+        <AttrNames>
+          <Item Value="Idlist"/>
+          <Item Value="Idrequest"/>
+          <Item Value="Diddoc"/>
+          <Item Value="Ciddocnumber"/>
+          <Item Value="Ciddoctitle"/>
+          <Item Value="Ciddocsource"/>
+          <Item Value="Cidcontractor"/>
+          <Item Value="Cidstatusdocrequest"/>
+          <Item Value="Cidremarkrequestor"/>
+          <Item Value="Cidremarksv"/>
+          <Item Value="Cidremarktdc"/>
+          <Item Value="Cidremarktdclead"/>
+          <Item Value="Cidusercontractor"/>
+          <Item Value="booleanApprove"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

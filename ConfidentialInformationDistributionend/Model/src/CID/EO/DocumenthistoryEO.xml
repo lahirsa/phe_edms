@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="DocumenthistoryEO"
+  Version="11.1.1.66.73"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="DOCUMENTHISTORY"
+  AliasName="DocumenthistoryEO"
+  BindingStyle="OracleName"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access"/>
+    <AttrArray Name="_publishEvents"/>
+  </DesignTime>
+  <Attribute
+    Name="Dactiondate"
+    IsNotNull="true"
+    ColumnName="DACTIONDATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Timestamp"
+    ColumnType="TIMESTAMP"
+    TableName="DOCUMENTHISTORY"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="11"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Dactionmillis"
+    IsNotNull="true"
+    Precision="38"
+    Scale="0"
+    ColumnName="DACTIONMILLIS"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="DOCUMENTHISTORY"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Did"
+    Precision="38"
+    Scale="0"
+    ColumnName="DID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="DOCUMENTHISTORY">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Drevclassid"
+    IsNotNull="true"
+    Precision="38"
+    Scale="0"
+    ColumnName="DREVCLASSID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="DOCUMENTHISTORY">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Duser"
+    Precision="200"
+    ColumnName="DUSER"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="DOCUMENTHISTORY">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="200"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Ddocname"
+    Precision="100"
+    ColumnName="DDOCNAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="DOCUMENTHISTORY">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Daction"
+    IsNotNull="true"
+    Precision="50"
+    ColumnName="DACTION"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="DOCUMENTHISTORY">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Dsecuritygroup"
+    Precision="30"
+    ColumnName="DSECURITYGROUP"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="DOCUMENTHISTORY">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+  </Attribute>
+  <Key
+    Name="PkDocumenthistory"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="PK_DOCUMENTHISTORY"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="CID.EO.DocumenthistoryEO.Dactiondate"/>
+      <Item Value="CID.EO.DocumenthistoryEO.Dactionmillis"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0011619">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0011619"/>
+      <Attr Name="_checkCondition" Value='"DACTIONDATE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="CID.EO.DocumenthistoryEO.Dactiondate"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0011620">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0011620"/>
+      <Attr Name="_checkCondition" Value='"DACTIONMILLIS" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="CID.EO.DocumenthistoryEO.Dactionmillis"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0011621">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0011621"/>
+      <Attr Name="_checkCondition" Value='"DREVCLASSID" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="CID.EO.DocumenthistoryEO.Drevclassid"/>
+    </AttrArray>
+  </Key>
+</Entity>

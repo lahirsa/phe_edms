@@ -1,0 +1,888 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="FoldersEO"
+  Version="11.1.1.66.73"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="FOLDERS"
+  AliasName="FoldersEO"
+  BindingStyle="OracleName"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access"/>
+    <AttrArray Name="_publishEvents"/>
+  </DesignTime>
+  <Attribute
+    Name="Dfolderid"
+    IsNotNull="true"
+    Precision="100"
+    ColumnName="DFOLDERID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="FOLDERS"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Dparentid"
+    Precision="100"
+    ColumnName="DPARENTID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="FOLDERS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Dfoldername"
+    Precision="100"
+    ColumnName="DFOLDERNAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="FOLDERS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Dfolderdescription"
+    Precision="1000"
+    ColumnName="DFOLDERDESCRIPTION"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="FOLDERS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1000"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Dcategoryid"
+    Precision="100"
+    ColumnName="DCATEGORYID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="FOLDERS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Dexternallocation"
+    Precision="100"
+    ColumnName="DEXTERNALLOCATION"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="FOLDERS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Dexternallocation2"
+    Precision="100"
+    ColumnName="DEXTERNALLOCATION2"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="FOLDERS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Disclosed"
+    Precision="1"
+    Scale="0"
+    ColumnName="DISCLOSED"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="FOLDERS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="2"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Disfrozen"
+    Precision="1"
+    Scale="0"
+    ColumnName="DISFROZEN"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="FOLDERS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="2"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Discutoff"
+    Precision="1"
+    Scale="0"
+    ColumnName="DISCUTOFF"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="FOLDERS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="2"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Dfreezeid"
+    Precision="100"
+    ColumnName="DFREEZEID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="FOLDERS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Dfreezereason"
+    Precision="1000"
+    ColumnName="DFREEZEREASON"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="FOLDERS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1000"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Disvital"
+    Precision="1"
+    Scale="0"
+    ColumnName="DISVITAL"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="FOLDERS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="2"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Disexternal"
+    Precision="1"
+    Scale="0"
+    ColumnName="DISEXTERNAL"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="FOLDERS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="2"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Dvitalreviewer"
+    Precision="200"
+    ColumnName="DVITALREVIEWER"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="FOLDERS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="200"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Dvitalperiod"
+    Precision="38"
+    Scale="0"
+    ColumnName="DVITALPERIOD"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="FOLDERS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Dvitalperiodunits"
+    Precision="32"
+    ColumnName="DVITALPERIODUNITS"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="FOLDERS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="32"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Dissubjecttoaudit"
+    Precision="1"
+    Scale="0"
+    ColumnName="DISSUBJECTTOAUDIT"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="FOLDERS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="2"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Dauditperiod"
+    Precision="30"
+    ColumnName="DAUDITPERIOD"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="FOLDERS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Dderivedcategoryid"
+    Precision="100"
+    ColumnName="DDERIVEDCATEGORYID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="FOLDERS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Dderivedisvital"
+    Precision="1"
+    Scale="0"
+    ColumnName="DDERIVEDISVITAL"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="FOLDERS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="2"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Dderivedisfrozen"
+    Precision="1"
+    Scale="0"
+    ColumnName="DDERIVEDISFROZEN"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="FOLDERS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="2"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Dderivedisclosed"
+    Precision="1"
+    Scale="0"
+    ColumnName="DDERIVEDISCLOSED"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="FOLDERS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="2"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Dderivedvitalreviewer"
+    Precision="200"
+    ColumnName="DDERIVEDVITALREVIEWER"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="FOLDERS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="200"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Dderivedvitalperiod"
+    Precision="38"
+    Scale="0"
+    ColumnName="DDERIVEDVITALPERIOD"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="FOLDERS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Dderivedvitalperiodunits"
+    Precision="32"
+    ColumnName="DDERIVEDVITALPERIODUNITS"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="FOLDERS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="32"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Ddeleteapprovedate"
+    ColumnName="DDELETEAPPROVEDATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Timestamp"
+    ColumnType="TIMESTAMP"
+    TableName="FOLDERS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="11"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Drecordcutoffdate"
+    ColumnName="DRECORDCUTOFFDATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Timestamp"
+    ColumnType="TIMESTAMP"
+    TableName="FOLDERS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="11"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Drecordactivationdate"
+    ColumnName="DRECORDACTIVATIONDATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Timestamp"
+    ColumnType="TIMESTAMP"
+    TableName="FOLDERS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="11"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Drecordexpirationdate"
+    ColumnName="DRECORDEXPIRATIONDATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Timestamp"
+    ColumnType="TIMESTAMP"
+    TableName="FOLDERS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="11"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Drecordcancelleddate"
+    ColumnName="DRECORDCANCELLEDDATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Timestamp"
+    ColumnType="TIMESTAMP"
+    TableName="FOLDERS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="11"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Drecordobsoletedate"
+    ColumnName="DRECORDOBSOLETEDATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Timestamp"
+    ColumnType="TIMESTAMP"
+    TableName="FOLDERS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="11"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Drecordrescindeddate"
+    ColumnName="DRECORDRESCINDEDDATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Timestamp"
+    ColumnType="TIMESTAMP"
+    TableName="FOLDERS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="11"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Drecordsupersededdate"
+    ColumnName="DRECORDSUPERSEDEDDATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Timestamp"
+    ColumnType="TIMESTAMP"
+    TableName="FOLDERS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="11"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Drecordfilingdate"
+    ColumnName="DRECORDFILINGDATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Timestamp"
+    ColumnType="TIMESTAMP"
+    TableName="FOLDERS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="11"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Drecordreviewdate"
+    ColumnName="DRECORDREVIEWDATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Timestamp"
+    ColumnType="TIMESTAMP"
+    TableName="FOLDERS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="11"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Xclbraaliaslist"
+    Precision="1000"
+    ColumnName="XCLBRAALIASLIST"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="FOLDERS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1000"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Xclbrauserlist"
+    Precision="1000"
+    ColumnName="XCLBRAUSERLIST"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="FOLDERS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1000"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Dsupplementalmarkings"
+    Precision="100"
+    ColumnName="DSUPPLEMENTALMARKINGS"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="FOLDERS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Dclassifiedmarkings"
+    Precision="100"
+    ColumnName="DCLASSIFIEDMARKINGS"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="FOLDERS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Dsecuritygroup"
+    Precision="30"
+    ColumnName="DSECURITYGROUP"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="FOLDERS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Ddocaccount"
+    Precision="80"
+    ColumnName="DDOCACCOUNT"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="FOLDERS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="80"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Ddocauthor"
+    Precision="200"
+    ColumnName="DDOCAUTHOR"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="FOLDERS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="200"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Drmaprocessstate"
+    Precision="1"
+    ColumnName="DRMAPROCESSSTATE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="FOLDERS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Dvitalstate"
+    Precision="1"
+    ColumnName="DVITALSTATE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="FOLDERS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Dlastmodifieddate"
+    ColumnName="DLASTMODIFIEDDATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Timestamp"
+    ColumnType="TIMESTAMP"
+    TableName="FOLDERS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="11"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Dlastitemaddeddate"
+    ColumnName="DLASTITEMADDEDDATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Timestamp"
+    ColumnType="TIMESTAMP"
+    TableName="FOLDERS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="11"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Ddepth"
+    Precision="38"
+    Scale="0"
+    ColumnName="DDEPTH"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="FOLDERS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Dderivedfreezeid"
+    Precision="1000"
+    ColumnName="DDERIVEDFREEZEID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="FOLDERS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1000"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Dcategories"
+    Precision="1000"
+    ColumnName="DCATEGORIES"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="FOLDERS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1000"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Dseriesid"
+    Precision="100"
+    ColumnName="DSERIESID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="FOLDERS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Disfileplan"
+    Precision="1"
+    ColumnName="DISFILEPLAN"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="FOLDERS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Dfileplantype"
+    Precision="1"
+    ColumnName="DFILEPLANTYPE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="FOLDERS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Dcontainsonly"
+    Precision="1"
+    ColumnName="DCONTAINSONLY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="FOLDERS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Dderivedcategories"
+    Precision="1000"
+    ColumnName="DDERIVEDCATEGORIES"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="FOLDERS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1000"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Dnotificationscripts"
+    Precision="1000"
+    ColumnName="DNOTIFICATIONSCRIPTS"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="FOLDERS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1000"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Dsecurityscripts"
+    Precision="1000"
+    ColumnName="DSECURITYSCRIPTS"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="FOLDERS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1000"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Dderivednotifscripts"
+    Precision="1000"
+    ColumnName="DDERIVEDNOTIFSCRIPTS"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="FOLDERS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1000"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Dderivedsecurityscripts"
+    Precision="1000"
+    ColumnName="DDERIVEDSECURITYSCRIPTS"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="FOLDERS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1000"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Drmprofiletrigger"
+    Precision="30"
+    ColumnName="DRMPROFILETRIGGER"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="FOLDERS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Drecorddestroydate"
+    ColumnName="DRECORDDESTROYDATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Timestamp"
+    ColumnType="TIMESTAMP"
+    TableName="FOLDERS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="11"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Drmasegmentid"
+    Precision="38"
+    Scale="0"
+    ColumnName="DRMASEGMENTID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="FOLDERS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Key
+    Name="PkFolders"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="PK_FOLDERS"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="CID.EO.FoldersEO.Dfolderid"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0011929">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0011929"/>
+      <Attr Name="_checkCondition" Value='"DFOLDERID" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="CID.EO.FoldersEO.Dfolderid"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0011930">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0011930"/>
+      <Attr Name="_checkCondition" Value="dIsClosed = 0 or dIsClosed = 1"/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="CID.EO.FoldersEO.Disclosed"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0011931">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0011931"/>
+      <Attr Name="_checkCondition" Value="dIsFrozen = 0 or dIsFrozen = 1"/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="CID.EO.FoldersEO.Disfrozen"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0011932">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0011932"/>
+      <Attr Name="_checkCondition" Value="dIsCutoff = 0 or dIsCutoff = 1"/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="CID.EO.FoldersEO.Discutoff"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0011933">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0011933"/>
+      <Attr Name="_checkCondition" Value="dIsVital = 0 or dIsVital = 1"/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="CID.EO.FoldersEO.Disvital"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0011934">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0011934"/>
+      <Attr Name="_checkCondition" Value="dIsExternal = 0 or dIsExternal = 1"/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="CID.EO.FoldersEO.Disexternal"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0011935">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0011935"/>
+      <Attr Name="_checkCondition"
+        Value="dIsSubjectToAudit = 0 or dIsSubjectToAudit = 1"/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="CID.EO.FoldersEO.Dissubjecttoaudit"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0011936">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0011936"/>
+      <Attr Name="_checkCondition"
+        Value="dDerivedIsVital = 0 or dDerivedIsVital = 1"/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="CID.EO.FoldersEO.Dderivedisvital"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0011937">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0011937"/>
+      <Attr Name="_checkCondition"
+        Value="dDerivedIsFrozen = 0 or dDerivedIsFrozen = 1"/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="CID.EO.FoldersEO.Dderivedisfrozen"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0011938">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0011938"/>
+      <Attr Name="_checkCondition"
+        Value="dDerivedIsClosed = 0 or dDerivedIsClosed = 1"/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="CID.EO.FoldersEO.Dderivedisclosed"/>
+    </AttrArray>
+  </Key>
+</Entity>

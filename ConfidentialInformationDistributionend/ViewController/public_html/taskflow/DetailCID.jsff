@@ -1,0 +1,214 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelStretchLayout id="psl1" inlineStyle="height:29px; font-size:medium;"
+                         styleClass="AFStretchWidth">
+    <f:facet name="top">
+      <af:panelGroupLayout id="pgl4" inlineStyle="background-color:#23B318;">
+        <af:outputLabel value="CID Status Detail" id="ol9"
+                        inlineStyle="font-size:medium; color:White; font-weight:bold;"/>
+      </af:panelGroupLayout>
+    </f:facet>
+  </af:panelStretchLayout>
+  <af:panelGroupLayout id="pgl1" styleClass="AFStretchWidth" layout="vertical">
+    <af:image source="/Image/supervisor_reject_tdc.png" id="i11"
+              rendered="#{bindings.Status.inputValue =='Requested' and  bindings.LastReject.inputValue ==2}"/>
+    <af:image source="/Image/request_reject_tdc.png" id="i10"
+              rendered="#{bindings.Status.inputValue =='Draft' and  bindings.LastReject.inputValue ==2}"/>
+    <af:image source="/Image/request_reject_spv.png" id="i9"
+              rendered="#{bindings.Status.inputValue =='Draft' and  bindings.LastReject.inputValue ==1}"/>
+    <af:image source="/Image/request.png" id="i1"
+              rendered="#{bindings.Status.inputValue =='Draft'and  bindings.LastReject.inputValue ==0}">
+      <img height="101" width="976" src="../Image/draf_spv_reject.png"/>
+    </af:image>
+    <af:image source="/Image/supervisor.png" id="i4"
+              rendered="#{bindings.Status.inputValue =='Requested' and (bindings.LastReject.inputValue==0 or bindings.LastReject.inputValue==1)}">
+      <img height="101" width="976" src="../Image/draf_spv_reject.png"/>
+    </af:image>
+    <af:image source="/Image/superviso_Rejectedr.png" id="i5"
+              rendered="#{bindings.Status.inputValue =='Reject SPV With Remarks'}"/>
+    <af:image source="/Image/tdcLead.png" id="i2"
+              rendered="#{bindings.Status.inputValue =='Approve SPV'}"/>
+    <af:image source="/Image/TdcLeadRejected.png" id="i6"
+              rendered="#{bindings.Status.inputValue =='Reject TDC Lead With Remarks'}"/>
+    <af:image source="/Image/CIDCreated.png" id="i3"
+              rendered="#{bindings.Status.inputValue =='Approve TDC Lead' || bindings.Status.inputValue =='Created'}"/>
+    <af:image source="/Image/published_done.png" id="i8"
+              rendered="#{bindings.Status.inputValue =='Publish'}"/>
+    <af:outputText value="#{bindings.Status.inputValue}" id="ot14"
+                   visible="false"/>
+    <af:outputText value="#{bindings.LastReject.inputValue}" id="ot13"
+                   visible="false"/>
+    <af:inputText value="#{bindings.Cidstatusrequest.inputValue}" simple="true"
+                  required="#{bindings.Cidstatusrequest.hints.mandatory}"
+                  columns="#{bindings.Cidstatusrequest.hints.displayWidth}"
+                  maximumLength="#{bindings.Cidstatusrequest.hints.precision}"
+                  shortDesc="#{bindings.Cidstatusrequest.hints.tooltip}"
+                  id="it1" visible="false">
+      <f:validator binding="#{bindings.Cidstatusrequest.validator}"/>
+    </af:inputText>
+    <af:panelGridLayout id="pgl2" inlineStyle="width:40.0%;">
+      <af:gridRow marginTop="5px" height="auto" id="gr4">
+        <af:gridCell marginStart="5px" width="10em" id="gc5">
+          <af:outputLabel value="Transmittal No" id="ol1"
+                          inlineStyle="font-weight:bold;"/>
+        </af:gridCell>
+        <af:gridCell marginStart="5px" width="5px" id="gc8">
+          <af:outputLabel value=":" id="ol2" inlineStyle="font-weight:bold;"/>
+        </af:gridCell>
+        <af:gridCell marginStart="5px" width="33%" marginEnd="5px" id="gc12">
+          <af:outputText value="#{bindings.TransmittalNumber.inputValue}"
+                         id="ot5"/>
+        </af:gridCell>
+      </af:gridRow>
+      <af:gridRow marginTop="5px" height="auto" id="gr2">
+        <af:gridCell marginStart="5px" width="10em" id="gc3">
+          <af:outputLabel value="Date" id="ol3"
+                          inlineStyle="font-weight:bold;"/>
+        </af:gridCell>
+        <af:gridCell marginStart="5px" width="5px" id="gc7">
+          <af:outputLabel value=":" id="ol4"/>
+        </af:gridCell>
+        <af:gridCell marginStart="5px" width="33%" marginEnd="5px" id="gc10">
+          <af:outputText value="#{bindings.Ciddaterequest.inputValue}" id="ot6">
+            <af:convertDateTime pattern="#{bindings.Ciddaterequest.format}"/>
+          </af:outputText>
+        </af:gridCell>
+      </af:gridRow>
+      <af:gridRow marginTop="5px" height="auto" id="gr1">
+        <af:gridCell marginStart="5px" width="10em" id="gc4">
+          <af:outputLabel value="To" id="ol5" inlineStyle="font-weight:bold;"/>
+        </af:gridCell>
+        <af:gridCell marginStart="5px" width="5px" id="gc9">
+          <af:outputLabel value=":" id="ol6"/>
+        </af:gridCell>
+        <af:gridCell marginStart="5px" width="33%" marginEnd="5px" id="gc2">
+          <af:outputText value="#{bindings.Cidrequestorsupervisor.inputValue}"
+                         id="ot7"/>
+        </af:gridCell>
+      </af:gridRow>
+      <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="gr3">
+        <af:gridCell marginStart="5px" width="34%" id="gc11"
+                     inlineStyle="font-weight:bold;">
+          <af:outputLabel value="From" id="ol7"
+                          inlineStyle="font-weight:bold;"/>
+        </af:gridCell>
+        <af:gridCell marginStart="5px" width="5em" id="gc1">
+          <af:outputLabel value=":" id="ol8"/>
+        </af:gridCell>
+        <af:gridCell marginStart="5px" width="33%" marginEnd="5px" id="gc6">
+          <af:outputText value="#{bindings.Cidrequestor.inputValue}" id="ot8"/>
+        </af:gridCell>
+      </af:gridRow>
+    </af:panelGridLayout>
+    <af:panelTabbed position="above" id="pt1" styleClass="AFStretchWidth"
+                    inlineStyle="height:257px;">
+      <af:showDetailItem id="tab1" text="Document List" disclosed="true"
+                         styleClass="AFStretchWidth">
+        <af:panelCollection id="pc1" styleClass="AFStretchWidth">
+          <f:facet name="menus"/>
+          <f:facet name="toolbar">
+            <af:toolbar id="t3">
+              <af:commandToolbarButton text="Export to Excel" id="ctb1"
+                                       icon="/Image/excel.png">
+                <af:fileDownloadActionListener contentType="application/vnd.ms-excel"
+                                               filename="CID Document.xls"
+                                               method="#{PoiBean.generateExcelDocList}"/>
+              </af:commandToolbarButton>
+            </af:toolbar>
+          </f:facet>
+          <f:facet name="statusbar"/>
+          <af:table value="#{bindings.DetailCID1.collectionModel}" var="row"
+                    rows="#{bindings.DetailCID1.rangeSize}"
+                    emptyText="#{bindings.DetailCID1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                    fetchSize="#{bindings.DetailCID1.rangeSize}"
+                    rowBandingInterval="0"
+                    selectedRowKeys="#{bindings.DetailCID1.collectionModel.selectedRow}"
+                    selectionListener="#{bindings.DetailCID1.collectionModel.makeCurrent}"
+                    rowSelection="single" id="t1" varStatus="vs"
+                    styleClass="AFStretchWidth">
+            <af:column id="c4" headerText="No" width="45">
+              <af:outputText value="#{vs.index+1}" id="ot4"/>
+            </af:column>
+            <af:column sortProperty="#{bindings.DetailCID1.hints.Ciddocnumber.name}"
+                       sortable="true" headerText="Document Number" id="c2"
+                       width="195">
+              <af:outputText value="#{row.Ciddocnumber}" id="ot2"/>
+            </af:column>
+            <af:column sortProperty="#{bindings.DetailCID1.hints.Ciddoctitle.name}"
+                       sortable="true" headerText="Document Title" id="c3"
+                       width="320">
+              <af:outputText value="#{row.Ciddoctitle}" id="ot1"/>
+            </af:column>
+            <af:column id="c9" headerText="Document Status" width="233">
+              <af:outputText value="#{row.Cidstatusdocrequest}" id="ot15"/>
+            </af:column>
+            <af:column sortProperty="#{bindings.DetailCID1.hints.Remarks.name}"
+                       sortable="true" headerText="Remarks" id="c1" width="156"
+                       styleClass="AFStretchWidth">
+              <af:outputText value="#{row.Remarks}" id="ot3"
+                             styleClass="AFStretchWidth"/>
+            </af:column>
+          </af:table>
+        </af:panelCollection>
+      </af:showDetailItem>
+      <af:showDetailItem id="tab2" text="History">
+        <af:panelCollection id="pc2" styleClass="AFStretchWidth"
+                            inlineStyle="height:250px;">
+          <f:facet name="menus"/>
+          <f:facet name="toolbar">
+            <af:toolbar id="t4">
+              <af:commandToolbarButton text="Export to Excel" id="ctb2"
+                                       icon="/Image/excel.png">
+                <af:fileDownloadActionListener contentType="application/vnd.ms-excel"
+                                               filename="CID History List.xls"
+                                               method="#{PoiBean.generateExcelHistoryList}"/>
+              </af:commandToolbarButton>
+            </af:toolbar>
+          </f:facet>
+          <f:facet name="statusbar"/>
+          <af:table value="#{bindings.HistoryCIDVO1.collectionModel}" var="row"
+                    rows="#{bindings.HistoryCIDVO1.rangeSize}"
+                    emptyText="#{bindings.HistoryCIDVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                    fetchSize="#{bindings.HistoryCIDVO1.rangeSize}"
+                    rowBandingInterval="0"
+                    selectedRowKeys="#{bindings.HistoryCIDVO1.collectionModel.selectedRow}"
+                    selectionListener="#{bindings.HistoryCIDVO1.collectionModel.makeCurrent}"
+                    rowSelection="single" id="t2" varStatus="vs">
+            <af:column id="c8" headerText="No" width="15">
+              <af:outputText value="#{vs.index+1}" id="ot12"/>
+            </af:column>
+            <af:column sortProperty="#{bindings.HistoryCIDVO1.hints.Action.name}"
+                       sortable="true"
+                       headerText="#{bindings.HistoryCIDVO1.hints.Action.label}"
+                       id="c5"
+                       width="100">
+              <af:outputText value="#{row.Action}" id="ot9"/>
+            </af:column>
+            <af:column sortProperty="#{bindings.HistoryCIDVO1.hints.Actiondate.name}"
+                       sortable="true"
+                       headerText="Date"
+                       id="c6"
+                       width="130">
+              <af:outputText value="#{row.Actiondate}" id="ot11">
+                <af:convertDateTime pattern="#{bindings.HistoryCIDVO1.hints.Actiondate.format}"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortProperty="#{bindings.HistoryCIDVO1.hints.Logdescription.name}"
+                       sortable="true"
+                       headerText="Description"
+                       id="c7"
+                       width="750">
+              <af:outputText value="#{row.Logdescription}" id="ot10"/>
+            </af:column>
+          </af:table>
+        </af:panelCollection>
+      </af:showDetailItem>
+    </af:panelTabbed>
+    <af:panelGroupLayout id="pgl3" layout="vertical">
+      <af:button text="Back" id="cb1" action="back"
+                        inlineStyle="margin-left:10px;padding:5px 20px 5px 20px;"/>
+    </af:panelGroupLayout>
+  </af:panelGroupLayout>
+</jsp:root>

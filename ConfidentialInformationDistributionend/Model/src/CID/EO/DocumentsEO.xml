@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="DocumentsEO"
+  Version="11.1.1.66.73"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="DOCUMENTS"
+  AliasName="DocumentsEO"
+  BindingStyle="OracleName"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access"/>
+    <AttrArray Name="_publishEvents"/>
+  </DesignTime>
+  <Attribute
+    Name="Ddocid"
+    IsNotNull="true"
+    Precision="38"
+    Scale="0"
+    ColumnName="DDOCID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="DOCUMENTS"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Did"
+    Precision="38"
+    Scale="0"
+    ColumnName="DID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="DOCUMENTS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Disprimary"
+    IsNotNull="true"
+    Precision="1"
+    Scale="0"
+    ColumnName="DISPRIMARY"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="DOCUMENTS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="2"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Diswebformat"
+    IsNotNull="true"
+    Precision="1"
+    Scale="0"
+    ColumnName="DISWEBFORMAT"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="DOCUMENTS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="2"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Dlocation"
+    Precision="50"
+    ColumnName="DLOCATION"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="DOCUMENTS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Doriginalname"
+    Precision="255"
+    ColumnName="DORIGINALNAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="DOCUMENTS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="255"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Dformat"
+    Precision="80"
+    ColumnName="DFORMAT"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="DOCUMENTS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="80"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Dextension"
+    Precision="255"
+    ColumnName="DEXTENSION"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="DOCUMENTS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="255"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Dfilesize"
+    Precision="38"
+    Scale="0"
+    ColumnName="DFILESIZE"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="DOCUMENTS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Dlanguage"
+    Precision="10"
+    ColumnName="DLANGUAGE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="DOCUMENTS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="10"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Dcharacterset"
+    Precision="50"
+    ColumnName="DCHARACTERSET"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="DOCUMENTS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+  </Attribute>
+  <Key
+    Name="PkDocuments"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="PK_DOCUMENTS"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="CID.EO.DocumentsEO.Ddocid"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0011623">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0011623"/>
+      <Attr Name="_checkCondition" Value='"DDOCID" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="CID.EO.DocumentsEO.Ddocid"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0011624">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0011624"/>
+      <Attr Name="_checkCondition" Value='"DISPRIMARY" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="CID.EO.DocumentsEO.Disprimary"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0011625">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0011625"/>
+      <Attr Name="_checkCondition" Value='"DISWEBFORMAT" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="CID.EO.DocumentsEO.Diswebformat"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0011626">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0011626"/>
+      <Attr Name="_checkCondition" Value="dIsPrimary = 0 or dIsPrimary = 1"/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="CID.EO.DocumentsEO.Disprimary"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0011627">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0011627"/>
+      <Attr Name="_checkCondition"
+        Value="dIsWebFormat = 0 or dIsWebFormat = 1"/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="CID.EO.DocumentsEO.Diswebformat"/>
+    </AttrArray>
+  </Key>
+</Entity>

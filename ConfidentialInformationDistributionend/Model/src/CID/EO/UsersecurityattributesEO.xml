@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="UsersecurityattributesEO"
+  Version="11.1.1.66.73"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="USERSECURITYATTRIBUTES"
+  AliasName="UsersecurityattributesEO"
+  BindingStyle="OracleName"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access"/>
+    <AttrArray Name="_publishEvents"/>
+  </DesignTime>
+  <Attribute
+    Name="Dusername"
+    IsNotNull="true"
+    Precision="200"
+    ColumnName="DUSERNAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="USERSECURITYATTRIBUTES"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="200"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Dattributename"
+    IsNotNull="true"
+    Precision="80"
+    ColumnName="DATTRIBUTENAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="USERSECURITYATTRIBUTES"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="80"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Dattributetype"
+    IsNotNull="true"
+    Precision="8"
+    ColumnName="DATTRIBUTETYPE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="USERSECURITYATTRIBUTES"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="8"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Dattributeprivilege"
+    Precision="38"
+    Scale="0"
+    ColumnName="DATTRIBUTEPRIVILEGE"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="USERSECURITYATTRIBUTES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Dattributestate"
+    Precision="8"
+    ColumnName="DATTRIBUTESTATE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="USERSECURITYATTRIBUTES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="8"/>
+    </DesignTime>
+  </Attribute>
+  <Key
+    Name="PkUsersecurityattributes"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="PK_USERSECURITYATTRIBUTES"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="CID.EO.UsersecurityattributesEO.Dusername"/>
+      <Item Value="CID.EO.UsersecurityattributesEO.Dattributename"/>
+      <Item Value="CID.EO.UsersecurityattributesEO.Dattributetype"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0011762">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0011762"/>
+      <Attr Name="_checkCondition" Value='"DUSERNAME" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="CID.EO.UsersecurityattributesEO.Dusername"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0011763">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0011763"/>
+      <Attr Name="_checkCondition" Value='"DATTRIBUTENAME" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="CID.EO.UsersecurityattributesEO.Dattributename"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0011764">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0011764"/>
+      <Attr Name="_checkCondition" Value='"DATTRIBUTETYPE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="CID.EO.UsersecurityattributesEO.Dattributetype"/>
+    </AttrArray>
+  </Key>
+</Entity>

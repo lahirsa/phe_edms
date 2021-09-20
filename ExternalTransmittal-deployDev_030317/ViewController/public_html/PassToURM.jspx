@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view beforePhase="#{AfterLogin.GetSession}">
+    <af:document id="d1">
+    <af:resource type="javascript" source="/jquery-1.9.js"/>
+    <af:resource type="javascript" source="/AfterLogin.js"/>
+    <af:form id="f1" inlineStyle="display:none">
+        <af:inputText label="username" id="j_username"
+                      binding="#{AfterLogin.username}"/>
+        <af:inputText label="password" id="j_password"
+                      binding="#{AfterLogin.password}"/>
+      </af:form>
+    </af:document>
+  </f:view>
+</jsp:root><!--Menggunakan lempar parameter tanpa cookie-->
+
+<!--<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view beforePhase="#{AfterLogin.GetSession}">
+    <af:document id="d1">
+    <af:resource type="javascript" source="/jquery-1.9.js"/>
+    <af:resource type="javascript" source="/AfterLogin.js"/>
+    <!modified by nanda - 250215 - throw URM login in post form -->
+    <!--<form id="loginURM" name="loginURM" method="POST" action="http://kponwjis013.pertamina.com:16300/urm/login/j_security_check" style="display:none">
+    
+        <af:inputText label="username" id="j_username"
+                      binding="#{AfterLogin.username}"/>
+        <af:inputText label="password" id="j_password"
+                      binding="#{AfterLogin.password}"/>
+      </form>
+    </af:document>
+  </f:view>
+</jsp:root>--><!--Menggunakan cookie dev version tanpa decript-->

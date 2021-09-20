@@ -1,0 +1,557 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:resource type="javascript">
+    function closeWindow() {
+      window.close();
+    }
+  </af:resource>
+  <af:panelGroupLayout id="pgl1" layout="vertical">
+    <af:outputLabel value="Document Secure Workflow - Create External Transmittal"
+                    id="ol7"
+                    inlineStyle="font-family:Arial, Helvetica, sans-serif; font-size:large; font-weight:bold; color:Navy;"/>
+    <af:spacer width="10" height="10" id="s1"/>
+    <af:panelTabbed id="pt1" inlineStyle="height:420px;"
+                    styleClass="AFStretchWidth">
+      <af:showDetailItem text="General Info" id="sdi1">
+        <af:panelGroupLayout id="pgl10" layout="vertical">
+          <af:panelFormLayout id="pfl1">
+            <af:panelLabelAndMessage label="Category :" id="plam1">
+              <af:outputLabel value="External" id="ol2"/>
+            </af:panelLabelAndMessage>
+            <af:spacer width="10" height="10" id="s12"/>
+            <af:panelLabelAndMessage label="Company :"
+                                     id="panelLabelAndMessage1">
+              <af:outputLabel id="outputLabel3"
+                              binding="#{pageFlowScope.ExternalTransmittalBean.bindCompanyName}"/>
+            </af:panelLabelAndMessage>
+            <af:spacer width="10" height="10" id="spacer4"/>
+            <af:panelLabelAndMessage label="#{pageFlowScope.ExternalTransmittalBean.projectorOrganization eq 'Organization'? &quot;Organization :&quot; : &quot;Project Title :&quot;}"
+                                     id="plam2">
+              <af:outputLabel id="ol3"
+                              binding="#{pageFlowScope.ExternalTransmittalBean.bindOutputProjectTitle}"/>
+            </af:panelLabelAndMessage>
+            <af:spacer width="10" height="10" id="spacer2"/>
+            <af:inputText label="Subject :" id="it1" rows="5" columns="40"
+                          binding="#{pageFlowScope.ExternalTransmittalBean.bindTransmittalSubject}"
+                          showRequired="true" required="true"></af:inputText>
+            <af:spacer width="10" height="10" id="spacer1"/>
+            <af:inputDate label="Due Date :" id="id1"
+                          binding="#{pageFlowScope.ExternalTransmittalBean.bindTransmittalDueDate}"
+                          autoSubmit="true" showRequired="true" required="true">
+              <af:convertDateTime/>
+            </af:inputDate>
+            <af:spacer width="10" height="10" id="s3"/>
+            <af:selectOneChoice value="#{bindings.contractNumberVO1.inputValue}"
+                                label="Contractor :"
+                                required="#{bindings.contractNumberVO1.hints.mandatory}"
+                                shortDesc="#{bindings.contractNumberVO1.hints.tooltip}"
+                                id="soc1"
+                                binding="#{pageFlowScope.ExternalTransmittalBean.bindTransmittalContractor}"
+                                autoSubmit="true"
+                                valueChangeListener="#{pageFlowScope.ExternalTransmittalBean.ValueChangeLsnrContractor}"
+                                visible="#{pageFlowScope.ExternalTransmittalBean.projectorOrganization eq 'Project'}">
+              <f:selectItems value="#{bindings.contractNumberVO1.items}"
+                             id="si1"/>
+            </af:selectOneChoice>
+            <af:selectOneChoice value="#{bindings.contractNumberOrganizationVO1.inputValue}"
+                                label="Contractor :"
+                                required="#{bindings.contractNumberOrganizationVO1.hints.mandatory}"
+                                shortDesc="#{bindings.contractNumberOrganizationVO1.hints.tooltip}"
+                                id="soc8"
+                                visible="#{pageFlowScope.ExternalTransmittalBean.projectorOrganization eq 'Organization'}"
+                                valueChangeListener="#{pageFlowScope.ExternalTransmittalBean.ValueChangeLsnrContractorOrganization}"
+                                binding="#{pageFlowScope.ExternalTransmittalBean.bindTransmittalContractorOgranization}">
+              <f:selectItems value="#{bindings.contractNumberOrganizationVO1.items}"
+                             id="si11"/>
+            </af:selectOneChoice>
+            <af:selectOneChoice value="#{bindings.contractNumberPublish1.inputValue}"
+                                label="Contractor :"
+                                required="#{bindings.contractNumberPublish1.hints.mandatory}"
+                                shortDesc="#{bindings.contractNumberPublish1.hints.tooltip}"
+                                id="soc10"
+                                visible="#{pageFlowScope.ExternalTransmittalBean.projectorOrganization eq 'Publish'}"
+                                valueChangeListener="#{pageFlowScope.ExternalTransmittalBean.ValueChangeLsnrContractorPublish}"
+                                binding="#{pageFlowScope.ExternalTransmittalBean.bindTransmittalContractorPublish}">
+              <f:selectItems value="#{bindings.contractNumberPublish1.items}"
+                             id="si13"/>
+            </af:selectOneChoice>
+            <af:spacer width="10" height="10" id="s2"/>
+            <af:inputText label="WO No. :" id="it2"
+                          binding="#{pageFlowScope.ExternalTransmittalBean.bindTransmittalWoNo}"
+                          required="true" showRequired="true">
+              <!--modified by nanda - 270215 - validate special char on wo number-->
+              <f:validator validatorId="TransmittalValidator"/>
+            </af:inputText>
+          </af:panelFormLayout>
+        </af:panelGroupLayout>
+      </af:showDetailItem>
+      <af:showDetailItem text="List Documents" id="sdi2">
+        <af:panelGroupLayout id="pgl11" styleClass="AFStretchWidth"
+                             layout="scroll">
+          <af:spacer width="10" height="10" id="s7"/>
+          <af:selectOneChoice label="Sent Via :" id="soc2"
+                              binding="#{pageFlowScope.ExternalTransmittalBean.bindSource}"
+                              autoSubmit="true"
+                              valueChangeListener="#{pageFlowScope.ExternalTransmittalBean.sentViaChange}"
+                              visible="#{pageFlowScope.ExternalTransmittalBean.bindOutputProjectTitle.value  != 'Publish'}">
+            <af:selectItem label="" value="" id="si9"/>
+            <!--af:selectItem label="EDMS" value="EDMS" id="si2"/-->
+            <af:selectItem label="Electronic" value="Electronic" id="si3"/>
+            <af:selectItem label="Physical" value="Physical" id="si4"/>
+          </af:selectOneChoice>
+          <af:spacer width="10" height="10" id="s6"/>
+          <af:popup id="p1"
+                    binding="#{pageFlowScope.ExternalTransmittalBean.bindPopUpEdms}"
+                    contentDelivery="lazyUncached">
+            <af:dialog id="d1" closeIconVisible="false" type="none">
+              <af:panelSplitter id="ps1" splitterPosition="400"
+                                inlineStyle="width:95em;">
+                <f:facet name="first">
+                  <af:panelGroupLayout layout="vertical"
+                                       xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                       id="pgl6">
+                    <af:tree value="#{bindings.ParentMenuVO1.treeModel}"
+                             var="node"
+                             selectionListener="#{pageFlowScope.ExternalTransmittalBean.SelectTreeLsnr}"
+                             rowSelection="single" id="t2"
+                             styleClass="AFStretchWidth"
+                             binding="#{pageFlowScope.ExternalTransmittalBean.bindTreeEdms}">
+                      <f:facet name="nodeStamp">
+                        <af:outputText value="#{node.Ffoldername}" id="ot8"/>
+                      </f:facet>
+                      <!-- #{...Ffoldername}#{...Ffoldername}#{...Ffoldername}#{...XDocName}#{...XDocOwner}-->
+                    </af:tree>
+                  </af:panelGroupLayout>
+                </f:facet>
+                <f:facet name="second">
+                  <af:panelGroupLayout id="pgl3" styleClass="AFStretchWidth">
+                    <af:table var="row" rowBandingInterval="0" id="t4"
+                              binding="#{pageFlowScope.ExternalTransmittalBean.bindTableFilesEDMS}"
+                              varStatus="rowStatus"
+                              value="#{pageFlowScope.ExternalTransmittalBean.childFiles}"
+                              inlineStyle="margin-left:10px; border-color:Gray; border-style:solid; border-width:thin; width:90%;"
+                              columnStretching="column:c12"
+                              rowSelection="single" fetchSize="-1">
+                      <af:column sortable="false" headerText="" id="c14"
+                                 width="30" align="center">
+                        <af:selectBooleanRadio id="sbr1" group="radioButton"
+                                               binding="#{pageFlowScope.ExternalTransmittalBean.bindRadioEDMS}"
+                                               valueChangeListener="#{pageFlowScope.ExternalTransmittalBean.OnChangeRadio}"
+                                               autoSubmit="true">
+                          <f:attribute name="rowvalIndex"
+                                       value="#{rowStatus.index}"/>
+                        </af:selectBooleanRadio>
+                      </af:column>
+                      <af:column sortable="false" headerText="Name" id="c12"
+                                 width="400">
+                        <af:outputText value="#{row.XDocName}" id="ot13"/>
+                      </af:column>
+                      <af:column sortable="false" headerText="Owner" id="c16"
+                                 width="150">
+                        <af:outputText value="#{row.XDocOwner}" id="ot11"/>
+                      </af:column>
+                    </af:table>
+                  </af:panelGroupLayout>
+                </f:facet>
+              </af:panelSplitter>
+              <af:spacer width="10" height="10" id="s11"/>
+              <af:panelGroupLayout id="pgl7" layout="horizontal">
+                <af:commandButton text="Ok" id="cb4" partialSubmit="true"
+                                  actionListener="#{pageFlowScope.ExternalTransmittalBean.ActionSelectEdms}"/>
+                <af:spacer width="10" height="10" id="s10"/>
+                <af:commandButton text="Cancel" id="cb5"
+                                  actionListener="#{pageFlowScope.ExternalTransmittalBean.CancelPopUpEdms}"/>
+                <af:popup id="p4"
+                          binding="#{pageFlowScope.ExternalTransmittalBean.bindPopUpEdmsForm}"
+                          contentDelivery="lazyUncached">
+                  <af:dialog id="d4" closeIconVisible="false"
+                             dialogListener="#{pageFlowScope.ExternalTransmittalBean.dialogBoxEDMSForm}">
+                    <af:decorativeBox id="db2">
+                      <f:facet name="center">
+                        <af:panelGroupLayout id="pgl9" layout="vertical">
+                          <af:panelFormLayout id="pfl4">
+                            <af:inputText label="Document Number :"
+                                          id="inputText3" required="true"
+                                          binding="#{pageFlowScope.ExternalTransmittalBean.bindEdmsDocNumber}"/>
+                            <af:inputText label="Document Title :"
+                                          id="inputText4" required="true"
+                                          binding="#{pageFlowScope.ExternalTransmittalBean.bindEdmsDocTitle}"/>
+                            <af:selectOneChoice value="#{bindings.ListDocumentStatusVO1.inputValue}"
+                                                label="Document Status :"
+                                                required="#{bindings.ListDocumentStatusVO1.hints.mandatory}"
+                                                shortDesc="#{bindings.ListDocumentStatusVO1.hints.tooltip}"
+                                                id="soc7"
+                                                binding="#{pageFlowScope.ExternalTransmittalBean.bindEdmsDocStatus}">
+                              <f:selectItems value="#{bindings.ListDocumentStatusVO1.items}"
+                                             id="si10"/>
+                            </af:selectOneChoice>
+                            <af:inputText label="Pages :" id="inputText5"
+                                          converter="javax.faces.Integer"
+                                          binding="#{pageFlowScope.ExternalTransmittalBean.bindEdmsPages}"
+                                          value="1"/>
+                            <af:inputText label="Remarks :" id="inputText6"
+                                          binding="#{pageFlowScope.ExternalTransmittalBean.bindEdmsRemarks}"
+                                          columns="20" rows="5"/>
+                            <af:inputText label="Revisions :" id="inputText7"
+                                          required="true"
+                                          binding="#{pageFlowScope.ExternalTransmittalBean.bindEdmsRevisions}"/>
+                          </af:panelFormLayout>
+                        </af:panelGroupLayout>
+                      </f:facet>
+                      <f:facet name="top">
+                        <af:panelGroupLayout id="pgl8" layout="vertical"
+                                             halign="center" valign="middle">
+                          <af:outputLabel value="Add EDMS Form"
+                                          id="outputLabel1"
+                                          styleClass="AFHeaderLevelOne"/>
+                        </af:panelGroupLayout>
+                      </f:facet>
+                    </af:decorativeBox>
+                  </af:dialog>
+                </af:popup>
+              </af:panelGroupLayout>
+            </af:dialog>
+          </af:popup>
+          <af:popup id="p2"
+                    binding="#{pageFlowScope.ExternalTransmittalBean.binderPopUpElectronic}"
+                    contentDelivery="lazyUncached">
+            <af:dialog id="d2" closeIconVisible="false"
+                       styleClass="AFStretchWidth"
+                       dialogListener="#{pageFlowScope.ExternalTransmittalBean.ElectronicDialogLsnr}">
+              <af:decorativeBox id="db1" inlineStyle="height:350.0px;">
+                <f:facet name="center">
+                  <af:panelGroupLayout id="pgl5" layout="scroll">
+                    <af:panelFormLayout id="pfl2" styleClass="AFStretchWidth">
+                      <af:inputFile label="File :" id="if1"
+                                    valueChangeListener="#{pageFlowScope.ExternalTransmittalBean.onChangeElectronicFile}"
+                                    autoSubmit="true" required="true"
+                                    binding="#{pageFlowScope.ExternalTransmittalBean.bindUploadedFile}"/>
+                      <af:inputText label="Name :" id="it3"
+                                    binding="#{pageFlowScope.ExternalTransmittalBean.bindElectronicName}"
+                                    required="true"/>
+                      <af:inputText label="Type :" id="it4" value="Transmittal"
+                                    readOnly="true"
+                                    binding="#{pageFlowScope.ExternalTransmittalBean.bindDocType}"/>
+                      <af:inputText label="Document Number :" id="it5"
+                                    required="true"
+                                    binding="#{pageFlowScope.ExternalTransmittalBean.bindDocNumber}"/>
+                      <af:inputText label="Document Title :" id="it6"
+                                    required="true"
+                                    binding="#{pageFlowScope.ExternalTransmittalBean.binDocTitle}"/>
+                      <af:selectOneChoice value="#{bindings.ListDocumentStatusVO1.inputValue}"
+                                          label="Document Status :"
+                                          required="#{bindings.ListDocumentStatusVO1.hints.mandatory}"
+                                          shortDesc="#{bindings.ListDocumentStatusVO1.hints.tooltip}"
+                                          id="soc4"
+                                          binding="#{pageFlowScope.ExternalTransmittalBean.bindDocStatus}">
+                        <f:selectItems value="#{bindings.ListDocumentStatusVO1.items}"
+                                       id="si6"/>
+                      </af:selectOneChoice>
+                      <af:inputText label="Pages :" id="it7"
+                                    converter="javax.faces.Integer"
+                                    required="true"
+                                    binding="#{pageFlowScope.ExternalTransmittalBean.bindPages}"
+                                    value="1"/>
+                      <af:inputText label="Remarks :" id="it8"
+                                    binding="#{pageFlowScope.ExternalTransmittalBean.bindRemarks}"
+                                    rows="5" columns="20"/>
+                      <af:inputText label="Revisions :" id="it9" required="true"
+                                    binding="#{pageFlowScope.ExternalTransmittalBean.bindRevisions}"/>
+                    </af:panelFormLayout>
+                  </af:panelGroupLayout>
+                </f:facet>
+                <f:facet name="top">
+                  <af:panelGroupLayout id="pgl4" layout="vertical"
+                                       halign="center" valign="middle">
+                    <af:outputLabel value="Add Electronic Form" id="ol1"
+                                    styleClass="AFHeaderLevelOne"/>
+                  </af:panelGroupLayout>
+                </f:facet>
+              </af:decorativeBox>
+            </af:dialog>
+          </af:popup>
+          <af:table var="row" rowBandingInterval="0" id="t1"
+                    styleClass="AFStretchWidth"
+                    value="#{pageFlowScope.ExternalTransmittalBean.tempDoc}"
+                    binding="#{pageFlowScope.ExternalTransmittalBean.bindTableDoc}"
+                    varStatus="rowStatus" fetchSize="25"
+                    columnStretching="column:c3" inlineStyle="height:300px;">
+            <af:column sortable="false" headerText="Document Number" id="c5"
+                       width="130" align="center">
+              <!-- <af:goLink text="#{row.documentNumber}" id="gl1"
+                         destination="http://kponwjap005.pertamina.com:16300/urm/idcplg?IdcService=VIEW_IN_AUTOVUE&amp;dID=#{row.did}&amp;Markup_BasedID=0&amp;Format="
+                         targetFrame="_blank"
+                         rendered="#{row.distribution eq 'Electronic'}"/>-->
+              <af:goLink text="#{row.documentNumber}" id="gl1"
+                         destination="http://phekpdm005.pertamina.com:16200/cs/idcplg?IdcService=VIEW_IN_AUTOVUE&amp;dID=#{row.did}&amp;Markup_BasedID=0&amp;Format="
+                         targetFrame="_blank"
+                         rendered="#{row.distribution eq 'Electronic'}"/>
+              <af:outputLabel id="ol6"
+                              rendered="#{row.distribution != 'Electronic'}"
+                              value="#{row.documentNumber}"/>
+            </af:column>
+            <af:column sortable="false" headerText="Document Title" id="c3"
+                       width="100" align="center">
+              <af:outputText value="#{row.documentTitle}" id="ot1"/>
+            </af:column>
+            <af:column sortable="false" headerText="Revision" id="c1" width="50"
+                       align="center">
+              <af:outputText value="#{row.revision}" id="ot4"/>
+            </af:column>
+            <af:column sortable="false" headerText="Document Status" id="c2"
+                       align="center" width="110">
+              <af:outputText value="#{row.documentStatus}" id="ot5"/>
+            </af:column>
+            <af:column sortable="false" headerText="Pages" id="c4" width="51"
+                       align="center">
+              <af:outputText value="#{row.pages}" id="ot3"/>
+            </af:column>
+            <af:column sortable="false" headerText="Remarks" id="c6" width="113"
+                       align="center">
+              <af:outputText value="#{row.remarks}" id="ot6"/>
+            </af:column>
+            <af:column sortable="false" headerText="Distribution" id="c7"
+                       align="center" width="80">
+              <af:outputText value="#{row.distribution}" id="ot7"/>
+            </af:column>
+            <af:column sortable="false" headerText="Action" id="c8"
+                       align="center"
+                       visible="#{pageFlowScope.ExternalTransmittalBean.bindOutputProjectTitle.value  != 'Publish'}">
+              <af:panelGroupLayout id="pgl0">
+                <af:commandLink text="Edit" id="cl1"
+                                actionListener="#{pageFlowScope.ExternalTransmittalBean.EditFile}"
+                                partialSubmit="true">
+                  <f:attribute name="editFileIndex" value="#{rowStatus.index}"/>
+                </af:commandLink>
+                <af:spacer width="10" height="10" id="s8"/>
+                <af:commandLink text="Delete" id="cl2"
+                                actionListener="#{pageFlowScope.ExternalTransmittalBean.DeleteFile}">
+                  <f:attribute name="delFileIndex" value="#{rowStatus.index}"/>
+                </af:commandLink>
+                <af:popup id="popupEditEDMS"
+                          binding="#{pageFlowScope.ExternalTransmittalBean.bindPopUpEditEdmsForm}"
+                          contentDelivery="lazyUncached">
+                  <af:dialog id="dialog3" closeIconVisible="false"
+                             dialogListener="#{pageFlowScope.ExternalTransmittalBean.dialogBoxEdmsEditForm}">
+                    <af:decorativeBox id="decorativeBox3">
+                      <f:facet name="center">
+                        <af:panelGroupLayout id="panelGroupLayout5"
+                                             layout="vertical">
+                          <af:panelFormLayout id="panelFormLayout3">
+                            <af:panelLabelAndMessage label="Document Name : "
+                                                     id="plam3"
+                                                     binding="#{pageFlowScope.ExternalTransmittalBean.bindLabelEditDocName}">
+                              <af:outputLabel id="ol4"
+                                              binding="#{pageFlowScope.ExternalTransmittalBean.bindEditDocName}"/>
+                            </af:panelLabelAndMessage>
+                            <af:inputText label="Document Number :"
+                                          id="inputText18" required="true"
+                                          binding="#{pageFlowScope.ExternalTransmittalBean.bindEdmsEditDocNumber}"
+                                          partialTriggers="cl1"/>
+                            <af:inputText label="Document Title :"
+                                          id="inputText19" required="true"
+                                          binding="#{pageFlowScope.ExternalTransmittalBean.bindEdmsEditDocTitle}"/>
+                            <af:selectOneChoice value="#{bindings.ListDocumentStatusVO1.inputValue}"
+                                                label="Document Status :"
+                                                required="#{bindings.ListDocumentStatusVO1.hints.mandatory}"
+                                                shortDesc="#{bindings.ListDocumentStatusVO1.hints.tooltip}"
+                                                id="selectOneChoice4"
+                                                binding="#{pageFlowScope.ExternalTransmittalBean.bindEdmsEditDocStatus}">
+                              <f:selectItems value="#{bindings.ListDocumentStatusVO1.items}"
+                                             id="selectItems4"/>
+                            </af:selectOneChoice>
+                            <af:inputText label="Pages :" id="inputText20"
+                                          converter="javax.faces.Integer"
+                                          binding="#{pageFlowScope.ExternalTransmittalBean.bindEdmsEditPages}"
+                                          value="1"/>
+                            <af:inputText label="Remarks :" id="inputText21"
+                                          binding="#{pageFlowScope.ExternalTransmittalBean.bindEdmsEditRemarsk}"
+                                          rows="5" columns="20"/>
+                            <af:inputText label="Revisions :" id="inputText22"
+                                          required="true"
+                                          binding="#{pageFlowScope.ExternalTransmittalBean.bindEdmsEditRevisions}"/>
+                            <af:selectOneChoice value="#{bindings.ListSentHardcopyVO1.inputValue}"
+                                                label="Distributed Method :"
+                                                required="#{bindings.ListSentHardcopyVO1.hints.mandatory}"
+                                                shortDesc="#{bindings.ListSentHardcopyVO1.hints.tooltip}"
+                                                id="selectOneChoice1"
+                                                binding="#{pageFlowScope.ExternalTransmittalBean.bindHardcopyEditDistributionMethod}">
+                              <f:selectItems value="#{bindings.ListSentHardcopyVO1.items}"
+                                             id="selectItems1"/>
+                            </af:selectOneChoice>
+                            <af:outputLabel id="ol5"
+                                            binding="#{pageFlowScope.ExternalTransmittalBean.bindEditIndex}"
+                                            visible="false"/>
+                          </af:panelFormLayout>
+                        </af:panelGroupLayout>
+                      </f:facet>
+                      <f:facet name="top">
+                        <af:panelGroupLayout id="panelGroupLayout6"
+                                             layout="vertical" halign="center"
+                                             valign="middle">
+                          <af:outputLabel value="Edit File" id="outputLabel5"
+                                          styleClass="AFHeaderLevelOne"/>
+                        </af:panelGroupLayout>
+                      </f:facet>
+                    </af:decorativeBox>
+                  </af:dialog>
+                </af:popup>
+              </af:panelGroupLayout>
+            </af:column>
+          </af:table>
+          <af:popup id="p3"
+                    binding="#{pageFlowScope.ExternalTransmittalBean.bindPopUpHardcopy}"
+                    contentDelivery="lazyUncached">
+            <af:dialog id="d3"
+                       dialogListener="#{pageFlowScope.ExternalTransmittalBean.PhysicalDialogLsnr}">
+              <af:decorativeBox id="db3" inlineStyle="height:300px;">
+                <f:facet name="center">
+                  <af:panelFormLayout id="pfl3">
+                    <af:inputText label="Document Number :" id="it10"
+                                  binding="#{pageFlowScope.ExternalTransmittalBean.bindHardcopyDocNumber}"
+                                  required="true" showRequired="true"/>
+                    <af:inputText label="Document Title :" id="it11"
+                                  binding="#{pageFlowScope.ExternalTransmittalBean.bindHardcopyDocTitle}"
+                                  showRequired="true" required="true"/>
+                    <af:inputText label="Revision :" id="it12"
+                                  binding="#{pageFlowScope.ExternalTransmittalBean.bindHardcopyRevision}"
+                                  required="true" showRequired="true"/>
+                    <af:selectOneChoice value="#{bindings.ListDocumentStatusVO1.inputValue}"
+                                        label="Document Status :"
+                                        required="#{bindings.ListDocumentStatusVO1.hints.mandatory}"
+                                        shortDesc="#{bindings.ListDocumentStatusVO1.hints.tooltip}"
+                                        id="soc6"
+                                        binding="#{pageFlowScope.ExternalTransmittalBean.bindHardcopyDocStatus}"
+                                        showRequired="true">
+                      <f:selectItems value="#{bindings.ListDocumentStatusVO1.items}"
+                                     id="si8"/>
+                    </af:selectOneChoice>
+                    <af:inputText label="Pages :" id="it13"
+                                  converter="javax.faces.Integer"
+                                  binding="#{pageFlowScope.ExternalTransmittalBean.bindHardcopyPages}"
+                                  value="1"/>
+                    <af:inputText label="Remarks :" id="it14"
+                                  binding="#{pageFlowScope.ExternalTransmittalBean.bindHardcopyRemarks}"
+                                  rows="5" columns="20"/>
+                    <af:selectOneChoice value="#{bindings.ListSentHardcopyVO1.inputValue}"
+                                        label="Distributed Method :"
+                                        required="#{bindings.ListSentHardcopyVO1.hints.mandatory}"
+                                        shortDesc="#{bindings.ListSentHardcopyVO1.hints.tooltip}"
+                                        id="soc5"
+                                        binding="#{pageFlowScope.ExternalTransmittalBean.bindHardcopyDistributionMethod}">
+                      <f:selectItems value="#{bindings.ListSentHardcopyVO1.items}"
+                                     id="si7"/>
+                    </af:selectOneChoice>
+                  </af:panelFormLayout>
+                </f:facet>
+                <f:facet name="top">
+                  <af:panelGroupLayout id="panelGroupLayout2" layout="vertical"
+                                       halign="center" valign="middle">
+                    <af:outputLabel value="Add Hardcopy Form" id="outputLabel2"
+                                    styleClass="AFHeaderLevelOne"/>
+                  </af:panelGroupLayout>
+                </f:facet>
+              </af:decorativeBox>
+            </af:dialog>
+          </af:popup>
+        </af:panelGroupLayout>
+      </af:showDetailItem>
+      <af:showDetailItem text="Distribution / Circulation Team" id="sdi3">
+        <af:panelGroupLayout id="pgl2" layout="vertical"
+                             styleClass="AFStretchWidth">
+          <af:selectOneChoice value="#{bindings.ExternalUserVO1.inputValue}"
+                              label="User :"
+                              required="#{bindings.ExternalUserVO1.hints.mandatory}"
+                              shortDesc="#{bindings.ExternalUserVO1.hints.tooltip}"
+                              id="soc3"
+                              binding="#{pageFlowScope.ExternalTransmittalBean.bindUser}"
+                              visible="#{pageFlowScope.ExternalTransmittalBean.projectorOrganization eq 'Project'}">
+            <f:selectItems value="#{bindings.ExternalUserVO1.items}" id="si5"/>
+          </af:selectOneChoice>
+          <af:selectOneChoice value="#{bindings.ExternalUserOrganizationVo1.inputValue}"
+                              label="User :"
+                              required="#{bindings.ExternalUserOrganizationVo1.hints.mandatory}"
+                              shortDesc="#{bindings.ExternalUserOrganizationVo1.hints.tooltip}"
+                              id="soc9"
+                              visible="#{pageFlowScope.ExternalTransmittalBean.projectorOrganization eq 'Organization'}"
+                              binding="#{pageFlowScope.ExternalTransmittalBean.bindUserOrganization}">
+            <f:selectItems value="#{bindings.ExternalUserOrganizationVo1.items}"
+                           id="si12"/>
+          </af:selectOneChoice>
+          <af:selectOneChoice value="#{bindings.ExternalUserPublishVO1.inputValue}"
+                              label="User :"
+                              required="#{bindings.ExternalUserPublishVO1.hints.mandatory}"
+                              shortDesc="#{bindings.ExternalUserPublishVO1.hints.tooltip}"
+                              id="soc11"
+                              visible="#{pageFlowScope.ExternalTransmittalBean.projectorOrganization eq 'Publish'}"
+                              binding="#{pageFlowScope.ExternalTransmittalBean.bindUserPublish}">
+            <f:selectItems value="#{bindings.ExternalUserPublishVO1.items}"
+                           id="si14"/>
+          </af:selectOneChoice>
+          <af:spacer width="10" height="10" id="s4"/>
+          <af:commandButton text="Add To List" id="cb1"
+                            actionListener="#{pageFlowScope.ExternalTransmittalBean.AddToList}"/>
+          <af:spacer width="10" height="10" id="s5"/>
+          <af:table var="row" rowBandingInterval="0" id="t3"
+                    rowSelection="single"
+                    value="#{pageFlowScope.ExternalTransmittalBean.dataUser}"
+                    binding="#{pageFlowScope.ExternalTransmittalBean.tableUser}"
+                    varStatus="rowStatus" styleClass="AFStretchWidth"
+                    columnStretching="column:c11">
+            <af:column sortable="false" headerText="User name" id="c10"
+                       width="200" align="center">
+              <af:outputText value="#{row.username}" id="ot10"/>
+            </af:column>
+            <af:column sortable="false" headerText="Role" id="c9" align="center"
+                       width="150">
+              <af:outputText value="#{row.contactRole}" id="ot12"/>
+            </af:column>
+            <af:column sortable="false" headerText="Email" id="c11"
+                       align="center" width="250">
+              <af:outputText value="#{row.contactEmail}" id="ot9"/>
+            </af:column>
+            <af:column sortable="false" headerText="Action" id="c13"
+                       align="center">
+              <af:commandLink text="delete" id="cl3"
+                              actionListener="#{pageFlowScope.ExternalTransmittalBean.DeleteUser}">
+                <f:attribute name="delIndex" value="#{rowStatus.index}"/>
+              </af:commandLink>
+            </af:column>
+          </af:table>
+        </af:panelGroupLayout>
+      </af:showDetailItem>
+    </af:panelTabbed>
+    <af:menuBar id="mb1">
+      <af:commandButton text="Submit" id="cb2"
+                        actionListener="#{pageFlowScope.ExternalTransmittalBean.ActionCreateTransmittal}"/>
+      <af:spacer width="10" height="10" id="s9"/>
+      <af:commandButton text="Cancel" id="cb3"
+                        actionListener="#{pageFlowScope.ExternalTransmittalBean.CancelTransmittal}"
+                        immediate="true">
+                        <af:clientListener type="click" method="closeWindow"/>
+      </af:commandButton>
+    </af:menuBar>
+    <af:popup id="popUpSuccessCreate" contentDelivery="lazyUncached"
+              binding="#{pageFlowScope.ExternalTransmittalBean.bindPopUpSuccess}">
+      <af:dialog id="dialog1" inlineStyle="width:400px;" type="none"
+                 closeIconVisible="false">
+        <af:panelGroupLayout id="pgl17" styleClass="AFStretchWidth"
+                             layout="vertical">
+          <af:outputFormatted value="This Transmittal has been created and sent to recipients."
+                              id="of7" styleUsage="instruction"
+                              inlineStyle="font-family:Arial, Helvetica, sans-serif; font-size:small;"/>
+          <af:spacer width="10" height="10" id="spacer3"/>
+         <af:commandButton text="OK" id="cb6"
+                            actionListener="#{pageFlowScope.ExternalTransmittalBean.GoToHome}"/>
+         <!--Updated by Nanda 190116 - open DSWF page new tab and close again -->
+                       
+         <!-- <af:commandButton text="OK" id="commandButton1">
+             <af:clientListener type="click" method="closeWindow"/>
+          </af:commandButton>-->
+        </af:panelGroupLayout>
+      </af:dialog>
+    </af:popup>
+  </af:panelGroupLayout>
+</jsp:root>

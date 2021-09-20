@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="PheDelegateVO"
+  Version="11.1.1.66.73"
+  InheritPersonalization="merge"
+  SelectList="PheDelegateEO.ID, 
+       PheDelegateEO.TRANSMITTAL_ID, 
+       PheDelegateEO.DELEGATE_FROM, 
+       PheDelegateEO.DELEGATE_TO, 
+       PheDelegateEO.START_DATE, 
+       PheDelegateEO.END_DATE, 
+       PheDelegateEO.STATUS_CODE, 
+       PheDelegateEO.STATUS_DESC, 
+       PheDelegateEO.DELEGATE_PID"
+  FromList="PHE_DELEGATE PheDelegateEO"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|VarAccess"/>
+  </DesignTime>
+  <EntityUsage
+    Name="PheDelegateEO"
+    Entity="CID.EO.PheDelegateEO"/>
+  <ViewAttribute
+    Name="Id"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Id"
+    EntityUsage="PheDelegateEO"
+    AliasName="ID"/>
+  <ViewAttribute
+    Name="TransmittalId"
+    PrecisionRule="true"
+    EntityAttrName="TransmittalId"
+    EntityUsage="PheDelegateEO"
+    AliasName="TRANSMITTAL_ID"/>
+  <ViewAttribute
+    Name="DelegateFrom"
+    PrecisionRule="true"
+    EntityAttrName="DelegateFrom"
+    EntityUsage="PheDelegateEO"
+    AliasName="DELEGATE_FROM"/>
+  <ViewAttribute
+    Name="DelegateTo"
+    PrecisionRule="true"
+    EntityAttrName="DelegateTo"
+    EntityUsage="PheDelegateEO"
+    AliasName="DELEGATE_TO"/>
+  <ViewAttribute
+    Name="StartDate"
+    PrecisionRule="true"
+    EntityAttrName="StartDate"
+    EntityUsage="PheDelegateEO"
+    AliasName="START_DATE"/>
+  <ViewAttribute
+    Name="EndDate"
+    PrecisionRule="true"
+    EntityAttrName="EndDate"
+    EntityUsage="PheDelegateEO"
+    AliasName="END_DATE"/>
+  <ViewAttribute
+    Name="StatusCode"
+    PrecisionRule="true"
+    EntityAttrName="StatusCode"
+    EntityUsage="PheDelegateEO"
+    AliasName="STATUS_CODE"/>
+  <ViewAttribute
+    Name="StatusDesc"
+    PrecisionRule="true"
+    EntityAttrName="StatusDesc"
+    EntityUsage="PheDelegateEO"
+    AliasName="STATUS_DESC"/>
+  <ViewAttribute
+    Name="DelegatePid"
+    PrecisionRule="true"
+    EntityAttrName="DelegatePid"
+    EntityUsage="PheDelegateEO"
+    AliasName="DELEGATE_PID"/>
+</ViewObject>
